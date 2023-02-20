@@ -1,19 +1,19 @@
 import React from 'react'
-import Loader from '../Components/Loader'
+import Loader from '../Components/Loaderr'
 import Topbar from '../Components/Topbar'
 import Header from "../Components/Header";
 import ScrollToTop from "react-scroll-to-top";
 import Footer from '../Components/Footer';
-import star from '../imgs/template/icons/star.svg'
+import star from '../public/imgs/template/icons/star.svg'
 import InfoSection from '../Components/InfoSection';
-import { Link } from 'react-router-dom';
-import img1 from "../imgs/page/product/img-gallery-1.jpg";
-import ReactImageZoom from "react-image-zoom";
+import img1 from "../public/imgs/page/product/img-gallery-1.jpg";
+// import ReactImageZoom from "react-image-zoom";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import { Mousewheel, Pagination } from "swiper";
+import Link from 'next/link';
 const VendorListing = () => {
   const props = {
     width: 400,
@@ -42,8 +42,8 @@ const VendorListing = () => {
         <div className="breadcrumbs-div">
           <div className="container">
             <ul className="breadcrumb">
-              <li><Link className="font-xs color-gray-1000" to={`/`}>Home</Link></li>
-              <li><Link className="font-xs color-gray-500" to={`/VendorList`}>Vendor listing</Link></li>
+              <li><Link className="font-xs color-gray-1000" href={`/`}>Home</Link></li>
+              <li><Link className="font-xs color-gray-500" href={`/VendorList`}>Vendor listing</Link></li>
             </ul>
           </div>
         </div>
@@ -55,7 +55,7 @@ const VendorListing = () => {
             <div className="col-lg-6 mb-30">
               <p className="font-md color-gray-500">We have<span className="font-md-bold color-brand-3"> 780</span><span> vendors now</span></p>
             </div>
-            <div className="col-lg-6 mb-30 text-end"><a className="font-sm color-gray-900 mr-30" href="#">Support Ticket</a><a className="font-sm color-gray-900 mr-30" href="#">Become an Affilate</a><Link className="btn btn-buy w-auto font-sm-bold" to={`/Register`}>Open a Shop</Link></div>
+            <div className="col-lg-6 mb-30 text-end"><a className="font-sm color-gray-900 mr-30" href="#">Support Ticket</a><a className="font-sm color-gray-900 mr-30" href="#">Become an Affilate</a><Link className="btn btn-buy w-auto font-sm-bold" href={`/Register`}>Open a Shop</Link></div>
           </div>
           <div className="border-bottom pt-0 mb-30"></div>
           <div className="row">
@@ -93,7 +93,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/futur.png" alt="Ecom" />
-                        <div className="rating"><img src={star} alt="Ecom" /><img src={star} alt="Ecom" /><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom" /><img src={star.src} alt="Ecom" /><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -108,7 +108,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/elmado.png" alt="Ecom"/>
-                        <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -123,7 +123,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/costctrl.png" alt="Ecom"/>
-                        <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -138,7 +138,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/fasfox.png" alt="Ecom"/>
-                        <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -153,7 +153,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/elmado.png" alt="Ecom"/>
-                        <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -168,7 +168,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/fasfox.png" alt="Ecom"/>
-                        <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -183,7 +183,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/tropper.png" alt="Ecom"/>
-                        <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -198,7 +198,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/asembly.png" alt="Ecom"/>
-                        <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -213,7 +213,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/aslan.png" alt="Ecom"/>
-                        <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -228,7 +228,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/market.png" alt="Ecom"/>
-                        <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -243,7 +243,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/costctrl.png" alt="Ecom"/>
-                        <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -258,7 +258,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/fasfox.png" alt="Ecom"/>
-                        <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -273,7 +273,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/elmado.png" alt="Ecom"/>
-                        <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -288,7 +288,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/fasfox.png" alt="Ecom"/>
-                        <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -303,7 +303,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/tropper.png" alt="Ecom"/>
-                        <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -318,7 +318,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/asembly.png" alt="Ecom"/>
-                        <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -333,7 +333,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/aslan.png" alt="Ecom"/>
-                        <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -348,7 +348,7 @@ const VendorListing = () => {
                   <div className="card-vendor">
                     <div className="card-top-vendor">
                       <div className="card-top-vendor-left"><img src="assets/imgs/page/vendor/market.png" alt="Ecom"/>
-                        <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                        <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                       </div>
                       <div className="card-top-vendor-right"><a className="btn btn-gray" href="shop-vendor-single.html">360 Products</a>
                         <p className="font-xs color-gray-500 mt-10">Member since 2012</p>
@@ -576,11 +576,11 @@ const VendorListing = () => {
                   </ul>
                   <h6 className="color-gray-900 mb-0 mt-40">Rating</h6>
                   <ul className="list-checkbox">
-                    <li className="mb-5"><a href="#"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(5 stars)</span></a></li>
-                    <li className="mb-5"><a href="#"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(4 stars)</span></a></li>
-                    <li className="mb-5"><a href="#"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(3 stars)</span></a></li>
-                    <li className="mb-5"><a href="#"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(2 stars)</span></a></li>
-                    <li className="mb-5"><a href="#"><img src={star} alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(1 star)</span></a></li>
+                    <li className="mb-5"><a href="#"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(5 stars)</span></a></li>
+                    <li className="mb-5"><a href="#"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(4 stars)</span></a></li>
+                    <li className="mb-5"><a href="#"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(3 stars)</span></a></li>
+                    <li className="mb-5"><a href="#"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(2 stars)</span></a></li>
+                    <li className="mb-5"><a href="#"><img src={star.src} alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(1 star)</span></a></li>
                   </ul>
                 </div>
                 <div className="col-w-2">
@@ -639,7 +639,7 @@ const VendorListing = () => {
                       <div className="galleries-2">
                         <div className="detail-gallery">
                           <div className="product-image-slider-2">
-                          <ReactImageZoom {...props} style={{marginTop:'50px'}}/>
+                          {/* <ReactImageZoom {...props} style={{marginTop:'50px'}}/> */}
                        
                           </div>
                         </div>
@@ -660,7 +660,7 @@ const VendorListing = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -669,7 +669,7 @@ const VendorListing = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -678,7 +678,7 @@ const VendorListing = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -687,7 +687,7 @@ const VendorListing = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -696,7 +696,7 @@ const VendorListing = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -745,11 +745,11 @@ const VendorListing = () => {
                           Ecom Tech
                         </a>
                         <div className="rating d-inline-block">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500 font-medium">
                             {" "}
                             (65 reviews)

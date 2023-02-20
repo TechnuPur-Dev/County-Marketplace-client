@@ -8,7 +8,8 @@ import InfoSection from "../Components/InfoSection";
 import star from "../public/imgs/template/icons/star.svg";
 import bannerImg from "../public/imgs/page/shop/banner.png";
 import img1 from "../public/imgs/page/product/img-gallery-1.jpg";
-// import ReactImageZoom from "react-image-zoom";
+import img2 from "../public/imgs/page/product/img-gallery-2.jpg";
+import ReactImageZoom from "react-image-zoom";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
@@ -20,11 +21,12 @@ import MultiRangeSlider from "@/Components/MultiRangeSlider";
 
 
 const ShopGrid = () => {
+  
   const props = {
     width: 400,
     height: 420,
     zoomWidth: 500,
-    img: img1,
+    img: img2.src,
     zoomPosition: "original",
   };
   return (
@@ -3208,198 +3210,9 @@ const ShopGrid = () => {
                                 </div>
                               </div>
                             </div>
-                            <div className="card-grid-style-2 card-grid-none-border border-bottom mb-10">
-                              <div className="image-box">
-                                <a href="shop-single-product-3.html">
-                                  <img
-                                    src="assets/imgs/page/homepage2/cat-img-7.png"
-                                    alt="Ecom"
-                                  />
-                                </a>
-                              </div>
-                              <div className="info-right">
-                                <a
-                                  className="color-brand-3 font-xs-bold"
-                                  href="shop-single-product-3.html"
-                                >
-                                  LG 65&quot; Class 4K UHD Smart TV OLED A1
-                                  Series
-                                </a>
-                                <div className="rating">
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <span className="font-xs color-gray-500">
-                                    {" "}
-                                    (65)
-                                  </span>
-                                </div>
-                                <div className="price-info">
-                                  <strong className="font-md-bold color-brand-3 price-main">
-                                    $325
-                                  </strong>
-                                  <span className="color-gray-500 font-sm price-line">
-                                    $392
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
+                           
                           </div>
-                          <div className="swiper-slide">
-                            <div className="card-grid-style-2 card-grid-none-border border-bottom mb-10">
-                              <div className="image-box">
-                                <a href="shop-single-product-3.html">
-                                  <img
-                                    src="assets/imgs/page/homepage2/cat-img-8.png"
-                                    alt="Ecom"
-                                  />
-                                </a>
-                              </div>
-                              <div className="info-right">
-                                <a
-                                  className="color-brand-3 font-xs-bold"
-                                  href="shop-single-product-3.html"
-                                >
-                                  Lenovo Legion 5i 15.6&quot; Laptop, Intel Core
-                                  i5
-                                </a>
-                                <div className="rating">
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <span className="font-xs color-gray-500">
-                                    {" "}
-                                    (65)
-                                  </span>
-                                </div>
-                                <div className="price-info">
-                                  <strong className="font-md-bold color-brand-3 price-main">
-                                    $150
-                                  </strong>
-                                  <span className="color-gray-500 font-sm price-line">
-                                    $187
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="card-grid-style-2 card-grid-none-border border-bottom mb-10">
-                              <div className="image-box">
-                                <span className="label bg-brand-2">-17%</span>
-                                <a href="shop-single-product-3.html">
-                                  <img
-                                    src="assets/imgs/page/homepage2/cat-img-1.png"
-                                    alt="Ecom"
-                                  />
-                                </a>
-                              </div>
-                              <div className="info-right">
-                                <a
-                                  className="color-brand-3 font-xs-bold"
-                                  href="shop-single-product-3.html"
-                                >
-                                  SAMSUNG Galaxy Tab A7 Lite, 8.7&quot; Tablet
-                                  32GB
-                                </a>
-                                <div className="rating">
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <span className="font-xs color-gray-500">
-                                    {" "}
-                                    (65)
-                                  </span>
-                                </div>
-                                <div className="price-info">
-                                  <strong className="font-md-bold color-brand-3 price-main">
-                                    $2900
-                                  </strong>
-                                  <span className="color-gray-500 font-sm price-line">
-                                    $3200
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="card-grid-style-2 card-grid-none-border border-bottom mb-10">
-                              <div className="image-box">
-                                <a href="shop-single-product-3.html">
-                                  <img
-                                    src="assets/imgs/page/homepage2/cat-img-2.png"
-                                    alt="Ecom"
-                                  />
-                                </a>
-                              </div>
-                              <div className="info-right">
-                                <a
-                                  className="color-brand-3 font-xs-bold"
-                                  href="shop-single-product-3.html"
-                                >
-                                  Apple AirPods Pro with MagSafe Charging
-                                </a>
-                                <div className="rating">
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <span className="font-xs color-gray-500">
-                                    {" "}
-                                    (65)
-                                  </span>
-                                </div>
-                                <div className="price-info">
-                                  <strong className="font-md-bold color-brand-3 price-main">
-                                    $160
-                                  </strong>
-                                  <span className="color-gray-500 font-sm price-line">
-                                    $168
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="card-grid-style-2 card-grid-none-border border-bottom mb-10">
-                              <div className="image-box">
-                                <a href="shop-single-product-3.html">
-                                  <img
-                                    src="assets/imgs/page/homepage2/cat-img-3.png"
-                                    alt="Ecom"
-                                  />
-                                </a>
-                              </div>
-                              <div className="info-right">
-                                <a
-                                  className="color-brand-3 font-xs-bold"
-                                  href="shop-single-product-3.html"
-                                >
-                                  Razer Power Up Gaming Bundle V2 - Cynosa
-                                </a>
-                                <div className="rating">
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <span className="font-xs color-gray-500">
-                                    {" "}
-                                    (65)
-                                  </span>
-                                </div>
-                                <div className="price-info">
-                                  <strong className="font-md-bold color-brand-3 price-main">
-                                    $325
-                                  </strong>
-                                  <span className="color-gray-500 font-sm price-line">
-                                    $392
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                         
                         </div>
                       </div>
                       {/* <div className="swiper-button-next swiper-button-next-style-2 swiper-button-next-bestseller"></div>
@@ -3878,11 +3691,11 @@ const ShopGrid = () => {
                     <div className="gallery-image">
                       <div className="galleries-2">
                         <div className="detail-gallery">
-                          <div className="product-image-slider-2">
-                            {/* <ReactImageZoom
+                          <div className="product-image-slider-2" >
+                            <ReactImageZoom
                               {...props}
                               style={{ marginTop: "50px" }}
-                            /> */}
+                            />
                           </div>
                         </div>
                         <div className="slider-nav-thumbnails-2">

@@ -44,7 +44,8 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
   return (
     <> 
      <style jsx>{`
-    .container {
+     .container {
+  height: 5vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,8 +58,8 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
 
 .slider__track,
 .slider__range,
-.slider__left,
-.slider__right {
+.slider__left-value,
+.slider__right-value {
   position: absolute;
 }
 
@@ -75,22 +76,22 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
 }
 
 .slider__range {
-  background-color: #9fe5e1;
+  background-color: #FD9636;
   z-index: 2;
 }
 
-.slider__left,
-.slider__right {
+.slider__left-value,
+.slider__right-value {
   color: #dee2e6;
   font-size: 12px;
   margin-top: 20px;
 }
 
-.slider__left {
+.slider__left-value {
   left: 6px;
 }
 
-.slider__right {
+.slider__right-value {
   right: -4px;
 }
 
@@ -109,7 +110,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
   outline: none;
 }
 
-.thumbleft {
+.thumb--left {
   z-index: 3;
 }
 
@@ -119,7 +120,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
 
 /* For Chrome browsers */
 .thumb::-webkit-slider-thumb {
-  background-color: #f1f5f7;
+  background-color: #425A8B;
   border: none;
   border-radius: 50%;
   box-shadow: 0 0 1px 1px #ced4da;
@@ -133,7 +134,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
 
 /* For Firefox browsers */
 .thumb::-moz-range-thumb {
-  background-color: #f1f5f7;
+  background-color: #425A8B;
   border: none;
   border-radius: 50%;
   box-shadow: 0 0 1px 1px #ced4da;
@@ -144,6 +145,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
   pointer-events: all;
   position: relative;
 }
+
 
     `}</style>
     <div className="container">

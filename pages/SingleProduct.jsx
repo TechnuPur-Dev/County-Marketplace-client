@@ -1,15 +1,15 @@
 import React from "react";
-import Loader from "../Components/Loader";
+import Loader from "../Components/Loaderr";
 import Topbar from "../Components/Topbar";
 import Header from "../Components/Header";
 import ScrollToTop from "react-scroll-to-top";
 import Footer from "../Components/Footer";
 import InfoSection from "../Components/InfoSection";
-import star from "../imgs/template/icons/star.svg";
-import img1 from "../imgs/page/product/img-gallery-1.jpg";
-import ReactImageZoom from "react-image-zoom";
+import star from "../public/imgs/template/icons/star.svg";
+import img1 from "../public/imgs/page/product/img-gallery-1.jpg";
+// import ReactImageZoom from "react-image-zoom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import bannerAd from '../imgs/page/product/banner-ads.png';
+import bannerAd from '../public/imgs/page/product/banner-ads.png';
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -76,14 +76,14 @@ const SingleProduct = () => {
                     <div className="detail-gallery">
                       <label className="label">-17%</label>
                       <div className="product-image-slider">
-                        <ReactImageZoom {...props} style={{marginTop:'50px'}}/>
-                        {/* <figure className="border-radius-10"><img src={img1} alt="product image"/></figure>
-                      <figure className="border-radius-10"><img src={img1} alt="product image"/></figure>
-                      <figure className="border-radius-10"><img src={img1} alt="product image"/></figure>
-                      <figure className="border-radius-10"><img src={img1} alt="product image"/></figure>
-                      <figure className="border-radius-10"><img src={img1} alt="product image"/></figure>
-                      <figure className="border-radius-10"><img src={img1} alt="product image"/></figure>
-                      <figure className="border-radius-10"><img src={img1} alt="product image"/></figure> */}
+                        {/* <ReactImageZoom {...props} style={{marginTop:'50px'}}/> */}
+                        {/* <figure className="border-radius-10"><img src={img1.src} alt="product image"/></figure>
+                      <figure className="border-radius-10"><img src={img1.src} alt="product image"/></figure>
+                      <figure className="border-radius-10"><img src={img1.src} alt="product image"/></figure>
+                      <figure className="border-radius-10"><img src={img1.src} alt="product image"/></figure>
+                      <figure className="border-radius-10"><img src={img1.src} alt="product image"/></figure>
+                      <figure className="border-radius-10"><img src={img1.src} alt="product image"/></figure>
+                      <figure className="border-radius-10"><img src={img1.src} alt="product image"/></figure> */}
                       </div>
                     </div>
 
@@ -104,7 +104,7 @@ const SingleProduct = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -113,7 +113,7 @@ const SingleProduct = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -122,7 +122,7 @@ const SingleProduct = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -131,7 +131,7 @@ const SingleProduct = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -140,7 +140,7 @@ const SingleProduct = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -151,7 +151,7 @@ const SingleProduct = () => {
               </div>
               <div className="col-lg-6">
                 <h3 className="color-brand-3 mb-25">
-                  Samsung 36" French door 28 cu. ft. Smart Energy Star
+                  Samsung 36 French door 28 cu. ft. Smart Energy Star
                   Refrigerator
                 </h3>
                 <span className="bytext">by</span>
@@ -160,11 +160,11 @@ const SingleProduct = () => {
                   Ecom Tech
                 </a>
                 <div className="rating mt-5">
-                  <img src={star} alt="Ecom" />
-                  <img src={star} alt="Ecom" />
-                  <img src={star} alt="Ecom" />
-                  <img src={star} alt="Ecom" />
-                  <img src={star} alt="Ecom" />
+                  <img src={star.src} alt="Ecom" />
+                  <img src={star.src} alt="Ecom" />
+                  <img src={star.src} alt="Ecom" />
+                  <img src={star.src} alt="Ecom" />
+                  <img src={star.src} alt="Ecom" />
                   <span className="font-xs color-gray-500"> (65)</span>
                 </div>
                 <div className="border-bottom pt-20 mb-40"></div>
@@ -272,7 +272,7 @@ const SingleProduct = () => {
             <label className="cb-container-2">
               <input type="checkbox" checked="checked" />
               <span className="font-md color-brand-3">
-                Apple iMac 24" All-In-One Computer, Apple M1, 8GB RAM, 512GB
+                Apple iMac 24 All-In-One Computer, Apple M1, 8GB RAM, 512GB
                 SSD, macOS Big Sur, Green, MGPJ3LL/A - $1,599.00
               </span>
               <span className="checkmark"></span>
@@ -442,7 +442,7 @@ const SingleProduct = () => {
                       </tr>
                       <tr>
                         <td>Size</td>
-                        <td>6.7"</td>
+                        <td>6</td>
                       </tr>
                       <tr>
                         <td>Finish</td>
@@ -847,11 +847,11 @@ const SingleProduct = () => {
                           Dell Optiplex 9020 Small Form Business Desktop Tower
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500">(65)</span>
                         </div>
                         <div className="price-info">
@@ -923,11 +923,11 @@ const SingleProduct = () => {
                           HP 24 All-in-One PC, Intel Core i3-1115G4, 4GB RAM
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500">(65)</span>
                         </div>
                         <div className="price-info">
@@ -1000,11 +1000,11 @@ const SingleProduct = () => {
                           Adjustable
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500">(65)</span>
                         </div>
                         <div className="price-info">
@@ -1077,11 +1077,11 @@ const SingleProduct = () => {
                           RAM
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500">(65)</span>
                         </div>
                         <div className="price-info">
@@ -1154,11 +1154,11 @@ const SingleProduct = () => {
                           Monitor
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500">(65)</span>
                         </div>
                         <div className="price-info">
@@ -1234,11 +1234,11 @@ const SingleProduct = () => {
                           HP DeskJet 2755e Wireless Color All-in-One Printer
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500">(65)</span>
                         </div>
                         <div className="price-info">
@@ -1310,11 +1310,11 @@ const SingleProduct = () => {
                           Razer Power Up Gaming Bundle V2 - Cynosa Lite
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500">(65)</span>
                         </div>
                         <div className="price-info">
@@ -1386,11 +1386,11 @@ const SingleProduct = () => {
                           Apple AirPods Pro with MagSafe Charging Case
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500">(65)</span>
                         </div>
                         <div className="price-info">
@@ -1462,11 +1462,11 @@ const SingleProduct = () => {
                           SAMSUNG Galaxy Tab A7 Lite, 8.7&quot; Tablet 32GB
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500">(65)</span>
                         </div>
                         <div className="price-info">
@@ -1538,11 +1538,11 @@ const SingleProduct = () => {
                           HP 24mh FHD Monitor - Computer Monitor
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500">(65)</span>
                         </div>
                         <div className="price-info">
@@ -1588,11 +1588,11 @@ const SingleProduct = () => {
                           SAMSUNG Galaxy Tab A7 Lite, 8.7&quot; Tablet 32GB
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500"> (65)</span>
                         </div>
                         <div className="price-info">
@@ -1624,11 +1624,11 @@ const SingleProduct = () => {
                           Class 4K UHD (2160P) LED Roku Smart TV HDR
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500"> (65)</span>
                         </div>
                         <div className="price-info">
@@ -1660,11 +1660,11 @@ const SingleProduct = () => {
                           HP 24mh FHD Monitor - Computer Monitor with 23.8-Inch
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500"> (65)</span>
                         </div>
                         <div className="price-info">
@@ -1696,11 +1696,11 @@ const SingleProduct = () => {
                           Logitech H390 Wired Headset, Stereo Headphones
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500"> (65)</span>
                         </div>
                         <div className="price-info">
@@ -1766,11 +1766,11 @@ const SingleProduct = () => {
                           Logitech MK345 Wireless Combo Full-Sized Keyboard
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500">(65)</span>
                         </div>
                         <div className="price-info">
@@ -1842,11 +1842,11 @@ const SingleProduct = () => {
                           Logitech Brio 4K Webcam, Ultra 4K HD Video Calling
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500">(65)</span>
                         </div>
                         <div className="price-info">
@@ -1918,11 +1918,11 @@ const SingleProduct = () => {
                           HP 24mh FHD Monitor - Computer Monitor
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500">(65)</span>
                         </div>
                         <div className="price-info">
@@ -1994,11 +1994,11 @@ const SingleProduct = () => {
                           2022 Apple iMac with Retina 5K Display 8GB RAM
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500">(65)</span>
                         </div>
                         <div className="price-info">
@@ -2070,11 +2070,11 @@ const SingleProduct = () => {
                           Seagate Portable 2TB External Hard Drive
                         </a>
                         <div className="rating">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500">(65)</span>
                         </div>
                         <div className="price-info">
@@ -2104,7 +2104,7 @@ const SingleProduct = () => {
         <div className="container mt-20 mb-20">
           <div className="text-center">
             <a href="#">
-              <img src={bannerAd} alt="Ecom" />
+              <img src={bannerAd.src} alt="Ecom" />
             </a>
           </div>
         </div>
@@ -2315,11 +2315,11 @@ const SingleProduct = () => {
                     <ul className="list-checkbox">
                       <li className="mb-5">
                         <a href="#">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
                             (5 stars)
                           </span>
@@ -2327,10 +2327,10 @@ const SingleProduct = () => {
                       </li>
                       <li className="mb-5">
                         <a href="#">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <img
                             src="assets/imgs/template/icons/star-gray.svg"
                             alt="Ecom"
@@ -2342,9 +2342,9 @@ const SingleProduct = () => {
                       </li>
                       <li className="mb-5">
                         <a href="#">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <img
                             src="assets/imgs/template/icons/star-gray.svg"
                             alt="Ecom"
@@ -2360,8 +2360,8 @@ const SingleProduct = () => {
                       </li>
                       <li className="mb-5">
                         <a href="#">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <img
                             src="assets/imgs/template/icons/star-gray.svg"
                             alt="Ecom"
@@ -2381,7 +2381,7 @@ const SingleProduct = () => {
                       </li>
                       <li className="mb-5">
                         <a href="#">
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <img
                             src="assets/imgs/template/icons/star-gray.svg"
                             alt="Ecom"
@@ -2506,7 +2506,7 @@ const SingleProduct = () => {
                       <div className="galleries-2">
                         <div className="detail-gallery">
                           <div className="product-image-slider-2">
-                          <ReactImageZoom {...props} style={{marginTop:'50px'}}/>
+                          {/* <ReactImageZoom {...props} style={{marginTop:'50px'}}/> */}
                        
                           </div>
                         </div>
@@ -2527,7 +2527,7 @@ const SingleProduct = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -2536,7 +2536,7 @@ const SingleProduct = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -2545,7 +2545,7 @@ const SingleProduct = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -2554,7 +2554,7 @@ const SingleProduct = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -2563,7 +2563,7 @@ const SingleProduct = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -2612,11 +2612,11 @@ const SingleProduct = () => {
                           Ecom Tech
                         </a>
                         <div className="rating d-inline-block">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500 font-medium">
                             {" "}
                             (65 reviews)

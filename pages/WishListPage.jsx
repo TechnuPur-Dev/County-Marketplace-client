@@ -1,5 +1,5 @@
 import React from 'react'
-import Loader from '../Components/Loader'
+import Loader from '../Components/Loaderr'
 import Topbar from '../Components/Topbar'
 import Header from "../Components/Header";
 import ScrollToTop from "react-scroll-to-top";
@@ -26,9 +26,9 @@ const WishListPage = () => {
         <div className="breadcrumbs-div">
           <div className="container">
             <ul className="breadcrumb">
-              <li><Link className="font-xs color-gray-1000" to={`/`}>Home</Link></li>
-              <li><Link className="font-xs color-gray-500" to={`/Account`}>Account</Link></li>
-              <li><Link className="font-xs color-gray-500" to={`/WishList`}>Wishlist</Link></li>
+              <li><Link className="font-xs color-gray-1000" href={`/`}>Home</Link></li>
+              <li><Link className="font-xs color-gray-500" href={`/Account`}>Account</Link></li>
+              <li><Link className="font-xs color-gray-500" href={`/WishList`}>Wishlist</Link></li>
             </ul>
           </div>
         </div>

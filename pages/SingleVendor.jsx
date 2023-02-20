@@ -1,25 +1,25 @@
 import React from 'react'
-import Loader from '../Components/Loader'
+import Loader from '../Components/Loaderr'
 import Topbar from '../Components/Topbar'
 import Header from "../Components/Header";
 import ScrollToTop from "react-scroll-to-top";
 import Footer from '../Components/Footer';
 import InfoSection from '../Components/InfoSection';
-import star from '../imgs/template/icons/star.svg'
-import featureVendor from '../imgs/page/vendor/featured.png'
-import profilePic from '../imgs/page/vendor/fasfox.png'
-import { Link } from 'react-router-dom';
-import delivery from "../imgs/template/delivery.svg"
-import support from "../imgs/template/support.svg"
-import returnImg from "../imgs/template/return.svg"
-import secure from "../imgs/template/secure.svg"
-import img1 from "../imgs/page/product/img-gallery-1.jpg";
-import ReactImageZoom from "react-image-zoom";
+import star from '../public/imgs/template/icons/star.svg'
+import featureVendor from '../public/imgs/page/vendor/featured.png'
+import profilePic from '../public/imgs/page/vendor/fasfox.png'
+import delivery from "../public/imgs/template/delivery.svg"
+import support from "../public/imgs/template/support.svg"
+import returnImg from "../public/imgs/template/return.svg"
+import secure from "../public/imgs/template/secure.svg"
+import img1 from "../public/imgs/page/product/img-gallery-1.jpg";
+// import ReactImageZoom from "react-image-zoom";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import { Mousewheel, Pagination } from "swiper";
+import Link from 'next/link';
 const SingleVendor = () => {
   const props = {
     width: 400,
@@ -48,8 +48,8 @@ const SingleVendor = () => {
         <div className="breadcrumbs-div">
           <div className="container">
             <ul className="breadcrumb">
-              <li><Link className="font-xs color-gray-1000" to={`/`}>Home</Link></li>
-              <li><Link className="font-xs color-gray-500" to={`/SingleVendor`}>Single Vendor</Link></li>
+              <li><Link className="font-xs color-gray-1000" href={`/`}>Home</Link></li>
+              <li><Link className="font-xs color-gray-500" href={`/SingleVendor`}>Single Vendor</Link></li>
             </ul>
           </div>
         </div>
@@ -58,12 +58,12 @@ const SingleVendor = () => {
         <div className="container">
           <div className="d-flex box-banner-vendor">
             <div className="vendor-left">
-              <div className="banner-vendor"><img src={featureVendor} alt="Ecom"/>
+              <div className="banner-vendor"><img src={featureVendor.src} alt="Ecom"/>
                 <div className="d-flex box-info-vendor">
-                  <div className="avarta"><img className="mb-5" src={profilePic} alt="Ecom"/><a className="btn btn-buy font-xs" href="shop-fullwidth.html">360 Products</a></div>
+                  <div className="avarta"><img className="mb-5" src={profilePic.src} alt="Ecom"/><a className="btn btn-buy font-xs" href="shop-fullwidth.html">360 Products</a></div>
                   <div className="info-vendor">
                     <h4 className="mb-5">Fasfox Coporation</h4><span className="font-xs color-gray-500 mr-20">Member since 2012</span>
-                    <div className="rating d-inline-block"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
+                    <div className="rating d-inline-block"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500"> (65)</span></div>
                   </div>
                   <div className="vendor-contact">
                     <div className="row">
@@ -81,25 +81,25 @@ const SingleVendor = () => {
             <div className="vendor-right">
               <div className="box-featured-product">
                 <div className="item-featured">
-                  <div className="featured-icon"><img src={delivery} alt="Ecom"/></div>
+                  <div className="featured-icon"><img src={delivery.src} alt="Ecom"/></div>
                   <div className="featured-info"><span className="font-sm-bold color-gray-1000">Free Delivery</span>
                     <p className="font-sm color-gray-500 font-medium">From all orders over $10</p>
                   </div>
                 </div>
                 <div className="item-featured">
-                  <div className="featured-icon"><img src={support} alt="Ecom"/></div>
+                  <div className="featured-icon"><img src={support.src} alt="Ecom"/></div>
                   <div className="featured-info"><span className="font-sm-bold color-gray-1000">Support 24/7</span>
                     <p className="font-sm color-gray-500 font-medium">Shop with an expert</p>
                   </div>
                 </div>
                 <div className="item-featured">
-                  <div className="featured-icon"><img src={returnImg}  alt="Ecom"/></div>
+                  <div className="featured-icon"><img src={returnImg.src}  alt="Ecom"/></div>
                   <div className="featured-info"><span className="font-sm-bold color-gray-1000">Return & Refund</span>
                     <p className="font-sm color-gray-500 font-medium">Free return over $200</p>
                   </div>
                 </div>
                 <div className="item-featured">
-                  <div className="featured-icon"><img src={secure} alt="Ecom"/></div>
+                  <div className="featured-icon"><img src={secure.src} alt="Ecom"/></div>
                   <div className="featured-info"><span className="font-sm-bold color-gray-1000">Secure payment</span>
                     <p className="font-sm color-gray-500 font-medium">100% Protected</p>
                   </div>
@@ -144,7 +144,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp3.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">Samsung 36&quot; French door 28 cu. ft. Smart Energy Star </a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -160,7 +160,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp4.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">2022 Apple iMac with Retina 5K Display 8GB RAM</a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -176,7 +176,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp5.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">Samsung 36&quot; French door 28 cu. ft. Smart Energy Star </a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -192,7 +192,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp6.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">2022 Apple iMac with Retina 5K Display 8GB RAM</a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -208,7 +208,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp7.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">Samsung 36&quot; French door 28 cu. ft. Smart Energy Star </a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -224,7 +224,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp3.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">Samsung 36&quot; French door 28 cu. ft. Smart Energy Star </a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -240,7 +240,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp4.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">2022 Apple iMac with Retina 5K Display 8GB RAM</a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -256,7 +256,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp5.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">Samsung 36&quot; French door 28 cu. ft. Smart Energy Star </a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -272,7 +272,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp6.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">2022 Apple iMac with Retina 5K Display 8GB RAM</a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -288,7 +288,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp7.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">Samsung 36&quot; French door 28 cu. ft. Smart Energy Star </a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -304,7 +304,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp3.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">Samsung 36&quot; French door 28 cu. ft. Smart Energy Star </a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -320,7 +320,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp4.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">2022 Apple iMac with Retina 5K Display 8GB RAM</a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -336,7 +336,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp5.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">Samsung 36&quot; French door 28 cu. ft. Smart Energy Star </a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -352,7 +352,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp6.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">2022 Apple iMac with Retina 5K Display 8GB RAM</a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -368,7 +368,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp7.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">Samsung 36&quot; French door 28 cu. ft. Smart Energy Star </a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -384,7 +384,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp3.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">Samsung 36&quot; French door 28 cu. ft. Smart Energy Star </a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -400,7 +400,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp4.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">2022 Apple iMac with Retina 5K Display 8GB RAM</a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -416,7 +416,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp5.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">Samsung 36&quot; French door 28 cu. ft. Smart Energy Star </a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -432,7 +432,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp6.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">2022 Apple iMac with Retina 5K Display 8GB RAM</a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -448,7 +448,7 @@ const SingleVendor = () => {
                     <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a className="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                     <div className="image-box"><span className="label bg-brand-2">-17%</span><a href="shop-single-product-2.html"><img src="assets/imgs/page/homepage1/imgsp7.png" alt="Ecom"/></a></div>
                     <div className="info-right"><a className="font-xs color-gray-500" href="shop-vendor-single.html">Apple</a><br/><a className="color-brand-3 font-sm-bold" href="shop-single-product-2.html">Samsung 36&quot; French door 28 cu. ft. Smart Energy Star </a>
-                      <div className="rating"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
+                      <div className="rating"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="font-xs color-gray-500">(65)</span></div>
                       <div className="price-info"><strong className="font-lg-bold color-brand-3 price-main">$2856.3</strong><span className="color-gray-500 price-line">$3225.6</span></div>
                       <div className="mt-20 box-btn-cart"><a className="btn btn-cart" href="shop-cart.html">Add To Cart</a></div>
                       <ul className="list-features">
@@ -621,11 +621,11 @@ const SingleVendor = () => {
                   </ul>
                   <h6 className="color-gray-900 mb-0 mt-40">Rating</h6>
                   <ul className="list-checkbox">
-                    <li className="mb-5"><a href="#"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(5 stars)</span></a></li>
-                    <li className="mb-5"><a href="#"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(4 stars)</span></a></li>
-                    <li className="mb-5"><a href="#"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(3 stars)</span></a></li>
-                    <li className="mb-5"><a href="#"><img src={star} alt="Ecom"/><img src={star} alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(2 stars)</span></a></li>
-                    <li className="mb-5"><a href="#"><img src={star} alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(1 star)</span></a></li>
+                    <li className="mb-5"><a href="#"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(5 stars)</span></a></li>
+                    <li className="mb-5"><a href="#"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(4 stars)</span></a></li>
+                    <li className="mb-5"><a href="#"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(3 stars)</span></a></li>
+                    <li className="mb-5"><a href="#"><img src={star.src} alt="Ecom"/><img src={star.src} alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(2 stars)</span></a></li>
+                    <li className="mb-5"><a href="#"><img src={star.src} alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><img src="assets/imgs/template/icons/star-gray.svg" alt="Ecom"/><span className="ml-10 font-xs color-gray-500 d-inline-block align-top">(1 star)</span></a></li>
                   </ul>
                 </div>
                 <div className="col-w-2">
@@ -684,7 +684,7 @@ const SingleVendor = () => {
                       <div className="galleries-2">
                         <div className="detail-gallery">
                           <div className="product-image-slider-2">
-                          <ReactImageZoom {...props} style={{marginTop:'50px'}}/>
+                          {/* <ReactImageZoom {...props} style={{marginTop:'50px'}}/> */}
                        
                           </div>
                         </div>
@@ -705,7 +705,7 @@ const SingleVendor = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -714,7 +714,7 @@ const SingleVendor = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -723,7 +723,7 @@ const SingleVendor = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -732,7 +732,7 @@ const SingleVendor = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -741,7 +741,7 @@ const SingleVendor = () => {
                         <div>
                           {" "}
                           <div className="item-thumb">
-                            <img src={img1} alt="product image" />
+                            <img src={img1.src} alt="product image" />
                           </div>
                         </div>
                       </SwiperSlide>
@@ -790,11 +790,11 @@ const SingleVendor = () => {
                           Ecom Tech
                         </a>
                         <div className="rating d-inline-block">
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
-                          <img src={star} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
                           <span className="font-xs color-gray-500 font-medium">
                             {" "}
                             (65 reviews)

@@ -1,11 +1,11 @@
 import React from 'react'
-import Loader from '../Components/Loader'
+import Loader from '../Components/Loaderr'
 import Topbar from '../Components/Topbar'
 import Header from "../Components/Header";
 import ScrollToTop from "react-scroll-to-top";
 import Footer from '../Components/Footer';
 import InfoSection from '../Components/InfoSection';
-import team from "../imgs/page/about/team.jpg"
+import team from "../public/imgs/page/about/team.jpg"
 const Terms = () => {
   return (
     <>
@@ -37,7 +37,7 @@ const Terms = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-10 mx-auto page-content">
-              <h2 className="text-center mb-20">Term and Condition</h2><img className="mb-30" src={team} alt="Ecom"/>
+              <h2 className="text-center mb-20">Term and Condition</h2><img className="mb-30" src={team.src} alt="Ecom"/>
               <p>Thank you for supporting Ecom. In order to protect your personal data when you enjoy using services at Ecom, we draw up this privacy policy.</p>
               <h5>1. Collection of Personal Data.</h5>
               <p><strong>1.1 Definition of personal data</strong></p>

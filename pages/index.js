@@ -100,22 +100,23 @@ export default function Home() {
                                 largeImage: {
                                   alt: "",
                                   src: `${img1.src}`,
-                                  width: 600,
-                                  height: 500,
+                                  width: 2000,
+                                  height: 2000,
                                 },
                                 isHintEnabled: true,
                                 shouldHideHintAfterFirstActivation: false,
-                                enlargedImageContainerDimensions: {
-                                  width: "100",
-                                  height: "40",
-                                },
-                                enlargedImagePosition: "right", // position the zoom display above the original image
+                                // enlargedImageContainerDimensions: {
+                                //   width: "100%",
+                                //   height: "100%",
+                                // },
+                                // enlargedImagePosition: "center", // position the zoom display above the original image
                                 enlargedImageContainerStyle: {
                                   zIndex: 9999, // make sure the zoom display is above other elements
                                   position: "absolute",
                                   top: "0",
                                   left: "10",
                                 },
+                                // lensStyle: { backgroundColor: 'rgba(0,0,0,.6)' }
                               }}
                             />
                           </div>
