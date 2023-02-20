@@ -82,8 +82,9 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
 
 .slider__left-value,
 .slider__right-value {
-  color: #dee2e6;
-  font-size: 12px;
+  color: #425A8B;
+  font-size: 14px;
+  font-weight:bold;
   margin-top: 20px;
 }
 
