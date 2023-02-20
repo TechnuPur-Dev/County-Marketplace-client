@@ -9,26 +9,17 @@ import star from "../public/imgs/template/icons/star.svg";
 import bannerImg from "../public/imgs/page/shop/banner.png";
 import img1 from "../public/imgs/page/product/img-gallery-1.jpg";
 import img2 from "../public/imgs/page/product/img-gallery-2.jpg";
-import ReactImageZoom from "react-image-zoom";
+// import ReactImageZoom from "react-image-zoom";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import { Mousewheel, Pagination } from "swiper";
 import MultiRangeSlider from "@/Components/MultiRangeSlider";
-
-
-
-
+import Zoom from "react-img-zoom";
+import "react-img-zoom/src/style.css";
 const ShopGrid = () => {
-  
-  const props = {
-    width: 400,
-    height: 420,
-    zoomWidth: 500,
-    img: img2.src,
-    zoomPosition: "original",
-  };
+
   return (
     <>
       <Loader />
@@ -2877,8 +2868,6 @@ const ShopGrid = () => {
                     <div className="box-slider-range">
                       <div className="row mb-20">
                         <div className="col-sm-12">
-                       
-     
                           {/* <ReactSlider defaultValue={[4,20]}
                                 className="slider"
                                 trackClassName="tracker"
@@ -2900,24 +2889,26 @@ const ShopGrid = () => {
                             minValue={10}
                             maxValue={30}
                             baseClassName="multi-range-slider"
-          
                             subSteps={false}
-                            style={{ border:'0', boxShadow: "none",color:'white',backgroundColor:'white' }}
+                            style={{
+                              border: "0",
+                              boxShadow: "none",
+                              color: "white",
+                              backgroundColor: "white",
+                            }}
                             ruler={false}
                             barInnerColor="#FD9636"
-                            barLeftColor="white"  
-                            thumbLeftColor= "#FD9636"
-                            thumbRightColor= "#FD9636"
+                            barLeftColor="white"
+                            thumbLeftColor="#FD9636"
+                            thumbRightColor="#FD9636"
                             min={0}
                             max={100}
                             step={5}
                             label={false}
-                            
                             preventWheel={false}
                             onChange={(e) => {
                               // handleInput(e);
                             }}
-                            
                           />
                         </div>
                       </div>
@@ -3210,9 +3201,7 @@ const ShopGrid = () => {
                                 </div>
                               </div>
                             </div>
-                           
                           </div>
-                         
                         </div>
                       </div>
                       {/* <div className="swiper-button-next swiper-button-next-style-2 swiper-button-next-bestseller"></div>
@@ -3691,10 +3680,13 @@ const ShopGrid = () => {
                     <div className="gallery-image">
                       <div className="galleries-2">
                         <div className="detail-gallery">
-                          <div className="product-image-slider-2" >
-                            <ReactImageZoom
-                              {...props}
-                              style={{ marginTop: "50px" }}
+                          <div className="product-image-slider-2">
+                            <Zoom
+                              img={img2.src}
+                              zoomScale={2}
+                              width={400}
+                              height={420}
+                              transitionTime={0.5}
                             />
                           </div>
                         </div>
