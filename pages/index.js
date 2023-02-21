@@ -72,9 +72,9 @@ export default function Home() {
                           <div className="product-image-slider-2">
                           <Zoom
                               img={img1.src}
-                              zoomScale={2}
-                              width={400}
-                              height={420}
+                              zoomScale={3}
+                              width={500}
+                              height={520}
                               transitionTime={0.5}
                             />
                           </div>
