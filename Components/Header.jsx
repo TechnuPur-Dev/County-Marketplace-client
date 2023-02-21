@@ -3,7 +3,7 @@ import favicon from "../public/imgs/template/logo.svg";
 import ecomImg from "../public/imgs/page/homepage1/imgsp5.png";
 import logo from "../public/imgs/template/logo.svg";
 import cart from "../public/imgs/page/homepage1/imgsp4.png";
-import monitor from '../public/imgs/template/monitor.svg';
+import monitor from "../public/imgs/template/monitor.svg";
 import account from "../public/imgs/template/ava_1.png";
 import Select from "react-select";
 import Link from "next/link";
@@ -14,7 +14,7 @@ const Header = () => {
   const [expandAccount, setExpandAccount] = useState(false);
   // for account logo expand
   const myRef = useRef();
-  // for mobile view menu 
+  // for mobile view menu
   const myRef2 = useRef();
   const customStyles = {
     indicatorSeparator: () => {},
@@ -66,9 +66,9 @@ const Header = () => {
       // }
     }),
   };
-  const AccountDropdown=()=>{
-    setExpandAccount(!expandAccount)
-  }
+  const AccountDropdown = () => {
+    setExpandAccount(!expandAccount);
+  };
   const options = [
     { value: " Clothing & Apparel", label: " Clothing & Apparel" },
     { value: "Footwear/Shoes", label: "Footwear/Shoes" },
@@ -98,12 +98,11 @@ const Header = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   });
-   const handleClickOutside = (e) => {
-   
-    if ((!myRef.current.contains(e.target)) ) {    
-      setExpandAccount(false)
+  const handleClickOutside = (e) => {
+    if (!myRef.current.contains(e.target)) {
+      setExpandAccount(false);
     }
-    if ( (!myRef2.current.contains(e.target))) {
+    if (!myRef2.current.contains(e.target)) {
       setToggleClass(false);
     }
   };
@@ -116,14 +115,14 @@ const Header = () => {
       : header.classList.remove("stick");
   };
   const navTrigger = () => {
-    setExpandAccount(false)
+    setExpandAccount(false);
     setToggleClass(!toggleClass);
   };
   const expand = () => {
     setExpandList(!expandList);
   };
   return (
-    <div >
+    <div>
       <header className="header header-container sticky-bar">
         <div className="container">
           <div className="main-header">
@@ -131,7 +130,12 @@ const Header = () => {
               <div className="header-logo">
                 <Link href={`/`}>
                   {/* <img alt="Ecom" src={`../public/imgs/template/logo.svg`} /> */}
-                  <Image height="10" width="110" alt="Ecom" src={`${favicon.src}`} />
+                  <Image
+                    height="10"
+                    width="110"
+                    alt="Ecom"
+                    src={`${favicon.src}`}
+                  />
                 </Link>
               </div>
               <div className="header-search">
@@ -197,14 +201,21 @@ const Header = () => {
                   <span className="burger-icon-bottom"></span>
                 </div>
               </div>
-              <div className="header-shop" >
-                <div className="d-inline-block box-dropdown-cart" >
-                  <span className="font-lg icon-list icon-account" onClick={AccountDropdown}>
+              <div className="header-shop">
+                <div className="d-inline-block box-dropdown-cart">
+                  <span
+                    className="font-lg icon-list icon-account"
+                    onClick={AccountDropdown}
+                  >
                     <span>Account</span>
                   </span>
-                  
-                  <div   className={`${expandAccount && "dropdown-account dropdown-open" || "dropdown-account"} `}
-                 >
+
+                  <div
+                    className={`${
+                      (expandAccount && "dropdown-account dropdown-open") ||
+                      "dropdown-account"
+                    } `}
+                  >
                     <ul ref={myRef}>
                       <li>
                         <Link href={`/Account`}>My Account</Link>
@@ -225,8 +236,7 @@ const Header = () => {
                         <Link href={`/Login`}>Sign out</Link>
                       </li>
                     </ul>
-                  </div> 
-                  
+                  </div>
                 </div>
                 <Link
                   className="font-lg icon-list icon-wishlist"
@@ -237,7 +247,7 @@ const Header = () => {
                 </Link>
                 <div className="d-inline-block box-dropdown-cart">
                   <Link href={`/Cart`} className="font-lg icon-list icon-cart">
-                   <span>Cart</span>
+                    <span>Cart</span>
                     <span className="number-item font-xs">2</span>
                   </Link>
                   <div className="dropdown-cart">
@@ -314,7 +324,6 @@ const Header = () => {
                     </div> */}
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>
@@ -324,7 +333,7 @@ const Header = () => {
           <div className="container">
             <div className="dropdown d-inline-block">
               <button
-              style={{backgroundColor:'#FD9636'}}
+                style={{ backgroundColor: "#FD9636" }}
                 className="btn dropdown-toggle btn-category"
                 id="dropdownCategory"
                 type="button"
@@ -342,11 +351,12 @@ const Header = () => {
                 data-bs-popper="static"
               >
                 <div className="container">
-                  <div className="sidebar-left" >
-                    <ul className="menu-texts menu-close" 
-                    // style={{minWidth:'250px'}}
+                  <div className="sidebar-left">
+                    <ul
+                      className="menu-texts menu-close"
+                      // style={{minWidth:'250px'}}
                     >
-                      <li className="has-children"  >
+                      <li className="has-children">
                         <a href="javascript:;">
                           <span className="img-link">
                             <img src={`${monitor.src}`} alt="Ecom" />
@@ -356,38 +366,19 @@ const Header = () => {
                           </span>
                         </a>
 
-                        <ul className="sub-menu" style={{paddingRight:'0' }}>
-                          <li className="has-children"   >
-                            <a href="#" >Men</a>
-                            
-                        <ul className="has-sub-menu" >
-                          <li>
-                            <a href="#">Shirts</a>
-                          </li>
-                          <li>
-                            <a href="#">Wallets</a>
-                          </li>
-                          
-                        </ul>
-                          </li>
+                        <ul className="sub-menu" style={{ paddingRight: "0" }}>
                           <li className="has-children">
-                            <a href="#">Women </a>
+                            <a href="#">Men</a>
+
                             <ul className="has-sub-menu">
-                          <li>
-                            <a href="#">Makeup</a>
-                          </li>
-                          <li>
-                            <a href="#">Jewellery</a>
-                          </li>
-                          
-                        </ul>
-                          </li>
-                          <li>
-                            <a href="#">Kids</a>
+                              <li>
+                                <a href="#">Shirts</a>
+                              </li>
+                            </ul>
                           </li>
                         </ul>
                       </li>
-                      <li className="has-children">
+                      {/* <li className="has-children">
                         <a href="javascript:;">
                           <span className="img-link">
                             <img src={`${monitor.src}`} alt="Ecom" />
@@ -597,7 +588,7 @@ const Header = () => {
                           </span>
                           <span className="text-link">Restaurent</span>
                         </a>
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                 </div>
@@ -664,7 +655,8 @@ const Header = () => {
         {/* <!--===== Update DIV END! =====--> */}
       </header>
       {/*  */}
-      <div ref={myRef2}
+      <div
+        ref={myRef2}
         className={`${
           toggleClass ? "sidebar-visible" : " "
         } mobile-header-wrapper-style perfect-scrollbar`}
@@ -681,7 +673,7 @@ const Header = () => {
                 <nav className="mt-15">
                   <ul className="mobile-menu font-heading">
                     <li className="has-children">
-                    <Link className="active" href={`/`}>
+                      <Link className="active" href={`/`}>
                         Home
                       </Link>
                       {/* <span className="menu-expand"><i className="fi-rr-caret-down"></i></span> */}
@@ -739,12 +731,14 @@ const Header = () => {
                       </ul> */}
                     </li>
                     <li>
-                    <Link href={`/About-us`}>About</Link>
+                      <Link href={`/About-us`}>About</Link>
                     </li>
                     <li>
                       <Link href={`/Contact-us`}>Contact</Link>
                     </li>
-                    <li className={`has-children ${expandList ? "active" : ""}`}>
+                    <li
+                      className={`has-children ${expandList ? "active" : ""}`}
+                    >
                       <Link href={`/VendorList`}>Vendors</Link>
                       <span className="menu-expand" onClick={expand}>
                         <i className="fi-rr-caret-down"></i>
@@ -816,21 +810,21 @@ const Header = () => {
                   </div>
                 </div>
                 <ul className="mobile-menu">
-                <li>
-                        <Link href={`/Account`}>My Account</Link>
-                      </li>
-                      <li>
-                        <Link href={`/OrderTracking`}>Order Tracking</Link>
-                      </li>
-                      <li>
-                        <Link href={`/MyOrders`}>My Orders</Link>
-                      </li>
-                      <li>
-                        <Link href={`/WishList`}>My Wishlist</Link>
-                      </li>
-                      <li>
-                        <Link href={`/Settings`}>Setting</Link>
-                      </li>
+                  <li>
+                    <Link href={`/Account`}>My Account</Link>
+                  </li>
+                  <li>
+                    <Link href={`/OrderTracking`}>Order Tracking</Link>
+                  </li>
+                  <li>
+                    <Link href={`/MyOrders`}>My Orders</Link>
+                  </li>
+                  <li>
+                    <Link href={`/WishList`}>My Wishlist</Link>
+                  </li>
+                  <li>
+                    <Link href={`/Settings`}>Setting</Link>
+                  </li>
                   <li>
                     <Link href={`/Login`}>Sign out</Link>
                   </li>
