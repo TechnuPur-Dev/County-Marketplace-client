@@ -9,15 +9,18 @@ import Select from "react-select";
 import Link from "next/link";
 import Image from "next/image";
 const Header = () => {
+  var axios = require("axios");
   const [toggleClass, setToggleClass] = useState(false);
   const [expandList, setExpandList] = useState(false);
   const [expandAccount, setExpandAccount] = useState(false);
+  const [catg, setCatg] = useState([]);
+
   // for account logo expand
   const myRef = useRef();
   // for mobile view menu
   const myRef2 = useRef();
   const customStyles = {
-    indicatorSeparator: () => {},
+    indicatorSeparator: () => { },
     placeholder: (defaultStyles) => {
       return {
         ...defaultStyles,
@@ -98,6 +101,28 @@ const Header = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   });
+
+  let CategoriesMenu = () => {
+    var config = {
+      method: "get",
+      maxBodyLength: Infinity,
+      url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/GetCategorys",
+      headers: {},
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        setCatg(response.data.payload);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    CategoriesMenu();
+  }, []);
+
   const handleClickOutside = (e) => {
     if (!myRef.current.contains(e.target)) {
       setExpandAccount(false);
@@ -141,7 +166,7 @@ const Header = () => {
               <div className="header-search">
                 <div className="box-header-search">
                   <form className="form-search" method="post" action="#">
-                    <div className="box-category">
+                    <div className="box-levl1">
                       <Select
                         placeholder="All Categories"
                         styles={customStyles}
@@ -191,9 +216,8 @@ const Header = () => {
                   </ul>
                 </nav>
                 <div
-                  className={`${
-                    toggleClass ? "burger-close" : " "
-                  } burger-icon burger-icon-white`}
+                  className={`${toggleClass ? "burger-close" : " "
+                    } burger-icon burger-icon-white`}
                   onClick={navTrigger}
                 >
                   <span className="burger-icon-top"></span>
@@ -211,10 +235,9 @@ const Header = () => {
                   </span>
 
                   <div
-                    className={`${
-                      (expandAccount && "dropdown-account dropdown-open") ||
+                    className={`${(expandAccount && "dropdown-account dropdown-open") ||
                       "dropdown-account"
-                    } `}
+                      } `}
                   >
                     <ul ref={myRef}>
                       <li>
@@ -243,15 +266,15 @@ const Header = () => {
                   href={`/WishList`}
                 >
                   <span>Wishlist</span>
-                  <span className="number-item font-xs">5</span>
+                  <span className="number-levl2 font-xs">5</span>
                 </Link>
                 <div className="d-inline-block box-dropdown-cart">
                   <Link href={`/Cart`} className="font-lg icon-list icon-cart">
                     <span>Cart</span>
-                    <span className="number-item font-xs">2</span>
+                    <span className="number-levl2 font-xs">2</span>
                   </Link>
                   <div className="dropdown-cart">
-                    {/* <div className="item-cart mb-20">
+                    {/* <div className="levl2-cart mb-20">
                       <div className="cart-image">
                         <img src={ecomImg} alt="Ecom" />
                       </div>
@@ -270,7 +293,7 @@ const Header = () => {
                         </p>
                       </div>
                     </div>
-                    <div className="item-cart mb-20">
+                    <div className="levl2-cart mb-20">
                       <div className="cart-image">
                         <img src={cart} alt="Ecom" />
                       </div>
@@ -334,7 +357,7 @@ const Header = () => {
             <div className="dropdown d-inline-block">
               <button
                 style={{ backgroundColor: "#FD9636" }}
-                className="btn dropdown-toggle btn-category"
+                className="btn dropdown-toggle btn-levl1"
                 id="dropdownCategory"
                 type="button"
                 data-bs-toggle="dropdown"
@@ -352,243 +375,50 @@ const Header = () => {
               >
                 <div className="container">
                   <div className="sidebar-left">
-                    <ul
-                      className="menu-texts menu-close"
-                      // style={{minWidth:'250px'}}
+                    <ul className="menu-texts menu-close"    // style={{minWidth:'250px'}}
                     >
-                      <li className="has-children">
-                        <a href="javascript:;">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">
-                            Clothing &amp; Apparel
-                          </span>
-                        </a>
+                      {catg.filter((levl1) => levl1.level === 1).map((levl1) => (
+                          <li className="has-children" key={levl1.id}>
+                            <a href="#">
+                              <span className="img-link">
+                                <img src={`${monitor.src}`} alt="Ecom" />
+                              </span>
+                              <span className="text-link">{levl1.name}</span>
+                            </a>
+                            <ul
+                              className="sub-menu"
+                              style={{ paddingRight: "0" }}
+                            >
+                              {catg
+                                .filter(
+                                  (levl2) => levl2.level === 2 && levl1.category_id == levl2.parent_id)
+                                .map((levl2) => (
+                                  <>
+                                    <li className="has-children">
+                                      <a href="#">{levl2.name}</a>
 
-                        <ul className="sub-menu" style={{ paddingRight: "0" }}>
-                          <li className="has-children">
-                            <a href="#">Men</a>
-
-                            <ul className="has-sub-menu">
-                              <li>
-                                <a href="#">Shirts</a>
-                              </li>
+                                      <ul className="has-sub-menu">
+                                        {catg
+                                          .filter(
+                                            (levl3) =>
+                                              levl3.level === 3 &&
+                                              levl2.category_id ==
+                                              levl3.parent_id
+                                          )
+                                          .map((levl3) => (
+                                            <>
+                                              <li>
+                                                <a href="#">{levl3.name}</a>
+                                              </li>
+                                            </>
+                                          ))}
+                                      </ul>
+                                    </li>
+                                  </>
+                                ))}
                             </ul>
                           </li>
-                        </ul>
-                      </li>
-                      {/* <li className="has-children">
-                        <a href="javascript:;">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">Footwear/Shoes</span>
-                        </a>
-
-                        <ul className="sub-menu">
-                          <li>
-                            <a href="#">Men</a>
-                          </li>
-                          <li>
-                            <a href="#">Women </a>
-                          </li>
-                          <li>
-                            <a href="#">Kids</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li className="has-children">
-                        <a href="javascript:;">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">Cosmetics</span>
-                        </a>
-
-                        <ul className="sub-menu">
-                          <li>
-                            <a href="#">Lipsticks</a>
-                          </li>
-                          <li>
-                            <a href="#">Concealer</a>
-                          </li>
-                          <li>
-                            <a href="#">Foundation</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li className="has-children">
-                        <a href="javascript:;">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">Electronics</span>
-                        </a>
-
-                        <ul className="sub-menu">
-                          <li>
-                            <a href="#">Phone Accessories</a>
-                          </li>
-                          <li>
-                            <a href="#">Phone Cases</a>
-                          </li>
-                          <li>
-                            <a href="#">Postpaid Phones</a>
-                          </li>
-                          <li>
-                            <a href="#">Unlocked Phones</a>
-                          </li>
-                          <li>
-                            <a href="#">Prepaid Phones</a>
-                          </li>
-                          <li>
-                            <a href="#">Prepaid Plans</a>
-                          </li>
-                          <li>
-                            <a href="#">Refurbished Phones</a>
-                          </li>
-                          <li>
-                            <a href="#">Straight Talk</a>
-                          </li>
-                          <li>
-                            <a href="#">iPhone</a>
-                          </li>
-                          <li>
-                            <a href="#">Samsung Galaxy</a>
-                          </li>
-                          <li>
-                            <a href="#">Samsung Galaxy</a>
-                          </li>
-                          <li>
-                            <a href="#">Samsung Galaxy</a>
-                          </li>
-                          <li>
-                            <a href="#">Samsung Galaxy</a>
-                          </li>
-                          <li>
-                            <a href="#">Samsung Galaxy</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">Digital Gadgets</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">Games & Toys</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">Stationery</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">Wired Headphone</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">
-                            Furniture & Equipment
-                          </span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">Sports Products</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">Health & Medical</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">Home Decor</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">Bakery</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">Groceries</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">
-                            Exercise/Fitness supplies
-                          </span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">Jewellery</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">
-                            Infant/Baby Products
-                          </span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="img-link">
-                            <img src={`${monitor.src}`} alt="Ecom" />
-                          </span>
-                          <span className="text-link">Restaurent</span>
-                        </a>
-                      </li> */}
+                        ))}
                     </ul>
                   </div>
                 </div>
@@ -657,9 +487,8 @@ const Header = () => {
       {/*  */}
       <div
         ref={myRef2}
-        className={`${
-          toggleClass ? "sidebar-visible" : " "
-        } mobile-header-wrapper-style perfect-scrollbar`}
+        className={`${toggleClass ? "sidebar-visible" : " "
+          } mobile-header-wrapper-style perfect-scrollbar`}
       >
         <div className="mobile-header-wrapper-inner">
           <div className="mobile-header-content-area">
@@ -681,54 +510,6 @@ const Header = () => {
                     </li>
                     <li className="has-children">
                       <Link href={`/ShopGrid`}>Shop</Link>
-                      {/* <span className="menu-expand"><i className="fi-rr-caret-down"></i></span> */}
-                      {/* <ul className="sub-menu">
-                        <li >
-                          <a href="shop-grid.html">Shop Grid</a>
-                        </li>
-                        <li>
-                          <a href="shop-grid-2.html">Shop Grid 2</a>
-                        </li>
-                        <li>
-                          <a href="shop-list.html">Shop List</a>
-                        </li>
-                        <li>
-                          <a href="shop-list-2.html">Shop List 2</a>
-                        </li>
-                        <li>
-                          <a href="shop-fullwidth.html">Shop Fullwidth</a>
-                        </li>
-                        <li>
-                          <a href="shop-single-product.html">Single Product</a>
-                        </li>
-                        <li>
-                          <a href="shop-single-product-2.html">
-                            Single Product 2
-                          </a>
-                        </li>
-                        <li>
-                          <a href="shop-single-product-3.html">
-                            Single Product 3
-                          </a>
-                        </li>
-                        <li>
-                          <a href="shop-single-product-4.html">
-                            Single Product 4
-                          </a>
-                        </li>
-                        <li>
-                          <a href="shop-cart.html">Shop Cart</a>
-                        </li>
-                        <li>
-                          <a href="shop-checkout.html">Shop Checkout</a>
-                        </li>
-                        <li>
-                          <a href="shop-compare.html">Shop Compare</a>
-                        </li>
-                        <li>
-                          <a href="shop-wishlist.html">Shop Wishlist</a>
-                        </li>
-                      </ul> */}
                     </li>
                     <li>
                       <Link href={`/About-us`}>About</Link>
