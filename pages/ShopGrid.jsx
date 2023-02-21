@@ -15,8 +15,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Mousewheel, Pagination } from "swiper";
 import MultiRangeSlider from "@/Components/MultiRangeSlider";
-import Zoom from "react-img-zoom";
-import "react-img-zoom/src/style.css";
+import InnerImageZoom from "react-inner-image-zoom";
+import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
 const ShopGrid = () => {
 
   return (
@@ -3680,13 +3680,7 @@ const ShopGrid = () => {
                       <div className="galleries-2">
                         <div className="detail-gallery">
                           <div className="product-image-slider-2">
-                            <Zoom
-                              img={img2.src}
-                              zoomScale={2}
-                              width={400}
-                              height={420}
-                              transitionTime={0.5}
-                            />
+                          <InnerImageZoom src={img2.src} />
                           </div>
                         </div>
                         <div className="slider-nav-thumbnails-2">

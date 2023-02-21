@@ -11,20 +11,17 @@ import Loader from "../Components/Loaderr";
 import Topbar from "../Components/Topbar";
 import TopBrands from "../Components/TopBrands";
 import ScrollToTop from "react-scroll-to-top";
-
+import InnerImageZoom from "react-inner-image-zoom";
+import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import img1 from "../public/imgs/page/product/img-gallery-1.jpg";
+import img2 from "../public/imgs/page/product/img-gallery-2.jpg";
 import star from "../public/imgs/template/icons/star.svg";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import { Mousewheel, Pagination } from "swiper";
-const inter = Inter({ subsets: ["latin"] });
-import Zoom from "react-img-zoom";
-import "react-img-zoom/src/style.css";
 export default function Home() {
-  
-
   return (
     <>
       <Loader />
@@ -70,13 +67,7 @@ export default function Home() {
                       <div className="galleries-2">
                         <div className="detail-gallery">
                           <div className="product-image-slider-2">
-                          <Zoom
-                              img={img1.src}
-                              zoomScale={3}
-                              width={500}
-                              height={520}
-                              transitionTime={0.5}
-                            />
+                            <InnerImageZoom src={img2.src} />
                           </div>
                         </div>
                         <div className="slider-nav-thumbnails-2">
