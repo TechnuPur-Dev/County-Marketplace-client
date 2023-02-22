@@ -7,23 +7,18 @@ import Footer from "../Components/Footer";
 import InfoSection from "../Components/InfoSection";
 import star from "../public/imgs/template/icons/star.svg";
 import img1 from "../public/imgs/page/product/img-gallery-1.jpg";
-// import ReactImageZoom from "react-image-zoom";
+import img2 from "../public/imgs/page/product/img-gallery-2.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import bannerAd from '../public/imgs/page/product/banner-ads.png';
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import InnerImageZoom from "react-inner-image-zoom";
+import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
 import { Mousewheel, Pagination } from "swiper";
 
 const SingleProduct = () => {
-  const props = {
-    width: 400,
-    height: 420,
-    zoomWidth: 500,
-    img: img1,
-    zoomPosition: "original",
-   
-  };
+ 
   return (
     <>
       <Loader />
@@ -76,18 +71,11 @@ const SingleProduct = () => {
                     <div className="detail-gallery">
                       <label className="label">-17%</label>
                       <div className="product-image-slider">
-                        {/* <ReactImageZoom {...props} style={{marginTop:'50px'}}/> */}
-                        {/* <figure className="border-radius-10"><img src={img1.src} alt="product image"/></figure>
-                      <figure className="border-radius-10"><img src={img1.src} alt="product image"/></figure>
-                      <figure className="border-radius-10"><img src={img1.src} alt="product image"/></figure>
-                      <figure className="border-radius-10"><img src={img1.src} alt="product image"/></figure>
-                      <figure className="border-radius-10"><img src={img1.src} alt="product image"/></figure>
-                      <figure className="border-radius-10"><img src={img1.src} alt="product image"/></figure>
-                      <figure className="border-radius-10"><img src={img1.src} alt="product image"/></figure> */}
-                      </div>
+                      <InnerImageZoom src={img2.src} />
+                       </div>
                     </div>
 
-                    {/* <div className="slider-nav-thumbnails"> */}
+                   
                     <Swiper
                       slidesPerView={4}
                       loop={true}
@@ -145,7 +133,7 @@ const SingleProduct = () => {
                         </div>
                       </SwiperSlide>
                     </Swiper>
-                    {/* </div> */}
+                 
                   </div>
                 </div>
               </div>
@@ -2112,7 +2100,7 @@ const SingleProduct = () => {
         <div
           className="modal fade"
           id="ModalFiltersForm"
-          tabindex="-1"
+          tabIndex="-1"
           aria-hidden="true"
           style={{ display: "none" }}
         >
@@ -2487,7 +2475,7 @@ const SingleProduct = () => {
         <div
           className="modal fade"
           id="ModalQuickview"
-          tabindex="-1"
+          tabIndex="-1"
           aria-hidden="true"
           style={{ display: "none" }}
         >
@@ -2506,7 +2494,7 @@ const SingleProduct = () => {
                       <div className="galleries-2">
                         <div className="detail-gallery">
                           <div className="product-image-slider-2">
-                          {/* <ReactImageZoom {...props} style={{marginTop:'50px'}}/> */}
+                          <InnerImageZoom src={img2.src} />
                        
                           </div>
                         </div>

@@ -14,11 +14,11 @@ const Header = () => {
   const [expandList, setExpandList] = useState(false);
   const [expandAccount, setExpandAccount] = useState(false);
   const [catg, setCatg] = useState([]);
-
   // for account logo expand
   const myRef = useRef();
   // for mobile view menu
   const myRef2 = useRef();
+  //Search custom Styles
   const customStyles = {
     indicatorSeparator: () => { },
     placeholder: (defaultStyles) => {
@@ -119,6 +119,7 @@ const Header = () => {
         console.log(error);
       });
   };
+  //Dynamic Categories Menu
   useEffect(() => {
     CategoriesMenu();
   }, []);
@@ -148,13 +149,15 @@ const Header = () => {
   };
   return (
     <div>
+
       <header className="header header-container sticky-bar">
+        {/* <!--=====Sticky Top bar=====-->*/}
         <div className="container">
           <div className="main-header">
             <div className="header-left">
               <div className="header-logo">
                 <Link href={`/`}>
-                  {/* <img alt="Ecom" src={`../public/imgs/template/logo.svg`} /> */}
+
                   <Image
                     height="10"
                     width="110"
@@ -351,7 +354,8 @@ const Header = () => {
             </div>
           </div>
         </div>
-        {/* <!--===== Update DIV =====--> */}
+        {/*  Sticky Top bar end */}
+        {/* <!--===== Dynamic Categories  DIV =====--> */}
         <div id="wdw_NavBar" className="header-bottom">
           <div className="container">
             <div className="dropdown d-inline-block">
@@ -378,47 +382,47 @@ const Header = () => {
                     <ul className="menu-texts menu-close"    // style={{minWidth:'250px'}}
                     >
                       {catg.filter((levl1) => levl1.level === 1).map((levl1) => (
-                          <li className="has-children" key={levl1.id}>
-                            <a href="#">
-                              <span className="img-link">
-                                <img src={`${monitor.src}`} alt="Ecom" />
-                              </span>
-                              <span className="text-link">{levl1.name}</span>
-                            </a>
-                            <ul
-                              className="sub-menu"
-                              style={{ paddingRight: "0" }}
-                            >
-                              {catg
-                                .filter(
-                                  (levl2) => levl2.level === 2 && levl1.category_id == levl2.parent_id)
-                                .map((levl2) => (
-                                  <>
-                                    <li className="has-children">
-                                      <a href="#">{levl2.name}</a>
+                        <li className="has-children" key={levl1.id}>
+                          <a href="#">
+                            <span className="img-link">
+                              <Image src={`${monitor.src}`} height={20} width={20} alt="Ecom" />
+                            </span>
+                            <span className="text-link">{levl1.name}</span>
+                          </a>
+                          <ul
+                            className="sub-menu"
+                            style={{ paddingRight: "0" }}
+                          >
+                            {catg
+                              .filter(
+                                (levl2) => levl2.level === 2 && levl1.category_id == levl2.parent_id)
+                              .map((levl2) => (
+                                <>
+                                  <li className="has-children">
+                                    <a href="#">{levl2.name}</a>
 
-                                      <ul className="has-sub-menu">
-                                        {catg
-                                          .filter(
-                                            (levl3) =>
-                                              levl3.level === 3 &&
-                                              levl2.category_id ==
-                                              levl3.parent_id
-                                          )
-                                          .map((levl3) => (
-                                            <>
-                                              <li>
-                                                <a href="#">{levl3.name}</a>
-                                              </li>
-                                            </>
-                                          ))}
-                                      </ul>
-                                    </li>
-                                  </>
-                                ))}
-                            </ul>
-                          </li>
-                        ))}
+                                    <ul className="has-sub-menu">
+                                      {catg
+                                        .filter(
+                                          (levl3) =>
+                                            levl3.level === 3 &&
+                                            levl2.category_id ==
+                                            levl3.parent_id
+                                        )
+                                        .map((levl3) => (
+                                          <>
+                                            <li>
+                                              <a href="#">{levl3.name}</a>
+                                            </li>
+                                          </>
+                                        ))}
+                                    </ul>
+                                  </li>
+                                </>
+                              ))}
+                          </ul>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </div>
@@ -482,13 +486,11 @@ const Header = () => {
             {/* <!-- <div className="discount font-16 font-bold">SPECIAL OFFER</div> --> */}
           </div>
         </div>
-        {/* <!--===== Update DIV END! =====--> */}
+        {/* <!--===== Dynamic Categories  DIV END! =====--> */}
       </header>
-      {/*  */}
-      <div
-        ref={myRef2}
-        className={`${toggleClass ? "sidebar-visible" : " "
-          } mobile-header-wrapper-style perfect-scrollbar`}
+      {/*  <!--=====Mobile View Menu=====--> */}
+      <div ref={myRef2} className={`${toggleClass ? "sidebar-visible" : " "
+        } mobile-header-wrapper-style perfect-scrollbar`}
       >
         <div className="mobile-header-wrapper-inner">
           <div className="mobile-header-content-area">
@@ -576,6 +578,7 @@ const Header = () => {
               </div>
               <div className="mobile-account">
                 <div className="mobile-header-top">
+                  {/* Account Options */}
                   <div className="user-account">
                     <a href="page-account.html">
                       <img src={account} alt="Ecom" />
@@ -635,6 +638,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      {/*  <!--=====Mobile View Menu End=====--> */}
     </div>
   );
 };

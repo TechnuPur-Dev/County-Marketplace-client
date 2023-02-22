@@ -1,5 +1,3 @@
-import Head from "next/head";
-import { Inter } from "@next/font/google";
 import Banner from "../Components/Banner";
 import BestSeller from "../Components/BestSeller";
 import CategoriesSection from "../Components/CategoriesSection";
@@ -44,7 +42,7 @@ export default function Home() {
         <Banner />
         <BestSeller />
         <TopBrands />
-        {/* quickview modal */}
+        {/* <!----quickview modal ---->*/}
         <div
           className="modal fade"
           id="ModalQuickview"
@@ -352,6 +350,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        {/* <!----quickview modal end ---->*/}
       </main>
       <Footer />
     </>
