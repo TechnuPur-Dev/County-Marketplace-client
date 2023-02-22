@@ -169,7 +169,7 @@ const Header = () => {
               <div className="header-search">
                 <div className="box-header-search">
                   <form className="form-search" method="post" action="#">
-                    <div className="box-levl1">
+                    <div className="box-category">
                       <Select
                         placeholder="All Categories"
                         styles={customStyles}
@@ -361,7 +361,7 @@ const Header = () => {
             <div className="dropdown d-inline-block">
               <button
                 style={{ backgroundColor: "#FD9636" }}
-                className="btn dropdown-toggle btn-levl1"
+                className="btn dropdown-toggle btn-category"
                 id="dropdownCategory"
                 type="button"
                 data-bs-toggle="dropdown"
