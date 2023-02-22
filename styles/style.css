@@ -1408,7 +1408,7 @@ a.text-brand-3:hover {
 }
 .btn.btn-category {
   background-color: #FD9636;
-  background-image: url(../public/imgs/page/homepage4/open-close.svg);
+  background-image: url(../public/imgs/page/homepage4/open-close.svg) !important;
   background-repeat: no-repeat;
   background-position: 17px 9px;
   display: inline-block;

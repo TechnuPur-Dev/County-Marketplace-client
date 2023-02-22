@@ -382,7 +382,8 @@ const Header = () => {
                     <ul className="menu-texts menu-close"    // style={{minWidth:'250px'}}
                     >
                       {catg.filter((levl1) => levl1.level === 1).map((levl1) => (
-                        <li className="has-children" key={levl1.id}>
+
+                        <li className={((catg.some((fil) => ((levl1.category_id == fil.parent_id))))) ? 'has-children' : ''} key={levl1.id}>
                           <a href="#">
                             <span className="img-link">
                               <Image src={`${monitor.src}`} height={20} width={20} alt="Ecom" />
@@ -390,7 +391,7 @@ const Header = () => {
                             <span className="text-link">{levl1.name}</span>
                           </a>
                           <ul
-                            className="sub-menu"
+                            className={((catg.some((fil) => ((levl1.category_id == fil.parent_id))))) ? 'sub-menu' : ''}
                             style={{ paddingRight: "0" }}
                           >
                             {catg
@@ -398,10 +399,11 @@ const Header = () => {
                                 (levl2) => levl2.level === 2 && levl1.category_id == levl2.parent_id)
                               .map((levl2) => (
                                 <>
-                                  <li className="has-children">
+                                  <li className={((catg.some((fil) => ((levl2.category_id == fil.parent_id))))) ? 'has-children' : ''}>
                                     <a href="#">{levl2.name}</a>
 
-                                    <ul className="has-sub-menu">
+                                    <ul className={((catg.some((fil) => ((levl2.category_id == fil.parent_id))))) ? 'has-sub-menu' : ''}
+                                    >
                                       {catg
                                         .filter(
                                           (levl3) =>

@@ -16,7 +16,7 @@ import "swiper/css/pagination";
 import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
 import { Mousewheel, Pagination } from "swiper";
-
+import dynamic from "next/dynamic";
 const SingleProduct = () => {
  
   return (
@@ -406,7 +406,7 @@ const SingleProduct = () => {
                     </p>
                   </div>
                   <div className="mt-20 text-center">
-                    <a className="btn btn-border font-sm-bold pl-80 pr-80 btn-expand-more">
+                    <a href='#' className="btn btn-border font-sm-bold pl-80 pr-80 btn-expand-more">
                       More Details
                     </a>
                   </div>
@@ -2762,4 +2762,4 @@ const SingleProduct = () => {
   );
 };
 
-export default SingleProduct;
+export default dynamic (() => Promise.resolve(SingleProduct), {ssr: false})
