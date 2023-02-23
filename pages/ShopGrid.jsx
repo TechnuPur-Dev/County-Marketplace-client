@@ -39,15 +39,7 @@ const ShopGrid = () => {
                 </div>
                 <div className="box-filters mt-0 pb-5 border-bottom">
                   <div className="row">
-                    <div className="col-xl-2 col-lg-3 mb-10 text-lg-start text-center">
-                      <a
-                        className="btn btn-filter font-sm color-brand-3 font-medium"
-                        href="#ModalFiltersForm"
-                        data-bs-toggle="modal"
-                      >
-                        All Fillters
-                      </a>
-                    </div>
+                    
                     <div className="col-xl-10 col-lg-9 mb-10 text-lg-end text-center">
                       <span className="font-sm color-gray-900 font-medium border-1-right span">
                         Showing 1&ndash;16 of 17 results
@@ -3024,52 +3016,100 @@ const ShopGrid = () => {
                         <span className="number-item">23</span>
                       </li>
                     </ul>
-                    <h6 className="color-gray-900 mt-20 mb-10">Color</h6>
-                    <ul className="list-color">
-                      <li>
-                        <a className="color-red active" href="#"></a>
-                        <span>Red</span>
+                    <h6 className="color-gray-900 mt-20 mb-10">Rating</h6>
+                    <ul className="list-checkbox">
+                      <li className="mb-5">
+                        <a href="#">
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
+                            (5 stars)
+                          </span>
+                        </a>
                       </li>
-                      <li>
-                        <a className="color-green" href="#"></a>
-                        <span>Green</span>
+                      <li className="mb-5">
+                        <a href="#">
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img
+                            src="assets/imgs/template/icons/star-gray.svg"
+                            alt="Ecom"
+                          />
+                          <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
+                            (4 stars)
+                          </span>
+                        </a>
                       </li>
-                      <li>
-                        <a className="color-blue" href="#"></a>
-                        <span>Blue</span>
+                      <li className="mb-5">
+                        <a href="#">
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img
+                            src="assets/imgs/template/icons/star-gray.svg"
+                            alt="Ecom"
+                          />
+                          <img
+                            src="assets/imgs/template/icons/star-gray.svg"
+                            alt="Ecom"
+                          />
+                          <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
+                            (3 stars)
+                          </span>
+                        </a>
                       </li>
-                      <li>
-                        <a className="color-purple" href="#"></a>
-                        <span>Purple</span>
+                      <li className="mb-5">
+                        <a href="#">
+                          <img src={star.src} alt="Ecom" />
+                          <img src={star.src} alt="Ecom" />
+                          <img
+                            src="assets/imgs/template/icons/star-gray.svg"
+                            alt="Ecom"
+                          />
+                          <img
+                            src="assets/imgs/template/icons/star-gray.svg"
+                            alt="Ecom"
+                          />
+                          <img
+                            src="assets/imgs/template/icons/star-gray.svg"
+                            alt="Ecom"
+                          />
+                          <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
+                            (2 stars)
+                          </span>
+                        </a>
                       </li>
-                      <li>
-                        <a className="color-black" href="#"></a>
-                        <span>Black</span>
-                      </li>
-                      <li>
-                        <a className="color-gray" href="#"></a>
-                        <span>Gray</span>
-                      </li>
-                      <li>
-                        <a className="color-pink" href="#"></a>
-                        <span>Pink</span>
-                      </li>
-                      <li>
-                        <a className="color-brown" href="#"></a>
-                        <span>Brown</span>
-                      </li>
-                      <li>
-                        <a className="color-yellow" href="#"></a>
-                        <span>Yellow</span>
+                      <li className="mb-5">
+                        <a href="#">
+                          <img src={star.src} alt="Ecom" />
+                          <img
+                            src="assets/imgs/template/icons/star-gray.svg"
+                            alt="Ecom"
+                          />
+                          <img
+                            src="assets/imgs/template/icons/star-gray.svg"
+                            alt="Ecom"
+                          />
+                          <img
+                            src="assets/imgs/template/icons/star-gray.svg"
+                            alt="Ecom"
+                          />
+                          <img
+                            src="assets/imgs/template/icons/star-gray.svg"
+                            alt="Ecom"
+                          />
+                          <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
+                            (1 star)
+                          </span>
+                        </a>
                       </li>
                     </ul>
-                    <a
-                      className="btn btn-filter font-sm color-brand-3 font-medium mt-10"
-                      href="#ModalFiltersForm"
-                      data-bs-toggle="modal"
-                    >
-                      More Fillters
-                    </a>
+                   
                   </div>
                 </div>
                 <div className="box-slider-item mb-30">
@@ -3271,386 +3311,7 @@ const ShopGrid = () => {
           </div>
         </div>
         <InfoSection />
-        <div
-          className="modal fade"
-          id="ModalFiltersForm"
-          tabindex="-1"
-          aria-hidden="true"
-          style={{ display: "none" }}
-        >
-          <div className="modal-dialog modal-xl">
-            <div className="modal-content apply-job-form">
-              <div className="modal-header">
-                <h5 className="modal-title color-gray-1000 filters-icon">
-                  Addvance Fillters
-                </h5>
-                <button
-                  className="btn-close"
-                  type="button"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div className="modal-body p-30">
-                <div className="row">
-                  <div className="col-w-1">
-                    <h6 className="color-gray-900 mb-0">Brands</h6>
-                    <ul className="list-checkbox">
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" checked="checked" />
-                          <span className="text-small">Apple</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Samsung</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Baseus</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Remax</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Handtown</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Elecom</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Razer</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Auto Focus</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Nillkin</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Logitech</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">ChromeBook</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="col-w-1">
-                    <h6 className="color-gray-900 mb-0">Special offers</h6>
-                    <ul className="list-checkbox">
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">On sale</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" checked="checked" />
-                          <span className="text-small">FREE shipping</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Big deals</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Shop Mall</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                    </ul>
-                    <h6 className="color-gray-900 mb-0 mt-40">
-                      Ready to ship in
-                    </h6>
-                    <ul className="list-checkbox">
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">1 business day</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" checked="checked" />
-                          <span className="text-small">
-                            1&ndash;3 business days
-                          </span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">in 1 week</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Shipping now</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="col-w-1">
-                    <h6 className="color-gray-900 mb-0">Ordering options</h6>
-                    <ul className="list-checkbox">
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Accepts gift cards</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Customizable</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" checked="checked" />
-                          <span className="text-small">
-                            Can be gift-wrapped
-                          </span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Installment 0%</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                    </ul>
-                    <h6 className="color-gray-900 mb-0 mt-40">Rating</h6>
-                    <ul className="list-checkbox">
-                      <li className="mb-5">
-                        <a href="#">
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
-                            (5 stars)
-                          </span>
-                        </a>
-                      </li>
-                      <li className="mb-5">
-                        <a href="#">
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img
-                            src="assets/imgs/template/icons/star-gray.svg"
-                            alt="Ecom"
-                          />
-                          <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
-                            (4 stars)
-                          </span>
-                        </a>
-                      </li>
-                      <li className="mb-5">
-                        <a href="#">
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img
-                            src="assets/imgs/template/icons/star-gray.svg"
-                            alt="Ecom"
-                          />
-                          <img
-                            src="assets/imgs/template/icons/star-gray.svg"
-                            alt="Ecom"
-                          />
-                          <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
-                            (3 stars)
-                          </span>
-                        </a>
-                      </li>
-                      <li className="mb-5">
-                        <a href="#">
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img
-                            src="assets/imgs/template/icons/star-gray.svg"
-                            alt="Ecom"
-                          />
-                          <img
-                            src="assets/imgs/template/icons/star-gray.svg"
-                            alt="Ecom"
-                          />
-                          <img
-                            src="assets/imgs/template/icons/star-gray.svg"
-                            alt="Ecom"
-                          />
-                          <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
-                            (2 stars)
-                          </span>
-                        </a>
-                      </li>
-                      <li className="mb-5">
-                        <a href="#">
-                          <img src={star.src} alt="Ecom" />
-                          <img
-                            src="assets/imgs/template/icons/star-gray.svg"
-                            alt="Ecom"
-                          />
-                          <img
-                            src="assets/imgs/template/icons/star-gray.svg"
-                            alt="Ecom"
-                          />
-                          <img
-                            src="assets/imgs/template/icons/star-gray.svg"
-                            alt="Ecom"
-                          />
-                          <img
-                            src="assets/imgs/template/icons/star-gray.svg"
-                            alt="Ecom"
-                          />
-                          <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
-                            (1 star)
-                          </span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="col-w-2">
-                    <h6 className="color-gray-900 mb-0">Material</h6>
-                    <ul className="list-checkbox">
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Nylon (8)</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Tempered Glass (5)</span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" checked="checked" />
-                          <span className="text-small">
-                            Liquid Silicone Rubber (5)
-                          </span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">
-                            Aluminium Alloy (3)
-                          </span>
-                          <span className="checkmark"></span>
-                        </label>
-                      </li>
-                    </ul>
-                    <h6 className="color-gray-900 mb-20 mt-40">Product tags</h6>
-                    <div>
-                      <a className="btn btn-border mr-5" href="#">
-                        Games
-                      </a>
-                      <a className="btn btn-border mr-5" href="#">
-                        Electronics
-                      </a>
-                      <a className="btn btn-border mr-5" href="#">
-                        Video
-                      </a>
-                      <a className="btn btn-border mr-5" href="#">
-                        Cellphone
-                      </a>
-                      <a className="btn btn-border mr-5" href="#">
-                        Indoor
-                      </a>
-                      <a className="btn btn-border mr-5" href="#">
-                        VGA Card
-                      </a>
-                      <a className="btn btn-border mr-5" href="#">
-                        USB
-                      </a>
-                      <a className="btn btn-border mr-5" href="#">
-                        Lightning
-                      </a>
-                      <a className="btn btn-border mr-5" href="#">
-                        Camera
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="modal-footer justify-content-start pl-30">
-                <a className="btn btn-buy w-auto" href="#">
-                  Apply Fillter
-                </a>
-                <a className="btn font-sm-bold color-gray-500" href="#">
-                  Reset Fillter
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+       
         {/* quickview modal */}
         <div
           className="modal fade"
