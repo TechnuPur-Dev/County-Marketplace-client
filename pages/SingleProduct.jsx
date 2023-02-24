@@ -19,6 +19,7 @@ import { Mousewheel, Pagination } from "swiper";
 import dynamic from "next/dynamic";
 import QuickModal from "@/Components/QuickModal";
 const SingleProduct = () => {
+ 
   return (
     <>
       <Loader />
@@ -2483,6 +2484,7 @@ const SingleProduct = () => {
         </div>
       </main>
       <Footer />
+     
     </>
   );
 };

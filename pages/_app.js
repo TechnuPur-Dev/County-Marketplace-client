@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/style.css';
 import '../styles/mystyle.css';
+import '../styles/plugins/pagination.min.css';
 import Head from "next/head";
 
 export default function App({ Component, pageProps }) {
