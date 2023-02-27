@@ -112,7 +112,6 @@ const Header = () => {
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
         setCatg(response.data.payload);
       })
       .catch(function (error) {
@@ -123,7 +122,28 @@ const Header = () => {
   useEffect(() => {
     CategoriesMenu();
   }, []);
+  // let getProduct = async (item,i) => {
+  //  console.log(i,'parenttt')
+  //   let proCatg = catg.filter((fil_item) => (fil_item.category_id == item.parent_id))
 
+  //   var config = {
+  //     method: 'get',
+  //     url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=${proCatg[0].parent_id}&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`,
+  //     headers: {
+  //       'Authorization': 'Bearer N59Ag_m1BMrcMDIcd0pnS_DewxEyc4Qs_XIBl1zCLv3ZnKpkEd4usksRUWGxmHL0n7lQF5QltkvRLnGvGNOuZNiB-5kdd-HzarGbmdTmWFHbemWQbrXti59NJbBGhjS3sxX0RwQWUzyHDmgD17r6AIUfsLAUNotNzKCy3bgJhF5hy8U2ay9Lg7eSo4LEhfd0xTTLyekNusqziIJ7vOWp1sQraoyMD9cSE_CQjQCWkm4GG18hTZP_lAXFAtR5LVqbGC2zpgVk2b-iSlODO2TlgzwfiLF7UDEeNV-QAlng36N0733nOcI2Xj0bOXmxNJ8HmNBotrgRYBCs73ehQwSzDweZJKG_ez42YAW-bT5aNvf8S-tJv3ID4vItgMvoX5p5VEKVbVt9PDqzz0OTnDALNQ'
+  //     }
+  //   };
+
+  //   try {
+  //     const response = await axios(config); // wait for the axios request to complete
+  //     console.log(JSON.stringify(response.data));
+  //     console.log(response.data.payload)
+
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+
+  // }
   const handleClickOutside = (e) => {
     if (!myRef.current.contains(e.target)) {
       setExpandAccount(false);
@@ -341,7 +361,13 @@ const Header = () => {
                                         .map((levl3) => (
                                           <>
                                             <li>
-                                              <a href="#">{levl3.name}</a>
+                                              <Link href={{
+                                                pathname: '/ShopGrid',
+                                                query: {
+                                                  categories_ids: 
+                                                    `page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=${levl2.parent_id}&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`
+                                                }
+                                              }}>{levl3.name}</Link>
                                             </li>
                                           </>
                                         ))}
