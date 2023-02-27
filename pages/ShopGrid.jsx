@@ -1,4 +1,4 @@
-import React, {useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from 'next/router'
 import Loader from "../Components/Loaderr";
 import Topbar from "../Components/Topbar";
@@ -14,59 +14,61 @@ import MultiRangeSlider from "@/Components/MultiRangeSlider";
 import QuickModal from "@/Components/QuickModal";
 import Link from "next/link";
 const ShopGrid = (props) => {
-const [getPro, setgetPro] = useState(props.products)
-var axios = require('axios');
-const router = useRouter();
-const getProducts=()=>{
- 
-  router.push('/ShopGrid', '/ShopGrid/new-slug-value');
-      var config = {
-        method: 'get',
-        url: 'http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?',
-        headers: { 
-          'Authorization': 'Bearer N59Ag_m1BMrcMDIcd0pnS_DewxEyc4Qs_XIBl1zCLv3ZnKpkEd4usksRUWGxmHL0n7lQF5QltkvRLnGvGNOuZNiB-5kdd-HzarGbmdTmWFHbemWQbrXti59NJbBGhjS3sxX0RwQWUzyHDmgD17r6AIUfsLAUNotNzKCy3bgJhF5hy8U2ay9Lg7eSo4LEhfd0xTTLyekNusqziIJ7vOWp1sQraoyMD9cSE_CQjQCWkm4GG18hTZP_lAXFAtR5LVqbGC2zpgVk2b-iSlODO2TlgzwfiLF7UDEeNV-QAlng36N0733nOcI2Xj0bOXmxNJ8HmNBotrgRYBCs73ehQwSzDweZJKG_ez42YAW-bT5aNvf8S-tJv3ID4vItgMvoX5p5VEKVbVt9PDqzz0OTnDALNQ'
-        }
-      };
-      
-      axios(config)
+  console.log(props)
+  const [getPro, setgetPro] = useState(props?.products)
+  var axios = require('axios');
+  const router = useRouter();
+  console.log(router, 'urll')
+  const getProducts = (a) => {
+    router.push(router.asPath, `/ShopGrid?${a}`);
+    let filter = router.query;
+    var config = {
+      method: 'get',
+      url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?${a}`,
+      headers: {
+        'Authorization': 'Bearer N59Ag_m1BMrcMDIcd0pnS_DewxEyc4Qs_XIBl1zCLv3ZnKpkEd4usksRUWGxmHL0n7lQF5QltkvRLnGvGNOuZNiB-5kdd-HzarGbmdTmWFHbemWQbrXti59NJbBGhjS3sxX0RwQWUzyHDmgD17r6AIUfsLAUNotNzKCy3bgJhF5hy8U2ay9Lg7eSo4LEhfd0xTTLyekNusqziIJ7vOWp1sQraoyMD9cSE_CQjQCWkm4GG18hTZP_lAXFAtR5LVqbGC2zpgVk2b-iSlODO2TlgzwfiLF7UDEeNV-QAlng36N0733nOcI2Xj0bOXmxNJ8HmNBotrgRYBCs73ehQwSzDweZJKG_ez42YAW-bT5aNvf8S-tJv3ID4vItgMvoX5p5VEKVbVt9PDqzz0OTnDALNQ'
+      }
+    };
+
+    axios(config)
       .then(function (response) {
-         products= response.data.payload; 
-         setgetPro(response.data.payload)
+        console.log(filter, response.data.payload)
+        setgetPro(response.data.payload)
       })
       .catch(function (error) {
         console.log(error);
       });
-   
-}
-// console.log(getPro,props,'propss');
-//  console.log(getPro,'helloo');
-//  const router = useRouter();
-// const data = router.query;
-// console.log(data)
-// useEffect(() => {
- 
-//   var axios = require('axios');
-//     let  products=[];
-//     var config = {
-//       method: 'get',
-//     maxBodyLength: Infinity,
-//       url: 'http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=-1&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1\n',
-//       headers: { 
-//         'Authorization': 'Bearer N59Ag_m1BMrcMDIcd0pnS_DewxEyc4Qs_XIBl1zCLv3ZnKpkEd4usksRUWGxmHL0n7lQF5QltkvRLnGvGNOuZNiB-5kdd-HzarGbmdTmWFHbemWQbrXti59NJbBGhjS3sxX0RwQWUzyHDmgD17r6AIUfsLAUNotNzKCy3bgJhF5hy8U2ay9Lg7eSo4LEhfd0xTTLyekNusqziIJ7vOWp1sQraoyMD9cSE_CQjQCWkm4GG18hTZP_lAXFAtR5LVqbGC2zpgVk2b-iSlODO2TlgzwfiLF7UDEeNV-QAlng36N0733nOcI2Xj0bOXmxNJ8HmNBotrgRYBCs73ehQwSzDweZJKG_ez42YAW-bT5aNvf8S-tJv3ID4vItgMvoX5p5VEKVbVt9PDqzz0OTnDALNQ'
-//       }
-//     };
-    
-//     axios(config)
-//     .then(function (response) {
-//       console.log(JSON.stringify(response.data));
-//       console.log(response.data.payload)
-//        products= response.data.payload; 
-//     })
-//     .catch(function (error) {
-//       console.log(error);
-//     });
- 
-// }, [])
+
+  }
+  // console.log(getPro,props,'propss');
+  //  console.log(getPro,'helloo');
+  //  const router = useRouter();
+  // const data = router.query;
+  // console.log(data)
+  // useEffect(() => {
+
+  //   var axios = require('axios');
+  //     let  products=[];
+  //     var config = {
+  //       method: 'get',
+  //     maxBodyLength: Infinity,
+  //       url: 'http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=-1&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1\n',
+  //       headers: { 
+  //         'Authorization': 'Bearer N59Ag_m1BMrcMDIcd0pnS_DewxEyc4Qs_XIBl1zCLv3ZnKpkEd4usksRUWGxmHL0n7lQF5QltkvRLnGvGNOuZNiB-5kdd-HzarGbmdTmWFHbemWQbrXti59NJbBGhjS3sxX0RwQWUzyHDmgD17r6AIUfsLAUNotNzKCy3bgJhF5hy8U2ay9Lg7eSo4LEhfd0xTTLyekNusqziIJ7vOWp1sQraoyMD9cSE_CQjQCWkm4GG18hTZP_lAXFAtR5LVqbGC2zpgVk2b-iSlODO2TlgzwfiLF7UDEeNV-QAlng36N0733nOcI2Xj0bOXmxNJ8HmNBotrgRYBCs73ehQwSzDweZJKG_ez42YAW-bT5aNvf8S-tJv3ID4vItgMvoX5p5VEKVbVt9PDqzz0OTnDALNQ'
+  //       }
+  //     };
+
+  //     axios(config)
+  //     .then(function (response) {
+  //       console.log(JSON.stringify(response.data));
+  //       console.log(response.data.payload)
+  //        products= response.data.payload; 
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+
+  // }, [])
 
   return (
     <>
@@ -94,7 +96,7 @@ const getProducts=()=>{
                 </div>
                 <div className="box-filters mt-0 pb-5 border-bottom">
                   <div className="row">
-                    
+
                     <div className="col-xl-10 col-lg-9 mb-10 text-lg-end text-center">
                       <span className="font-sm color-gray-900 font-medium border-1-right span">
                         Showing 1&ndash;16 of 17 results
@@ -156,7 +158,7 @@ const getProducts=()=>{
                             aria-labelledby="dropdownSort2"
                           >
                             <li>
-                              <a className="dropdown-item active" href="#" onClick={()=>{getProducts(30)}}>
+                              <a className="dropdown-item active" href="#" onClick={() => { getProducts(`page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=-1&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`) }}>
                                 30 items
                               </a>
                             </li>
@@ -173,84 +175,84 @@ const getProducts=()=>{
                           </ul>
                         </div>
                       </div>
-                     
+
                     </div>
                   </div>
                 </div>
                 <div className="row mt-20">
-                {getPro.map((item,id)=>(<> 
-                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div className="card-grid-style-3">
-                      <div className="card-grid-inner">
-                        <div className="tools">
-                          
-                          <Link
-                            className="btn btn-wishlist btn-tooltip mb-10"
-                            href="/WishList"
-                            aria-label="Add To Wishlist"
-                          ></Link>
-                         
-                          <a
-                            className="btn btn-quickview btn-tooltip"
-                            aria-label="Quick view"
-                            href="#ModalQuickview"
-                            data-bs-toggle="modal"
-                          ></a>
-                        </div>
-                        <div className="image-box">
-                          <span className="label bg-brand-2">-17%</span>
-                          <a href="shop-single-product.html">
-                            <img
-                              src="assets/imgs/page/homepage1/imgsp3.png"
-                              alt="Ecom"
-                            />
-                          </a>
-                        </div>
-                        <div className="info-right">
-                          <a
-                            className="font-xs color-gray-500"
-                            href="shop-vendor-single.html"
-                          >
-                           {item.brand_name}
-                          </a>
-                          <br />
-                          <a
-                            className="color-brand-3 font-sm-bold"
-                            href="shop-single-product.html"
-                          >
-                          {item.product_name}
-                          </a>
-                          <div className="rating">
-                            <img src={star.src} alt="Ecom" />
-                            <img src={star.src} alt="Ecom" />
-                            <img src={star.src} alt="Ecom" />
-                            <img src={star.src} alt="Ecom" />
-                            <img src={star.src} alt="Ecom" />
-                            <span className="font-xs color-gray-500">(65)</span>
+                  {getPro?.map((item, id) => (<>
+                    <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+                      <div className="card-grid-style-3">
+                        <div className="card-grid-inner">
+                          <div className="tools">
+
+                            <Link
+                              className="btn btn-wishlist btn-tooltip mb-10"
+                              href="/WishList"
+                              aria-label="Add To Wishlist"
+                            ></Link>
+
+                            <a
+                              className="btn btn-quickview btn-tooltip"
+                              aria-label="Quick view"
+                              href="#ModalQuickview"
+                              data-bs-toggle="modal"
+                            ></a>
                           </div>
-                          <div className="price-info">
-                            <strong className="font-lg-bold color-brand-3 price-main">
-                              ${item.discounted_amount}
-                            </strong>
-                            <span className="color-gray-500 price-line">
-                              ${item.product_sale_rate}
-                            </span>
-                          </div>
-                          <div className="mt-20 box-btn-cart">
-                            <a className="btn btn-cart" href="shop-cart.html">
-                              Add To Cart
+                          <div className="image-box">
+                            <span className="label bg-brand-2">-17%</span>
+                            <a href="shop-single-product.html">
+                              <img
+                                src="assets/imgs/page/homepage1/imgsp3.png"
+                                alt="Ecom"
+                              />
                             </a>
                           </div>
-                          <ul className="list-features">
-                            <li>{item.product_description}</li>
-                            {/* <li>3.1GHz 6-core 10th-generation Intel Core i5</li>
+                          <div className="info-right">
+                            <a
+                              className="font-xs color-gray-500"
+                              href="shop-vendor-single.html"
+                            >
+                              {item.brand_name}
+                            </a>
+                            <br />
+                            <a
+                              className="color-brand-3 font-sm-bold"
+                              href="shop-single-product.html"
+                            >
+                              {item.product_name}
+                            </a>
+                            <div className="rating">
+                              <img src={star.src} alt="Ecom" />
+                              <img src={star.src} alt="Ecom" />
+                              <img src={star.src} alt="Ecom" />
+                              <img src={star.src} alt="Ecom" />
+                              <img src={star.src} alt="Ecom" />
+                              <span className="font-xs color-gray-500">(65)</span>
+                            </div>
+                            <div className="price-info">
+                              <strong className="font-lg-bold color-brand-3 price-main">
+                                ${item.discounted_amount}
+                              </strong>
+                              <span className="color-gray-500 price-line">
+                                ${item.product_sale_rate}
+                              </span>
+                            </div>
+                            <div className="mt-20 box-btn-cart">
+                              <a className="btn btn-cart" href="shop-cart.html">
+                                Add To Cart
+                              </a>
+                            </div>
+                            <ul className="list-features">
+                              <li>{item.product_description}</li>
+                              {/* <li>3.1GHz 6-core 10th-generation Intel Core i5</li>
                             <li>AMD Radeon Pro 5300 graphics</li> */}
-                          </ul>
+                            </ul>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div></>))}
-                 
+                    </div></>))}
+
                 </div>
                 <nav>
                   <ul className="pagination">
@@ -661,7 +663,7 @@ const getProducts=()=>{
                         </a>
                       </li>
                     </ul>
-                   
+
                   </div>
                 </div>
                 <div className="box-slider-item mb-30">
@@ -863,7 +865,7 @@ const getProducts=()=>{
           </div>
         </div>
         <InfoSection />
-       
+
         {/* quickview modal */}
         <div
           className="modal fade"
@@ -872,7 +874,7 @@ const getProducts=()=>{
           aria-hidden="true"
           style={{ display: "none" }}
         >
-         <QuickModal star={star} img1={img1} img2={img2}/>
+          <QuickModal star={star} img1={img1} img2={img2} />
         </div>
       </main>
       <Footer />
@@ -882,14 +884,14 @@ const getProducts=()=>{
 
 export default ShopGrid;
 export async function getServerSideProps(context) {
-  let cat= context.query
- 
-  console.log(cat,'categoryyy',context.query)
+  let filter = context.query
+
+  console.log(filter, 'categoryyy', context.query)
   var axios = require('axios');
   let products = [];
   var config = {
     method: 'get',
-    url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?${cat.categories_ids}`,
+    url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?page_size=${filter.page_size}&page_number=${filter.page_number}&search_string=${filter.search_string}&sort_column=${filter.sort_column}&sort_order=${filter.sort_order}&categories_ids=${filter.categories_ids}&brands_ids=${filter.brands_ids}&price_from=${filter.price_from}&price_to=${filter.price_to}&waranty_duration_ids=${filter.waranty_duration_ids}&vendor_id=${filter.vendor_id}`,
     headers: {
       'Authorization': 'Bearer N59Ag_m1BMrcMDIcd0pnS_DewxEyc4Qs_XIBl1zCLv3ZnKpkEd4usksRUWGxmHL0n7lQF5QltkvRLnGvGNOuZNiB-5kdd-HzarGbmdTmWFHbemWQbrXti59NJbBGhjS3sxX0RwQWUzyHDmgD17r6AIUfsLAUNotNzKCy3bgJhF5hy8U2ay9Lg7eSo4LEhfd0xTTLyekNusqziIJ7vOWp1sQraoyMD9cSE_CQjQCWkm4GG18hTZP_lAXFAtR5LVqbGC2zpgVk2b-iSlODO2TlgzwfiLF7UDEeNV-QAlng36N0733nOcI2Xj0bOXmxNJ8HmNBotrgRYBCs73ehQwSzDweZJKG_ez42YAW-bT5aNvf8S-tJv3ID4vItgMvoX5p5VEKVbVt9PDqzz0OTnDALNQ'
     }
@@ -905,7 +907,7 @@ export async function getServerSideProps(context) {
   }
 
   return {
-    props: {products}, // pass the populated products array as props
+    props: { products }, // pass the populated products array as props
   };
 }
 

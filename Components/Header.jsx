@@ -363,10 +363,9 @@ const Header = () => {
                                             <li>
                                               <Link href={{
                                                 pathname: '/ShopGrid',
-                                                query: {
-                                                  categories_ids: 
+                                                query: 
                                                     `page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=${levl2.parent_id}&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`
-                                                }
+                                               
                                               }}>{levl3.name}</Link>
                                             </li>
                                           </>
