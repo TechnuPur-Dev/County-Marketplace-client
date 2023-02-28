@@ -61,6 +61,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
 .slider__left-value,
 .slider__right-value {
   position: absolute;
+ 
 }
 
 .slider__track,
@@ -90,10 +91,12 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
 
 .slider__left-value {
   left: 6px;
+  display:none;
 }
 
 .slider__right-value {
   right: -4px;
+  display:none;
 }
 
 /* Removing the default appearance */

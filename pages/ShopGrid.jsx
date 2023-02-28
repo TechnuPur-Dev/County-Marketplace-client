@@ -14,10 +14,25 @@ import MultiRangeSlider from "@/Components/MultiRangeSlider";
 import QuickModal from "@/Components/QuickModal";
 import Link from "next/link";
 const ShopGrid = (props) => {
-  console.log(props)
-  const [getPro, setgetPro] = useState(props?.products)
+  console.log(props, 'props');
   var axios = require('axios');
   const router = useRouter();
+  let [proFilters, setProFilters] = useState({
+    page_size: router.query.page_size,
+    page_number: router.query.page_number,
+    search_string: router.query.search_string,
+    sort_column: router.query.sort_column,
+    sort_order: router.query.sort_order,
+    categories_ids: router.query.categories_ids,
+    brands_ids: router.query.brands_ids,
+    price_from: Math.trunc(router.query.price_from),
+    price_to: Math.trunc(router.query.price_to),
+    waranty_duration_ids: router.query.waranty_duration_ids,
+    vendor_id: router.query.vendor_id
+  })
+  const [getPro, setgetPro] = useState(props?.products)
+  const [proCatg, setProCatg] = useState(props?.categories)
+  let pagination = [1, 2, 3, 4, 5, 6]
   console.log(router, 'urll')
   const getProducts = (a) => {
     router.push(router.asPath, `/ShopGrid?${a}`);
@@ -25,9 +40,9 @@ const ShopGrid = (props) => {
     var config = {
       method: 'get',
       url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?${a}`,
-      headers: {
-        'Authorization': 'Bearer N59Ag_m1BMrcMDIcd0pnS_DewxEyc4Qs_XIBl1zCLv3ZnKpkEd4usksRUWGxmHL0n7lQF5QltkvRLnGvGNOuZNiB-5kdd-HzarGbmdTmWFHbemWQbrXti59NJbBGhjS3sxX0RwQWUzyHDmgD17r6AIUfsLAUNotNzKCy3bgJhF5hy8U2ay9Lg7eSo4LEhfd0xTTLyekNusqziIJ7vOWp1sQraoyMD9cSE_CQjQCWkm4GG18hTZP_lAXFAtR5LVqbGC2zpgVk2b-iSlODO2TlgzwfiLF7UDEeNV-QAlng36N0733nOcI2Xj0bOXmxNJ8HmNBotrgRYBCs73ehQwSzDweZJKG_ez42YAW-bT5aNvf8S-tJv3ID4vItgMvoX5p5VEKVbVt9PDqzz0OTnDALNQ'
-      }
+      // headers: {
+      //   'Authorization': 'Bearer N59Ag_m1BMrcMDIcd0pnS_DewxEyc4Qs_XIBl1zCLv3ZnKpkEd4usksRUWGxmHL0n7lQF5QltkvRLnGvGNOuZNiB-5kdd-HzarGbmdTmWFHbemWQbrXti59NJbBGhjS3sxX0RwQWUzyHDmgD17r6AIUfsLAUNotNzKCy3bgJhF5hy8U2ay9Lg7eSo4LEhfd0xTTLyekNusqziIJ7vOWp1sQraoyMD9cSE_CQjQCWkm4GG18hTZP_lAXFAtR5LVqbGC2zpgVk2b-iSlODO2TlgzwfiLF7UDEeNV-QAlng36N0733nOcI2Xj0bOXmxNJ8HmNBotrgRYBCs73ehQwSzDweZJKG_ez42YAW-bT5aNvf8S-tJv3ID4vItgMvoX5p5VEKVbVt9PDqzz0OTnDALNQ'
+      // }
     };
 
     axios(config)
@@ -38,6 +53,13 @@ const ShopGrid = (props) => {
       .catch(function (error) {
         console.log(error);
       });
+
+  }
+  const applyFilters = (name, value) => {
+    setProFilters({
+      ...proFilters,
+      [name]: value
+    })
 
   }
   // console.log(getPro,props,'propss');
@@ -69,6 +91,11 @@ const ShopGrid = (props) => {
   //     });
 
   // }, [])
+  useEffect(() => {
+    console.log(proFilters);
+
+
+  }, [proFilters])
 
   return (
     <>
@@ -83,7 +110,7 @@ const ShopGrid = (props) => {
         style={{ backgroundColor: "#405786", borderRadius: "50%" }}
       />
       <Topbar />
-      <Header />
+      <Header applyFilters={applyFilters} getProducts={getProducts} proFilters={proFilters} />
       <main className="main">
         <div className="section-box shop-template mt-30">
           <div className="container">
@@ -113,7 +140,7 @@ const ShopGrid = (props) => {
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
                           >
-                            Latest products
+                            {proFilters.sort_order}
                           </button>
                           <ul
                             className="dropdown-menu dropdown-menu-light"
@@ -121,13 +148,17 @@ const ShopGrid = (props) => {
                             style={{ margin: "0px" }}
                           >
                             <li>
-                              <a className="dropdown-item active" href="#">
-                                Latest products
+                              <a className="dropdown-item active" href="#"
+                                onClick={() => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=ASC&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('sort_order', 'ASC') }}
+                              >
+                                ASC
                               </a>
                             </li>
                             <li>
-                              <a className="dropdown-item" href="#">
-                                Oldest products
+                              <a className="dropdown-item" href="#"
+                                onClick={() => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=DSC&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('sort_order', 'DSC') }}
+                              >
+                                DSC
                               </a>
                             </li>
                             <li>
@@ -151,24 +182,24 @@ const ShopGrid = (props) => {
                             aria-expanded="false"
                             data-bs-display="static"
                           >
-                            <span>30 items</span>
+                            <span>{proFilters.page_size} items</span>
                           </button>
                           <ul
                             className="dropdown-menu dropdown-menu-light"
                             aria-labelledby="dropdownSort2"
                           >
                             <li>
-                              <a className="dropdown-item active" href="#" onClick={() => { getProducts(`page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=-1&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`) }}>
+                              <a className="dropdown-item active" href="#" onClick={() => { getProducts(`page_size=30&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_size', 30) }}>
                                 30 items
                               </a>
                             </li>
                             <li>
-                              <a className="dropdown-item" href="#">
+                              <a className="dropdown-item" href="#" onClick={() => { getProducts(`page_size=50&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_size', 50) }}>
                                 50 items
                               </a>
                             </li>
                             <li>
-                              <a className="dropdown-item" href="#">
+                              <a className="dropdown-item" href="#" onClick={() => { getProducts(`page_size=100&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_size', 100) }}>
                                 100 items
                               </a>
                             </li>
@@ -259,36 +290,15 @@ const ShopGrid = (props) => {
                     <li className="page-item">
                       <a className="page-link page-prev" href="#"></a>
                     </li>
-                    <li className="page-item">
-                      <a className="page-link" href="#">
-                        1
+                    {pagination.map(page => (<> <li className={(page == proFilters.page_number) ? "page-item active" : "page-item"}>
+                      <a className="page-link" href="#"
+                        onClick={() => { getProducts(`page_size=${proFilters.page_size}&page_number=${page}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_number', page) }}
+                      >
+                        {page}
                       </a>
-                    </li>
-                    <li className="page-item">
-                      <a className="page-link active" href="#">
-                        2
-                      </a>
-                    </li>
-                    <li className="page-item">
-                      <a className="page-link" href="#">
-                        3
-                      </a>
-                    </li>
-                    <li className="page-item">
-                      <a className="page-link" href="#">
-                        4
-                      </a>
-                    </li>
-                    <li className="page-item">
-                      <a className="page-link" href="#">
-                        5
-                      </a>
-                    </li>
-                    <li className="page-item">
-                      <a className="page-link" href="#">
-                        6
-                      </a>
-                    </li>
+                    </li></>))}
+
+
                     <li className="page-item">
                       <a className="page-link page-next" href="#"></a>
                     </li>
@@ -301,7 +311,19 @@ const ShopGrid = (props) => {
                     <h6 className="color-gray-900">Product Categories</h6>
                   </div>
                   <div className="sidebar-content">
-                    <ul className="list-nav-arrow">
+                    <ul className="list-nav-arrow" >
+                      {proCatg.filter(
+                        (levl1) => levl1.level === 1)
+                        .map((levl1 => (<> <li>
+                          <a href="#" style={{ color: (levl1.category_id == proFilters.categories_ids) ? 'orange' : '' }}
+                            onClick={() => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${levl1.category_id}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters("categories_ids", levl1.category_id) }}
+                          >
+                            {levl1.name}
+                            {/* <span className="number">09</span> */}
+                          </a>
+                        </li></>)))}
+                    </ul>
+                    {/* <ul className="list-nav-arrow">
                       <li>
                         <a href="shop-grid.html">
                           Computers &amp; Laptop
@@ -353,8 +375,8 @@ const ShopGrid = (props) => {
                           Headphone<span className="number">98</span>
                         </a>
                       </li>
-                    </ul>
-                    <div>
+                    </ul> */}
+                    {/* <div>
                       <div className="collapse" id="moreMenu">
                         <ul className="list-nav-arrow">
                           <li>
@@ -395,7 +417,7 @@ const ShopGrid = (props) => {
                       >
                         See More
                       </a>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 <div className="sidebar-border mb-40">
@@ -407,26 +429,9 @@ const ShopGrid = (props) => {
                     <div className="box-slider-range">
                       <div className="row mb-20">
                         <div className="col-sm-12">
-                          {/* <ReactSlider defaultValue={[4,20]}
-                                className="slider"
-                                trackClassName="tracker"
-                                min={0} 
-                                style
-                                max={100}
-                                minDistance={50}
-                                step={50}
-                                pearling={true}
-                                renderThumb={(props)=>{
-                                  return <div {...props} className="thumb"></div>
-                                }}
-                                renderTrack={(props)=>{
-                                  return <div {...props} className="track"></div>
-                                }}
-
-                                /> */}
-                          <MultiRangeSlider
-                            minValue={10}
-                            maxValue={30}
+                          {/* <MultiRangeSlider
+                            minValue={proFilters.price_from}
+                            maxValue={proFilters.price_to}
                             baseClassName="multi-range-slider"
                             subSteps={false}
                             style={{
@@ -440,44 +445,33 @@ const ShopGrid = (props) => {
                             barLeftColor="white"
                             thumbLeftColor="#FD9636"
                             thumbRightColor="#FD9636"
-                            min={0}
-                            max={100}
+                            min={proFilters.price_from}
+                            max={proFilters.price_to}
                             step={5}
                             label={false}
                             preventWheel={false}
                             onChange={(e) => {
                               // handleInput(e);
                             }}
-                          />
+                          /> */}
+
+                          <label >
+                            <span className=" m-0 p-0">Min:</span>
+                            <input type="number" className="mt-10 priceRange" value={proFilters.price_from} min={0} step={1.00}
+                              onChange={(e) => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${e.target.value}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('price_from', e.target.value) }}
+                            />
+                          </label>
+                          <label>
+                            <span className=" ml-5">Max:</span>
+                            <input type="number" className="mt-10 priceRange" value={proFilters.price_to} min={0}
+                              onChange={(e) => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${e.target.value}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('price_to', e.target.value) }}
+                            />
+                          </label>
                         </div>
                       </div>
-                      {/* <div className="row">
-                        <div className="col-lg-12">
-                          <label className="lb-slider font-sm color-gray-500">
-                            Price Range:
-                          </label>
-                          <span className="min-value-money font-sm color-gray-1000"></span>
-                          <label className="lb-slider font-sm font-medium color-gray-1000"></label>
-                          -
-                          <span className="max-value-money font-sm font-medium color-gray-1000"></span>
-                        </div>
-                        <div className="col-lg-12">
-                          <input
-                            className="form-control min-value"
-                            type="hidden"
-                            name="min-value"
-                            value=""
-                          />
-                          <input
-                            className="form-control max-value"
-                            type="hidden"
-                            name="max-value"
-                            value=""
-                          />
-                        </div>
-                      </div> */}
+
                     </div>
-                    <ul className="list-checkbox">
+                    {/* <ul className="list-checkbox">
                       <li>
                         <label className="cb-container">
                           <input type="checkbox" checked="checked" />
@@ -526,7 +520,8 @@ const ShopGrid = (props) => {
                         </label>
                         <span className="number-item">56</span>
                       </li>
-                    </ul>
+                    </ul> */}
+
                     <h6 className="color-gray-900 mt-20 mb-10">Brands</h6>
                     <ul className="list-checkbox">
                       <li>
@@ -889,7 +884,8 @@ export async function getServerSideProps(context) {
   console.log(filter, 'categoryyy', context.query)
   var axios = require('axios');
   let products = [];
-  var config = {
+  let categories = []
+  var config1 = {
     method: 'get',
     url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?page_size=${filter.page_size}&page_number=${filter.page_number}&search_string=${filter.search_string}&sort_column=${filter.sort_column}&sort_order=${filter.sort_order}&categories_ids=${filter.categories_ids}&brands_ids=${filter.brands_ids}&price_from=${filter.price_from}&price_to=${filter.price_to}&waranty_duration_ids=${filter.waranty_duration_ids}&vendor_id=${filter.vendor_id}`,
     headers: {
@@ -898,16 +894,26 @@ export async function getServerSideProps(context) {
   };
 
   try {
-    const response = await axios(config); // wait for the axios request to complete
-    console.log(JSON.stringify(response.data));
-    console.log(response.data.payload)
+    const response = await axios(config1); // wait for the axios request to complete
     products = response.data.payload;
   } catch (error) {
     console.log(error);
   }
+  var config2 = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/GetCategorys",
+    headers: {},
+  };
+  try {
+    const response = await axios(config2); // wait for the axios request to complete
+    categories = response.data.payload;
+  } catch (error) {
+    console.log(error);
+  };
 
   return {
-    props: { products }, // pass the populated products array as props
+    props: { products, categories }, // pass the populated products array as props
   };
 }
 

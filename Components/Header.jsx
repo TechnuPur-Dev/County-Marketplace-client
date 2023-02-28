@@ -8,11 +8,15 @@ import account from "../public/imgs/template/ava_1.png";
 import Select from "react-select";
 import Link from "next/link";
 import Image from "next/image";
-const Header = () => {
+import { useRouter } from 'next/router'
+const Header = (props) => {
+  const router = useRouter();
+  console.log(props, 'headerpppp')
   var axios = require("axios");
   const [toggleClass, setToggleClass] = useState(false);
   const [expandList, setExpandList] = useState(false);
   const [expandAccount, setExpandAccount] = useState(false);
+  const [searchString, setSearchString] = useState('')
   const [catg, setCatg] = useState([]);
   // for account logo expand
   const myRef = useRef();
@@ -101,7 +105,24 @@ const Header = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   });
+  let Search = (e) => {
+    e.preventDefault()
 
+    if (props.getProducts) {
+      props?.getProducts(`page_size=${props?.proFilters?.page_size}&page_number=${props?.proFilters?.page_number}&search_string=${(searchString == '') ? -1 : searchString}&sort_column=${props?.proFilters?.sort_column}&sort_order=${props?.proFilters?.sort_order}&categories_ids=${props?.proFilters?.categories_ids}&brands_ids=${props?.proFilters?.brands_ids}&price_from=${props?.proFilters?.price_from}&price_to=${props?.proFilters?.price_to}&waranty_duration_ids=-1${props?.proFilters?.waranty_duration_ids}&vendor_id=${props?.proFilters?.vendor_id}`)
+      props?.applyFilters('search_string', searchString)
+    }
+    else {
+      if (searchString !== '') {
+        router.push({
+          pathname: '/ShopGrid',
+          query: `page_size=30&page_number=1&search_string=${(searchString == '')? -1 : searchString}&sort_column=product_name&sort_order=ASC&categories_ids=-1&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`
+
+        })
+      }
+    }
+
+  }
   let CategoriesMenu = () => {
     var config = {
       method: "get",
@@ -189,7 +210,7 @@ const Header = () => {
               <div className="header-search">
                 <div className="box-header-search">
                   <form className="form-search" method="post" action="#">
-                    <div className="box-category">
+                    {/* <div className="box-category">
                       <Select
                         placeholder="All Categories"
                         styles={customStyles}
@@ -198,15 +219,19 @@ const Header = () => {
                         classNamePrefix="select"
                         isSearchable={true}
                       />
-                    </div>
+                    </div> */}
                     <div className="box-keysearch">
                       <input
                         className="form-control font-xs"
                         type="text"
-                        value=""
-                        placeholder="Search for items"
+                        value={props?.applyFilters && searchString || props?.proFilters?.search_string}
+                        placeholder="Search for item"
+                        onChange={(e) => {(props?.applyFilters)? (setSearchString(e.target.value), props?.applyFilters('search_string', searchString)):(setSearchString(e.target.value)) }}
+
                       />
+
                     </div>
+                    <button onClick={Search}>Search</button>
                   </form>
                 </div>
               </div>
@@ -363,9 +388,9 @@ const Header = () => {
                                             <li>
                                               <Link href={{
                                                 pathname: '/ShopGrid',
-                                                query: 
-                                                    `page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=${levl2.parent_id}&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`
-                                               
+                                                query:
+                                                  `page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=${levl2.parent_id}&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`
+
                                               }}>{levl3.name}</Link>
                                             </li>
                                           </>
