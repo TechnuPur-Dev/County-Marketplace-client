@@ -11,7 +11,7 @@ import Image from "next/image";
 import { useRouter } from 'next/router'
 const Header = (props) => {
   const router = useRouter();
-  console.log(props, 'headerpppp')
+  // console.log(props, 'headerpppp')
   var axios = require("axios");
   const [toggleClass, setToggleClass] = useState(false);
   const [expandList, setExpandList] = useState(false);
@@ -224,14 +224,14 @@ const Header = (props) => {
                       <input
                         className="form-control font-xs"
                         type="text"
-                        value={props?.applyFilters && searchString || props?.proFilters?.search_string}
+                        value={props?.applyFilters && ((props?.proFilters?.search_string==-1)?'':props?.proFilters?.search_string) || searchString }
                         placeholder="Search for item"
-                        onChange={(e) => {(props?.applyFilters)? (setSearchString(e.target.value), props?.applyFilters('search_string', searchString)):(setSearchString(e.target.value)) }}
+                        onChange={(e) => {(props?.applyFilters)? (setSearchString(e.target.value), props?.applyFilters('search_string', e.target.value)):(setSearchString(e.target.value)) }}
 
                       />
 
                     </div>
-                    <button onClick={Search}>Search</button>
+                    <button id="searchCatg" onClick={Search}>Search</button>
                   </form>
                 </div>
               </div>

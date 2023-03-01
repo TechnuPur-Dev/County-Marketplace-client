@@ -3101,7 +3101,7 @@ a.text-brand-3:hover {
   display: inline-block;
   width: 100%;
   height: 670px;
-  background: url(../public/imgs/page/homepage1/bg-topsell.png) no-repeat 0px 0px;
+  /* background: url(../public/imgs/page/homepage1/bg-topsell.png) no-repeat 0px 0px; */
   background-size: cover;
   padding: 50px 10px;
 }
@@ -7348,7 +7348,7 @@ a.text-brand-3:hover {
   width: 100%;
   height: 100%;
   z-index: 2;
-  background: url(../public/imgs/page/homepage7/bg-trans.png);
+  /* background: url(../public/imgs/page/homepage7/bg-trans.png); */
 }
 
 .home7-style .card-grid-inner .image-box {
@@ -7536,12 +7536,12 @@ a.text-brand-3:hover {
   max-height: 170px;
 }
 .box-ads-3::before {
-  background: url(../public/imgs/page/homepage8/bg-trans.png);
+  /* background: url(../public/imgs/page/homepage8/bg-trans.png); */
    /* background: url(../public/imgs/page/homepage8/bg-newsletter.png); */
 }
 .box-ads-3 img {
   height: 100%;
-  max-width: none;
+  /* max-width: none; */
 }
 
 .bg-newsletter-home8 {

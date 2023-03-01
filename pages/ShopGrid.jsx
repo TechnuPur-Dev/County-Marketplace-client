@@ -7,28 +7,31 @@ import ScrollToTop from "react-scroll-to-top";
 import Footer from "../Components/Footer";
 import InfoSection from "../Components/InfoSection";
 import star from "../public/imgs/template/icons/star.svg";
+import greyStar from "../public//imgs/template/icons/star-gray.svg"
 import bannerImg from "../public/imgs/page/shop/banner.png";
 import img1 from "../public/imgs/page/product/img-gallery-1.jpg";
 import img2 from "../public/imgs/page/product/img-gallery-2.jpg";
 import MultiRangeSlider from "@/Components/MultiRangeSlider";
 import QuickModal from "@/Components/QuickModal";
 import Link from "next/link";
+import Banner from "@/Components/Banner";
 const ShopGrid = (props) => {
   console.log(props, 'props');
   var axios = require('axios');
   const router = useRouter();
+  const [bannerData, setBannerData] = useState(props?.banners)
   let [proFilters, setProFilters] = useState({
-    page_size: router.query.page_size,
-    page_number: router.query.page_number,
-    search_string: router.query.search_string,
-    sort_column: router.query.sort_column,
-    sort_order: router.query.sort_order,
-    categories_ids: router.query.categories_ids,
-    brands_ids: router.query.brands_ids,
-    price_from: Math.trunc(router.query.price_from),
-    price_to: Math.trunc(router.query.price_to),
-    waranty_duration_ids: router.query.waranty_duration_ids,
-    vendor_id: router.query.vendor_id
+    page_size: router.query.page_size || 30,
+    page_number: router.query.page_number || 1,
+    search_string: router.query.search_string || -1,
+    sort_column: router.query.sort_column || 'product_name',
+    sort_order: router.query.sort_order || 'ASC',
+    categories_ids: router.query.categories_ids || -1,
+    brands_ids: router.query.brands_ids || -1,
+    price_from: Math.trunc(router.query.price_from) || 0.00,
+    price_to: Math.trunc(router.query.price_to) || 100.00,
+    waranty_duration_ids: router.query.waranty_duration_ids || -1,
+    vendor_id: router.query.vendor_id || -1
   })
   const [getPro, setgetPro] = useState(props?.products)
   const [proCatg, setProCatg] = useState(props?.categories)
@@ -93,9 +96,12 @@ const ShopGrid = (props) => {
   // }, [])
   useEffect(() => {
     console.log(proFilters);
+    let slider = bannerData.filter((image) => (image.banner_place_type == "Other"))
+    console.log(slider, 'bannnerss');
+    setBannerData(slider[0])
 
 
-  }, [proFilters])
+  }, [])
 
   return (
     <>
@@ -116,11 +122,12 @@ const ShopGrid = (props) => {
           <div className="container">
             <div className="row">
               <div className="col-lg-9 order-first order-lg-last">
-                <div className="banner-ads-top mb-30">
+                <Banner banner={props.banners} />
+                {/* <div className="banner-ads-top mb-30">
                   <a href="shop-single-product-3.html">
                     <img src={bannerImg.src} alt="Ecom" />
                   </a>
-                </div>
+                </div> */}
                 <div className="box-filters mt-0 pb-5 border-bottom">
                   <div className="row">
 
@@ -586,7 +593,7 @@ const ShopGrid = (props) => {
                           <img src={star.src} alt="Ecom" />
                           <img src={star.src} alt="Ecom" />
                           <img
-                            src="assets/imgs/template/icons/star-gray.svg"
+                            src={`${greyStar.src}`}
                             alt="Ecom"
                           />
                           <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
@@ -600,11 +607,11 @@ const ShopGrid = (props) => {
                           <img src={star.src} alt="Ecom" />
                           <img src={star.src} alt="Ecom" />
                           <img
-                            src="assets/imgs/template/icons/star-gray.svg"
+                            src={`${greyStar.src}`}
                             alt="Ecom"
                           />
                           <img
-                            src="assets/imgs/template/icons/star-gray.svg"
+                            src={`${greyStar.src}`}
                             alt="Ecom"
                           />
                           <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
@@ -617,15 +624,15 @@ const ShopGrid = (props) => {
                           <img src={star.src} alt="Ecom" />
                           <img src={star.src} alt="Ecom" />
                           <img
-                            src="assets/imgs/template/icons/star-gray.svg"
+                            src={`${greyStar.src}`}
                             alt="Ecom"
                           />
                           <img
-                            src="assets/imgs/template/icons/star-gray.svg"
+                            src={`${greyStar.src}`}
                             alt="Ecom"
                           />
                           <img
-                            src="assets/imgs/template/icons/star-gray.svg"
+                            src={`${greyStar.src}`}
                             alt="Ecom"
                           />
                           <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
@@ -637,19 +644,19 @@ const ShopGrid = (props) => {
                         <a href="#">
                           <img src={star.src} alt="Ecom" />
                           <img
-                            src="assets/imgs/template/icons/star-gray.svg"
+                            src={`${greyStar.src}`}
                             alt="Ecom"
                           />
                           <img
-                            src="assets/imgs/template/icons/star-gray.svg"
+                            src={`${greyStar.src}`}
                             alt="Ecom"
                           />
                           <img
-                            src="assets/imgs/template/icons/star-gray.svg"
+                            src={`${greyStar.src}`}
                             alt="Ecom"
                           />
                           <img
-                            src="assets/imgs/template/icons/star-gray.svg"
+                            src={`${greyStar.src}`}
                             alt="Ecom"
                           />
                           <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
@@ -844,17 +851,34 @@ const ShopGrid = (props) => {
                   </div>
                 </div>
                 <div className="banner-right h-500 text-center mb-30">
-                  <span className="text-no font-11">No.9</span>
+                  {/* <span className="text-no font-11">No.9</span> */}
                   <h5 className="font-23 mt-20">
-                    Sensitive Touch
-                    <br className="d-none d-lg-block" />
-                    without fingerprint
+                  {bannerData?.banner_heading}
                   </h5>
                   <p className="text-desc font-16 mt-15">
-                    Smooth handle and accurate click
+                    {bannerData?.banner_text}
                   </p>
-                  <a href="shop-single-product-2.html">View Details</a>
+                  <a href={{
+                pathname: '/ShopGrid',
+                query:
+                  `page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=-1&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`
+
+              }}>View Details</a>
                 </div>
+                <style jsx>
+                  {`
+                    
+                .banner-right {
+                  border-radius: 4px;
+                  display: inline-block;
+                  width: 100%;
+                  height: 670px;
+                  background: url(${bannerData?.banner_url}) no-repeat 0px 0px;
+                  background-size: cover;
+                  padding: 50px 10px;
+                }
+                  `}
+                </style>
               </div>
             </div>
           </div>
@@ -911,9 +935,24 @@ export async function getServerSideProps(context) {
   } catch (error) {
     console.log(error);
   };
+  let banners = []
+  var config3 = {
+    method: 'get',
+    url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getStoreBanner?status=active`,
+
+  };
+
+  try {
+    console.log(context, 'context');
+    const response = await axios(config3); // wait for the axios request to complete
+    banners = response.data.payload;
+  } catch (error) {
+    console.log(error);
+  }
+
 
   return {
-    props: { products, categories }, // pass the populated products array as props
+    props: { products, categories, banners }, // pass the populated products array as props
   };
 }
 

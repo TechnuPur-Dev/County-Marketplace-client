@@ -13,7 +13,7 @@ import img1 from "../public/imgs/page/product/img-gallery-1.jpg";
 import img2 from "../public/imgs/page/product/img-gallery-2.jpg";
 import star from "../public/imgs/template/icons/star.svg";
 import QuickModal from "@/Components/QuickModal";
-export default function Home() {
+export default function Home(props) {
   return (
     <>
       <Loader />
@@ -32,7 +32,7 @@ export default function Home() {
         <DealsSection />
         <InfoSection />
         <CategoriesSection />
-        <Banner />
+        <Banner banner={props.banners} />
         <BestSeller />
         <TopBrands />
         {/* <!----quickview modal ---->*/}
@@ -50,4 +50,27 @@ export default function Home() {
       <Footer />
     </>
   );
+}
+export async function getServerSideProps(context) {
+  
+  var axios = require('axios');
+  let banners = []
+  var config1 = {
+    method: 'get',
+    url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getStoreBanner?status=active`,
+   
+  };
+
+  try {
+    console.log(context,'context');
+    const response = await axios(config1); // wait for the axios request to complete
+    banners = response.data.payload;
+  } catch (error) {
+    console.log(error);
+  }
+  
+
+  return {
+    props: {banners}, // pass the populated products array as props
+  };
 }
