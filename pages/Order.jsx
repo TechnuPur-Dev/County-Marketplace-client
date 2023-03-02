@@ -10,7 +10,6 @@ const OrderPage = () => {
   return (
     <>
       <Loader/>
- 
       <ScrollToTop
       className='animate__animated animate__fadeInUp'
         smooth={true}

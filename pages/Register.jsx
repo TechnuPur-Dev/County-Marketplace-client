@@ -78,7 +78,7 @@ const Register = (props) => {
                   <div className="form-group">
                     <div className="form-group">
                       <label className="mb-5 font-sm color-gray-700">Username *</label>
-                      <input className="form-control" type="text" value={register.username} onChange={(e) => { setRegister({ ...register, username: e.target.value }) }} required placeholder="stevenjob" />
+                      <input className="form-control" type="text" value={register.username} onChange={(e) => { setRegister({ ...register, username: e.target.value }) }}  placeholder="stevenjob" />
                       {validation && register.username=='' && <span className="error">This field is required !</span>}
 
                     </div>
@@ -89,7 +89,7 @@ const Register = (props) => {
                   </div>
                   <div className="form-group">
                     <label className="mb-5 font-sm color-gray-700">Email *</label>
-                    <input className="form-control" type="email" value={register.email} onChange={(e) => { setRegister({ ...register, email: e.target.value }) }} required placeholder="stevenjob@gmail.com" />
+                    <input className="form-control" type="email" value={register.email} onChange={(e) => { setRegister({ ...register, email: e.target.value }) }}  placeholder="stevenjob@gmail.com" />
                     {validation && register.email=='' &&  <span className="error">This field is required !</span>}
                   </div>
 
@@ -113,7 +113,7 @@ const Register = (props) => {
                   </div>
 
 
-                  <Modal show={show} onHide={handleClose}>
+                  <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
                     <Modal.Header  >
                       <Modal.Title >Verify OTP</Modal.Title>
                     </Modal.Header>
