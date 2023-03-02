@@ -18,6 +18,9 @@
   border: 1px solid #425a8b;
   transform: translateY(-2px);
 }
+.error{
+  color : red
+}
 #wdw_NavBar > div > div > .dropdown-menu {
   border: none;
   border-radius: 0;

@@ -20,7 +20,7 @@ const Topbar = () => {
           
             <li>
               <Link className="font-xs" href={`/Register`}>
-                Open a shop
+                Register
               </Link>
             </li>
           </ul>
