@@ -10,7 +10,7 @@ import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-const Register = () => {
+const Register = (props) => {
   const [show, setShow] = useState(false);
   let [validation, setValidtation] = useState(false);
   const handleClose = () => setShow(false);
@@ -22,34 +22,34 @@ const Register = () => {
     password: ""
   })
   const registerUser = () => {
-    localStorage.setItem("e-mail", register.email);
+ 
     let validate = false;
-    if (register.password == '' || register.password == '' || register.full_name == '' || register.username == '')
+    if (register.password == '' || register.email == '' || register.full_name == '' || register.username == '')
       validate = true;
     setValidtation(validate)
     var axios = require('axios');
     var data = JSON.stringify(register);
-    if (!validation) {
-      alert('ehhlo')
-      // var config = {
-      //   method: 'post',
-      //   maxBodyLength: Infinity,
-      //   url: 'http://countydev92-001-site1.ftempurl.com/api/marketplace/registered_customer',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   data: data
-      // };
+    if (!validate) {
+      localStorage.setItem("e-mail", register.email);
+      var config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'http://countydev92-001-site1.ftempurl.com/api/marketplace/registered_customer',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: data
+      };
 
-      // axios(config)
-      //   .then(function (response) {
-      //     console.log(data);
-      //     alert(JSON.stringify(response.data.message));
-      //     handleShow();
-      //   })
-      //   .catch(function (error) {
-      //     console.log(error);
-      //   });
+      axios(config)
+        .then(function (response) {
+          console.log(data);
+          alert(JSON.stringify(response.data.message));
+          handleShow();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   }
   return (
@@ -65,7 +65,7 @@ const Register = () => {
         style={{ backgroundColor: "#405786", borderRadius: "50%" }}
       />
       <Topbar />
-      <Header />
+      <Header categories={props.categories}/>
       <main className="main">
         <section className="section-box shop-template mt-60">
           <div className="container">
@@ -79,24 +79,24 @@ const Register = () => {
                     <div className="form-group">
                       <label className="mb-5 font-sm color-gray-700">Username *</label>
                       <input className="form-control" type="text" value={register.username} onChange={(e) => { setRegister({ ...register, username: e.target.value }) }} required placeholder="stevenjob" />
-                      {validation && <span className="error">This field is required</span>}
+                      {validation && register.username=='' && <span className="error">This field is required !</span>}
 
                     </div>
                     <label className="mb-5 font-sm color-gray-700">Full Name *</label>
                     <input className="form-control" type="text" value={register.full_name} onChange={(e) => { setRegister({ ...register, full_name: e.target.value }) }} placeholder="Steven job" />
-                    {validation && <span className="error">This field is required</span>}
+                    {validation && register.full_name=='' &&  <span className="error">This field is required !</span>}
 
                   </div>
                   <div className="form-group">
                     <label className="mb-5 font-sm color-gray-700">Email *</label>
                     <input className="form-control" type="email" value={register.email} onChange={(e) => { setRegister({ ...register, email: e.target.value }) }} required placeholder="stevenjob@gmail.com" />
-                    {validation && <span className="error">This field is required</span>}
+                    {validation && register.email=='' &&  <span className="error">This field is required !</span>}
                   </div>
 
                   <div className="form-group">
                     <label className="mb-5 font-sm color-gray-700">Password *</label>
                     <input className="form-control" type="password" value={register.password} onChange={(e) => { setRegister({ ...register, password: e.target.value }) }} placeholder="********" />
-                    {validation && <span className="error">This field is required</span>}
+                    {validation && register.password=='' &&  <span className="error">This field is required !</span>}
 
                   </div>
                   {/* <div className="form-group">
@@ -166,3 +166,23 @@ const Register = () => {
 }
 
 export default Register
+export async function getServerSideProps(context) {
+  var axios = require('axios');
+  let categories=[]
+  var config2 = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/GetCategorys",
+    headers: {},
+  };
+
+  try {
+    const response = await axios(config2); // wait for the axios request to complete
+    categories = response.data.payload;
+  } catch (error) {
+    console.log(error);
+  }
+  return {
+    props: {categories}, // pass the populated products array as props
+  };
+}

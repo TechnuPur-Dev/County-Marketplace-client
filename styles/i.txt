@@ -37,3 +37,29 @@ padding: 5px;
 margin: 0px
 px
 ;
+
+
+var axios = require('axios');
+var qs = require('qs');
+var data = qs.stringify({
+  'username': 'admin@gmail.com',
+  'password': '12345',
+  'grant_type': 'password' 
+});
+var config = {
+  method: 'post',
+maxBodyLength: Infinity,
+  url: 'http://countydev92-001-site1.ftempurl.com/store-customer-login',
+  headers: { 
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});

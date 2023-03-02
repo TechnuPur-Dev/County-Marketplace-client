@@ -116,7 +116,7 @@ const ShopGrid = (props) => {
         style={{ backgroundColor: "#405786", borderRadius: "50%" }}
       />
       <Topbar />
-      <Header applyFilters={applyFilters} getProducts={getProducts} proFilters={proFilters} />
+      <Header applyFilters={applyFilters} getProducts={getProducts} proFilters={proFilters} categories={props.categories}  />
       <main className="main">
         <div className="section-box shop-template mt-30">
           <div className="container">
@@ -949,6 +949,7 @@ export async function getServerSideProps(context) {
   } catch (error) {
     console.log(error);
   }
+  
 
 
   return {

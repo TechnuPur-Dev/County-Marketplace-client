@@ -17,7 +17,7 @@ const Header = (props) => {
   const [expandList, setExpandList] = useState(false);
   const [expandAccount, setExpandAccount] = useState(false);
   const [searchString, setSearchString] = useState('')
-  const [catg, setCatg] = useState([]);
+  const [catg, setCatg] = useState(props.categories);
   // for account logo expand
   const myRef = useRef();
   // for mobile view menu
@@ -107,7 +107,6 @@ const Header = (props) => {
   });
   let Search = (e) => {
     e.preventDefault()
-
     if (props.getProducts) {
       props?.getProducts(`page_size=${props?.proFilters?.page_size}&page_number=${props?.proFilters?.page_number}&search_string=${(searchString == '') ? -1 : searchString}&sort_column=${props?.proFilters?.sort_column}&sort_order=${props?.proFilters?.sort_order}&categories_ids=${props?.proFilters?.categories_ids}&brands_ids=${props?.proFilters?.brands_ids}&price_from=${props?.proFilters?.price_from}&price_to=${props?.proFilters?.price_to}&waranty_duration_ids=-1${props?.proFilters?.waranty_duration_ids}&vendor_id=${props?.proFilters?.vendor_id}`)
       props?.applyFilters('search_string', searchString)
@@ -123,26 +122,9 @@ const Header = (props) => {
     }
 
   }
-  let CategoriesMenu = () => {
-    var config = {
-      method: "get",
-      maxBodyLength: Infinity,
-      url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/GetCategorys",
-      headers: {},
-    };
 
-    axios(config)
-      .then(function (response) {
-        setCatg(response.data.payload);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
   //Dynamic Categories Menu
-  useEffect(() => {
-    CategoriesMenu();
-  }, []);
+  
   // let getProduct = async (item,i) => {
   //  console.log(i,'parenttt')
   //   let proCatg = catg.filter((fil_item) => (fil_item.category_id == item.parent_id))
