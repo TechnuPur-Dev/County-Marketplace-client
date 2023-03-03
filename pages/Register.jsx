@@ -9,13 +9,22 @@ import amazonImg from "../public/imgs/page/account/amazon.svg"
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+import { Router } from 'next/router';
+
 const Register = (props) => {
   var axios = require('axios');
   const [show, setShow] = useState(false);
   let [validation, setValidtation] = useState(false);
-  let [otpVerify, setOtpVerify] = useState({email:'',otp:''})
+  let [otpVerify, setOtpVerify] = useState({ email: '', otp: '' })
+  const [register, setRegister] = useState({
+    username: "",
+    full_name: "",
+    email: "",
+    password: "",
+    phone_number: "",
+    is_email_verification: false
+  })
   const handleClose = () => setShow(false);
   const handleShow = () => {
     setShow(true)
@@ -30,43 +39,34 @@ const Register = (props) => {
       .then(function (response) {
         let customers_id = localStorage.getItem("customers_id");
         let Storedemail = localStorage.getItem("e-mail");
-        let getOtp=response.data?.find(element => {
-          return element.store_customers_id ==  customers_id;
+        let getOtp = response.data?.find(element => {
+          return element.store_customers_id == customers_id;
         });
-        setOtpVerify({email:Storedemail, otp:getOtp.verification_code})
+        setOtpVerify({ email: Storedemail, otp: getOtp.verification_code })
       })
       .catch(function (error) {
         console.log(error);
       });
 
   };
-  const [register, setRegister] = useState({
-    username: "",
-    full_name: "",
-    email: "",
-    password: "",
-    phone_number: "",
-    is_email_verification: "false"
-  })
+ 
   const registerUser = () => {
-
     let validate = false;
+    let dataRegister={}
     if (register.password == '' || register.username == '' || register.full_name == '')
       validate = true;
     if (register.phone_number == '') {
       if (register.email == '')
         validate = true;
     }
-    else {
-
-    }
     if (register.email != '') {
-      setRegister({ ...register, is_email_verification: "true" })
+      dataRegister= {...register, is_email_verification: true }
+      setRegister(dataRegister)
     }
     setValidtation(validate)
-    
-    var data = JSON.stringify(register);
     if (!validate) {
+      console.log(dataRegister,'registerrerr');
+      var data = JSON.stringify(dataRegister);
       localStorage.setItem("e-mail", register.email);
       var config = {
         method: 'post',
@@ -81,17 +81,46 @@ const Register = (props) => {
         .then(function (response) {
           localStorage.setItem("customers_id", response.data.payload.store_customers_id);
           localStorage.setItem("username", response.data.payload.username);
-          <ToastContainer />
-          alert(JSON.stringify(response.data.message));
+          console.log(data,data);
+          toast.success(
+            JSON.stringify(response.data.message)
+          );
           handleShow();
         })
         .catch(function (error) {
-          console.log(error);
+         
+          toast.error(
+            JSON.stringify(error?.response?.data?.Message)
+          );
         });
     }
   }
+  const Verifying = () => {
+    var config = {
+      method: 'put',
+      maxBodyLength: Infinity,
+      url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/VerifyOTP?otp=${otpVerify.otp}&email=${otpVerify.email}`,
+      headers: {}
+    };
+
+    axios(config)
+      .then(function (response) {
+        toast.success(
+          JSON.stringify(response.data.message)
+        );
+        handleClose();
+        Router.push(`/Login`);
+      })
+      .catch(function (error) {
+        toast.error(
+          JSON.stringify(error?.response?.data?.Message)
+        );
+      });
+
+  }
   return (
     <>
+
       <Loader />
       <ScrollToTop
         smooth={true}
@@ -148,11 +177,11 @@ const Register = (props) => {
                   <label className="mb-5 font-sm color-gray-700">Re-Password *</label>
                   <input className="form-control" type="password" placeholder="******************"/>
                 </div> */}
-                  <div className="form-group">
+                  {/* <div className="form-group">
                     <label>
                       <input className="checkagree" type="checkbox" />By clicking Register button, you agree our terms and policy,
                     </label>
-                  </div>
+                  </div> */}
                   <div className="form-group">
                     <input className="font-md-bold btn btn-buy" type="submit" onClick={registerUser} value="Sign Up" />
                   </div>
@@ -163,14 +192,14 @@ const Register = (props) => {
                       <Modal.Title >Verify OTP</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                      <div className="form-register  mb-5">
+                      <div className="form-register  ">
                         <div className="form-group">
-                          <label className="mb-5 font-sm color-gray-700">Email *</label>
-                          <input className="form-control" type="email" value={otpVerify?.email}placeholder="stevenjob@gmail.com" />
+                          <label className=" font-sm color-gray-700">Email *</label>
+                          <input className="form-control" type="email" value={otpVerify?.email} placeholder="stevenjob@gmail.com" />
                         </div>
                         <div className="form-group">
-                          <label className="mb-5 font-sm color-gray-700">OTP *</label>
-                          <input className="form-control" type="text" value={otpVerify?.otp} placeholder="1234" />
+                          <label className=" font-sm color-gray-700">OTP *</label>
+                          <input className="form-control" type="text" value={otpVerify?.otp} placeholder="12G4" />
                         </div>
                       </div>
                     </Modal.Body>
@@ -178,7 +207,7 @@ const Register = (props) => {
                       <Button variant="secondary" onClick={handleClose}>
                         Close
                       </Button>
-                      <Button variant="primary" onClick={handleClose}>
+                      <Button variant="primary" onClick={Verifying}>
                         Verify
                       </Button>
                     </Modal.Footer>
@@ -217,7 +246,7 @@ export async function getServerSideProps(context) {
   var config2 = {
     method: "get",
     maxBodyLength: Infinity,
-    url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/GetCategorys",
+    url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/GetCategories",
     headers: {},
   };
 

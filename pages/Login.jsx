@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Loader from "../Components/Loaderr";
 import Topbar from "../Components/Topbar";
 import Header from "../Components/Header";
@@ -7,8 +7,43 @@ import Footer from "../Components/Footer";
 import Link from "next/link";
 import googleImg from "../public/imgs/page/account/google.svg";
 import amazonImg from "../public/imgs/page/account/amazon.svg";
+import  qs from 'qs'
+import { toast } from "react-toastify";
 
-const Login = () => {
+const Login = (props) => {
+  let [loginData, setLoginData] = useState({
+    username: '',
+    password: '',
+    grant_type: 'password'
+  })
+  const SignIn = () => {
+    var axios = require('axios');
+    var data = qs.stringify(loginData);
+    var config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: 'http://countydev92-001-site1.ftempurl.com/login',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      data: data
+    };
+
+    axios(config)
+      .then(function (response) {
+        toast.success(
+          JSON.stringify(response.data.message)
+        );
+      })
+      .catch(function (error) {
+
+        toast.error(
+          JSON.stringify(error?.response?.data?.Message)
+        );
+      });
+
+  }
+
   return (
     <>
       {" "}
@@ -23,7 +58,7 @@ const Login = () => {
         style={{ backgroundColor: "#405786", borderRadius: "50%" }}
       />
       <Topbar />
-      <Header />
+      <Header categories={props.categories} />
       <main className="main">
         <section className="section-box shop-template mt-60">
           <div className="container">
@@ -35,12 +70,14 @@ const Login = () => {
                 <div className="form-register mt-30 mb-30">
                   <div className="form-group">
                     <label className="mb-5 font-sm color-gray-700">
-                      Email / Phone / Username *
+                      Email / Phone *
                     </label>
                     <input
                       className="form-control"
                       type="text"
                       placeholder="stevenjob@gmail.com"
+                      value={loginData.username}
+                      onChange={(e) => { setLoginData({ ...loginData, username: e.target.value }) }}
                     />
                   </div>
                   <div className="form-group">
@@ -50,7 +87,9 @@ const Login = () => {
                     <input
                       className="form-control"
                       type="password"
-                      placeholder="******************"
+                      placeholder="********"
+                      value={loginData.password}
+                      onChange={(e) => { setLoginData({ ...loginData, password: e.target.value }) }}
                     />
                   </div>
                   <div className="row">
@@ -74,7 +113,8 @@ const Login = () => {
                     <input
                       className="font-md-bold btn btn-buy"
                       type="submit"
-                      value="Sign Up"
+                      value="Log In"
+                      onClick={SignIn}
                     />
                   </div>
                   <div className="mt-20">
@@ -127,3 +167,23 @@ const Login = () => {
 };
 
 export default Login;
+export async function getServerSideProps(context) {
+  var axios = require('axios');
+  let categories = []
+  var config2 = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/GetCategories",
+    headers: {},
+  };
+
+  try {
+    const response = await axios(config2); // wait for the axios request to complete
+    categories = response.data.payload;
+  } catch (error) {
+    console.log(error);
+  }
+  return {
+    props: { categories }, // pass the populated products array as props
+  };
+}

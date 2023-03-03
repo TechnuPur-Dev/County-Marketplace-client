@@ -926,7 +926,7 @@ export async function getServerSideProps(context) {
   var config2 = {
     method: "get",
     maxBodyLength: Infinity,
-    url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/GetCategorys",
+    url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/GetCategories",
     headers: {},
   };
   try {

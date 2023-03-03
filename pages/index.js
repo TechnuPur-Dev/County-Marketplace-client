@@ -14,6 +14,7 @@ import img2 from "../public/imgs/page/product/img-gallery-2.jpg";
 import star from "../public/imgs/template/icons/star.svg";
 import QuickModal from "@/Components/QuickModal";
 export default function Home(props) {
+  console.log(props?.categories,'categories');
   return (
     <>
       <Loader />
@@ -70,7 +71,7 @@ export async function getServerSideProps(context) {
   var config2 = {
     method: "get",
     maxBodyLength: Infinity,
-    url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/GetCategorys",
+    url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/GetCategories",
     headers: {},
   };
 

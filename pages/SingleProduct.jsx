@@ -18,7 +18,7 @@ import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
 import { Mousewheel, Pagination } from "swiper";
 import dynamic from "next/dynamic";
 import QuickModal from "@/Components/QuickModal";
-const SingleProduct = () => {
+const SingleProduct = (props) => {
  
   return (
     <>
@@ -33,7 +33,7 @@ const SingleProduct = () => {
         style={{ backgroundColor: "#405786", borderRadius: "50%" }}
       />
       <Topbar />
-      <Header />
+       <Header categories={props.categories} />
       <main className="main">
         <div className="section-box">
           <div className="breadcrumbs-div">
@@ -2490,3 +2490,23 @@ const SingleProduct = () => {
 };
 
 export default dynamic (() => Promise.resolve(SingleProduct), {ssr: false})
+export async function getServerSideProps(context) {
+  var axios = require('axios');
+  let categories = []
+  var config2 = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/GetCategories",
+    headers: {},
+  };
+
+  try {
+    const response = await axios(config2); // wait for the axios request to complete
+    categories = response.data.payload;
+  } catch (error) {
+    console.log(error);
+  }
+  return {
+    props: { categories }, // pass the populated products array as props
+  };
+}

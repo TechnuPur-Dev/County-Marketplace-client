@@ -4220,7 +4220,7 @@ a.text-brand-3:hover {
   color: #425A8B;
 }
 .nav-small li a:hover {
-  color: #FD9636;
+  color: rgb(255, 255, 255);
 }
 .nav-small li a::before {
   content: "";

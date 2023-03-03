@@ -11,7 +11,7 @@ import BrandList from '../Components/BrandList';
 import StoreInfo from '../Components/StoreInfo';
 import ContactInfo from '../Components/ContactInfo';
 import Link from 'next/link';
- const About = () => {
+ const About = (props) => {
   return (
     <>
            <Loader />
@@ -26,7 +26,7 @@ import Link from 'next/link';
       />
 
       <Topbar />
-      <Header />
+       <Header categories={props.categories} />
       <main className="main">
       <div className="section-box" >
         <div className="breadcrumbs-div">
@@ -172,3 +172,23 @@ import Link from 'next/link';
   )
 }
  export default About
+ export async function getServerSideProps(context) {
+  var axios = require('axios');
+  let categories = []
+  var config2 = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/GetCategories",
+    headers: {},
+  };
+
+  try {
+    const response = await axios(config2); // wait for the axios request to complete
+    categories = response.data.payload;
+  } catch (error) {
+    console.log(error);
+  }
+  return {
+    props: { categories }, // pass the populated products array as props
+  };
+}

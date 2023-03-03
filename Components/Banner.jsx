@@ -1,10 +1,8 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react'
-import banner from "../public/imgs/page/shop/banner.png";
 
 const Banner = (props) => {
-  console.log(props?.banner, 'bannnerss')
   const [bannerData, setBannerData] = useState(props?.banner)
   let router = useRouter()
   console.log(router, 'bannnerss');
