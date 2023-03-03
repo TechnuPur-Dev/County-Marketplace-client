@@ -11,8 +11,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
 const Register = (props) => {
   var axios = require('axios');
   const [show, setShow] = useState(false);
