@@ -9,25 +9,64 @@ import amazonImg from "../public/imgs/page/account/amazon.svg"
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Register = (props) => {
+  var axios = require('axios');
   const [show, setShow] = useState(false);
   let [validation, setValidtation] = useState(false);
+  let [otpVerify, setOtpVerify] = useState({email:'',otp:''})
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    setShow(true)
+    var config = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: 'http://countydev92-001-site1.ftempurl.com/api/marketplace/getOTP',
+      headers: {}
+    };
+
+    axios(config)
+      .then(function (response) {
+        let customers_id = localStorage.getItem("customers_id");
+        let Storedemail = localStorage.getItem("e-mail");
+        let getOtp=response.data?.find(element => {
+          return element.store_customers_id ==  customers_id;
+        });
+        setOtpVerify({email:Storedemail, otp:getOtp.verification_code})
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  };
   const [register, setRegister] = useState({
     username: "",
     full_name: "",
     email: "",
-    password: ""
+    password: "",
+    phone_number: "",
+    is_email_verification: "false"
   })
   const registerUser = () => {
- 
+
     let validate = false;
-    if (register.password == '' || register.email == '' || register.full_name == '' || register.username == '')
+    if (register.password == '' || register.username == '' || register.full_name == '')
       validate = true;
+    if (register.phone_number == '') {
+      if (register.email == '')
+        validate = true;
+    }
+    else {
+
+    }
+    if (register.email != '') {
+      setRegister({ ...register, is_email_verification: "true" })
+    }
     setValidtation(validate)
-    var axios = require('axios');
+    
     var data = JSON.stringify(register);
     if (!validate) {
       localStorage.setItem("e-mail", register.email);
@@ -40,10 +79,11 @@ const Register = (props) => {
         },
         data: data
       };
-
       axios(config)
         .then(function (response) {
-          console.log(data);
+          localStorage.setItem("customers_id", response.data.payload.store_customers_id);
+          localStorage.setItem("username", response.data.payload.username);
+          <ToastContainer />
           alert(JSON.stringify(response.data.message));
           handleShow();
         })
@@ -65,7 +105,7 @@ const Register = (props) => {
         style={{ backgroundColor: "#405786", borderRadius: "50%" }}
       />
       <Topbar />
-      <Header categories={props.categories}/>
+      <Header categories={props.categories} />
       <main className="main">
         <section className="section-box shop-template mt-60">
           <div className="container">
@@ -78,27 +118,34 @@ const Register = (props) => {
                   <div className="form-group">
                     <div className="form-group">
                       <label className="mb-5 font-sm color-gray-700">Username *</label>
-                      <input className="form-control" type="text" value={register.username} onChange={(e) => { setRegister({ ...register, username: e.target.value }) }}  placeholder="stevenjob" />
-                      {validation && register.username=='' && <span className="error">This field is required !</span>}
+                      <input className="form-control" type="text" value={register.username} onChange={(e) => { setRegister({ ...register, username: e.target.value }) }} placeholder="stevenjob" />
+                      {validation && register.username == '' && <span className="error">This field is required !</span>}
 
                     </div>
                     <label className="mb-5 font-sm color-gray-700">Full Name *</label>
                     <input className="form-control" type="text" value={register.full_name} onChange={(e) => { setRegister({ ...register, full_name: e.target.value }) }} placeholder="Steven job" />
-                    {validation && register.full_name=='' &&  <span className="error">This field is required !</span>}
+                    {validation && register.full_name == '' && <span className="error">This field is required !</span>}
 
                   </div>
                   <div className="form-group">
                     <label className="mb-5 font-sm color-gray-700">Email *</label>
-                    <input className="form-control" type="email" value={register.email} onChange={(e) => { setRegister({ ...register, email: e.target.value }) }}  placeholder="stevenjob@gmail.com" />
-                    {validation && register.email=='' &&  <span className="error">This field is required !</span>}
+                    <input className="form-control" type="email" value={register.email} onChange={(e) => { setRegister({ ...register, email: e.target.value }) }} placeholder="stevenjob@gmail.com" />
+                    {validation && register.email == '' && <span className="error">This field is required !</span>}
+                  </div>
+                  <div className="form-group">
+                    <label className="mb-5 font-sm color-gray-700">Phone Number *</label>
+                    <input className="form-control" type="number" value={register.phone_number} onChange={(e) => { setRegister({ ...register, phone_number: e.target.value }) }} placeholder="03065423891" />
+                    {validation && register.phone_number == '' && <span className="error">This field is required !</span>}
+
                   </div>
 
                   <div className="form-group">
                     <label className="mb-5 font-sm color-gray-700">Password *</label>
                     <input className="form-control" type="password" value={register.password} onChange={(e) => { setRegister({ ...register, password: e.target.value }) }} placeholder="********" />
-                    {validation && register.password=='' &&  <span className="error">This field is required !</span>}
+                    {validation && register.password == '' && <span className="error">This field is required !</span>}
 
                   </div>
+
                   {/* <div className="form-group">
                   <label className="mb-5 font-sm color-gray-700">Re-Password *</label>
                   <input className="form-control" type="password" placeholder="******************"/>
@@ -121,11 +168,11 @@ const Register = (props) => {
                       <div className="form-register  mb-5">
                         <div className="form-group">
                           <label className="mb-5 font-sm color-gray-700">Email *</label>
-                          <input className="form-control" type="email" placeholder="stevenjob@gmail.com" />
+                          <input className="form-control" type="email" value={otpVerify?.email}placeholder="stevenjob@gmail.com" />
                         </div>
                         <div className="form-group">
                           <label className="mb-5 font-sm color-gray-700">OTP *</label>
-                          <input className="form-control" type="number" placeholder="1234" />
+                          <input className="form-control" type="text" value={otpVerify?.otp} placeholder="1234" />
                         </div>
                       </div>
                     </Modal.Body>
@@ -168,7 +215,7 @@ const Register = (props) => {
 export default Register
 export async function getServerSideProps(context) {
   var axios = require('axios');
-  let categories=[]
+  let categories = []
   var config2 = {
     method: "get",
     maxBodyLength: Infinity,
@@ -183,6 +230,6 @@ export async function getServerSideProps(context) {
     console.log(error);
   }
   return {
-    props: {categories}, // pass the populated products array as props
+    props: { categories }, // pass the populated products array as props
   };
 }

@@ -63,3 +63,41 @@ axios(config)
 .catch(function (error) {
   console.log(error);
 });
+///
+{
+  "result": 0,
+  "message": "OTP Send Successfully",
+  "payload": {
+    "store_customers_id": 64,
+    "full_name": "daraz Pk",
+    "username": "daraz",
+    "hashed_password": "13012420314234138112108765216110414524878123",
+    "email": "daraz@gmail.com",
+    "phone_number": "string",
+    "address": null,
+    "city": null,
+    "country": null,
+    "zip_code": null,
+    "contact_no": null,
+    "GSTIN": null,
+    "PAN": null,
+    "created_date": null,
+    "chart_id": null,
+    "email_verification_status": "false",
+    "phone_verification_status": "false",
+    "is_email_verification": "true",
+    "gender": null,
+    "birthday": null
+  }
+}
+//
+{
+  "username": "daraz",
+  "full_name": "daraz Pk",
+  "email": "daraz@gmail.com",
+  "phone_number": "string",
+  "is_email_verification": "true",
+  "password": "12345"
+}
+///
+
