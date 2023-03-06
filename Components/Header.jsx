@@ -340,7 +340,7 @@ const Header = (props) => {
                         <li className={((catg.some((fil) => ((levl1.category_id == fil.parent_id))))) ? 'has-children' : ''} key={levl1.id}>
                           <a href="#">
                             <span className="img-link">
-                              <Image src={`${monitor.src}`} height={20} width={20} alt="Ecom" />
+                              <Image src={`http://countydev92-001-site1.ftempurl.com/${levl1.category_icon_url}`} height={20} width={20} alt="Ecom" />
                             </span>
                             <span className="text-link">{levl1.name}</span>
                           </a>
