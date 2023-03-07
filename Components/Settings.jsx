@@ -18,17 +18,19 @@ const Settings = (props) => {
                         </div>
                         <div className="col-lg-12">
                           <div className="form-group">
-                            <input className="form-control font-sm" type="text" placeholder="Username *" />
+                            <input className="form-control font-sm" type="text" placeholder="Gender *" />
                           </div>
                         </div>
                         <div className="col-lg-12">
                           <div className="form-group">
-                            <input className="form-control font-sm" type="text" placeholder="Phone Number *" />
+                        
+                            <input className="form-control font-sm" type="date" placeholder="Contact *" style={{ border:'none'}}/>
+                           
                           </div>
                         </div>
                         <div className="col-lg-12">
                           <div className="form-group">
-                            <input className="form-control font-sm" type="text" placeholder="Email *" />
+                            <input className="form-control font-sm" type="text" placeholder="Contact *" />
                           </div>
                         </div>
                        <div className="col-lg-12">

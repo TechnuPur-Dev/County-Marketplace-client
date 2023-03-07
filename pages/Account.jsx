@@ -12,10 +12,10 @@ import Cookies from "js-cookie";
 
 const Account = (props) => {
   console.log(props,'infooo');
-  const [info, setInfo] = useState(props.info)
+  const [info, setInfo] = useState(props?.info)
   useEffect(() => {
-    localStorage.setItem("username",props.info.full_name)
-    localStorage.setItem("e-mail",props.info.email)
+    localStorage.setItem("username",props?.info?.full_name)
+    localStorage.setItem("e-mail",props?.info?.email)
   }, [])
   
   return (
@@ -31,11 +31,11 @@ const Account = (props) => {
         style={{ backgroundColor: "#405786", borderRadius: "50%" }}
       />
       <Topbar/>
-       <Header categories={props.categories} />
+       <Header categories={props?.categories} />
       <main className="main">
       <section className="section-box shop-template mt-30">
       <div className="container box-account-template">
-      <h3>Hello {info.full_name}</h3>
+      <h3>Hello {info?.full_name}</h3>
           <p className="font-md color-gray-500">From your account dashboard. you can easily check & view your recent orders,<br className="d-none d-lg-block"/>manage your shipping and billing addresses and edit your password and account details.</p>
           <div className="box-tabs mb-100">
           <ul className="nav nav-tabs nav-tabs-account" role="tablist">

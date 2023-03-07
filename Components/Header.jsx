@@ -341,7 +341,7 @@ const Header = (props) => {
                   <div className="sidebar-left">
                     <ul className="menu-texts menu-close"    // style={{minWidth:'250px'}}
                     >
-                      {catg.filter((levl1) => levl1.level === 1).map((levl1) => (
+                      {catg?.filter((levl1) => levl1.level === 1).map((levl1) => (
 
                         <li className={((catg.some((fil) => ((levl1.category_id == fil.parent_id))))) ? 'has-children' : ''} key={levl1.id}>
                           <a href="#">
