@@ -31,27 +31,20 @@ const Settings = (props) => {
                             <input className="form-control font-sm" type="text" placeholder="Email *" />
                           </div>
                         </div>
-                        <div className="col-lg-12">
-                          <div className="form-group">
-                            <label className="font-sm color-brand-3" for="checkboxOffers">
-                              <input className="checkboxOffer" id="checkboxOffers" type="checkbox" />
-                              Keep me up to date on news and exclusive offers
-                            </label>
+                       <div className="col-lg-12">
+                          <div className="form-group mt-20">
+                            <input className="btn btn-buy w-auto h54 font-md-bold" value="Save change" />
                           </div>
                         </div>
                         <div className="col-lg-12">
                           <h5 className="font-md-bold color-brand-3 mt-15 mb-20">Shipping address</h5>
                         </div>
-                        <div className="col-lg-6">
+                        <div className="col-lg-12">
                           <div className="form-group">
-                            <input className="form-control font-sm" type="text" placeholder="First name*" />
+                            <input className="form-control font-sm" type="text" placeholder="Full Name*" />
                           </div>
                         </div>
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <input className="form-control font-sm" type="text" placeholder="Last name*" />
-                          </div>
-                        </div>
+                        
                         <div className="col-lg-12">
                           <div className="form-group">
                             <input className="form-control font-sm" type="text" placeholder="Address 1*" />
@@ -62,44 +55,35 @@ const Settings = (props) => {
                             <input className="form-control font-sm" type="text" placeholder="Address 2*" />
                           </div>
                         </div>
+                       
                         <div className="col-lg-6">
                           <div className="form-group">
-                            <select className="form-control font-sm select-style1 color-gray-700">
-                              <option value="">Select an option...</option>
-                              <option value="1">Option 1</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <input className="form-control font-sm" type="text" placeholder="City*" />
-                          </div>
-                        </div>
-                        <div className="col-lg-12">
-                          <div className="form-group">
-                            <input className="form-control font-sm" type="text" placeholder="PostCode / ZIP*" />
+                            <input className="form-control font-sm" type="text" placeholder="City Id*" />
                           </div>
                         </div>
                         <div className="col-lg-6">
                           <div className="form-group">
-                            <input className="form-control font-sm" type="text" placeholder="Company name" />
+                            <input className="form-control font-sm" type="text" placeholder="State/Province Id*" />
+                          </div>
+                        </div>
+                        
+                        <div className="col-lg-6">
+                          <div className="form-group">
+                            <input className="form-control font-sm" type="text" placeholder="Landmark*" />
                           </div>
                         </div>
                         <div className="col-lg-6">
                           <div className="form-group">
-                            <input className="form-control font-sm" type="text" placeholder="Phone*" />
+                            <input className="form-control font-sm" type="text" placeholder="Default Address*" />
                           </div>
                         </div>
-                        <div className="col-lg-12">
-                          <div className="form-group mb-0">
-                            <textarea className="form-control font-sm" placeholder="Additional Information" rows="5"></textarea>
-                          </div>
-                        </div>
+                       
                         <div className="col-lg-12">
                           <div className="form-group mt-20">
                             <input className="btn btn-buy w-auto h54 font-md-bold" value="Save change" />
                           </div>
                         </div>
+                        
                       </div>
                     </form>
                   </div>

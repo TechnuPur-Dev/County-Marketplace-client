@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import Loader from '../Components/Loaderr'
 import Topbar from '../Components/Topbar'
 import Header from "../Components/Header";
@@ -8,8 +8,16 @@ import OrderTracking from '../Components/OrderTracking';
 import Settings from '../Components/Settings';
 import Orders from '../Components/Orders';
 import Whishlist from '../Components/Whishlist';
+import Cookies from "js-cookie"; 
 
 const Account = (props) => {
+  console.log(props,'infooo');
+  const [info, setInfo] = useState(props.info)
+  useEffect(() => {
+    localStorage.setItem("username",props.info.full_name)
+    localStorage.setItem("e-mail",props.info.email)
+  }, [])
+  
   return (
     <>
       <Loader/>
@@ -27,7 +35,7 @@ const Account = (props) => {
       <main className="main">
       <section className="section-box shop-template mt-30">
       <div className="container box-account-template">
-      <h3>Hello Steven</h3>
+      <h3>Hello {info.full_name}</h3>
           <p className="font-md color-gray-500">From your account dashboard. you can easily check & view your recent orders,<br className="d-none d-lg-block"/>manage your shipping and billing addresses and edit your password and account details.</p>
           <div className="box-tabs mb-100">
           <ul className="nav nav-tabs nav-tabs-account" role="tablist">
@@ -49,32 +57,10 @@ const Account = (props) => {
                     </div>
                     <div className="button-notification"><a className="btn btn-buy w-auto">View Details</a></div>
                   </div>
-                  <div className="item-notification">
-                    <div className="image-notification"><img src="assets/imgs/page/account/img-2.png" alt="Ecom"/></div>
-                    <div className="info-notification">
-                      <h5 className="mb-5">COD payment confirmed</h5>
-                      <p className="font-md color-brand-3">Order<span className="font-md-bold"> 220914QR92BXNH</span> has been confirmed. Please check the estimated delivery time in the order details section!</p>
-                    </div>
-                    <div className="button-notification"><a className="btn btn-buy w-auto">View Details</a></div>
-                  </div>
-                  <div className="item-notification">
-                    <div className="image-notification"><img src="assets/imgs/page/account/img-3.png" alt="Ecom"/></div>
-                    <div className="info-notification">
-                      <h5 className="mb-5">COD payment confirmed</h5>
-                      <p className="font-md color-brand-3">Order<span className="font-md-bold"> 220914QR92BXNH</span> has been confirmed. Please check the estimated delivery time in the order details section!</p>
-                    </div>
-                    <div className="button-notification"><a className="btn btn-buy w-auto">View Details</a></div>
-                  </div>
-                  <div className="item-notification">
-                    <div className="image-notification"><img src="assets/imgs/page/account/img-4.png" alt="Ecom"/></div>
-                    <div className="info-notification">
-                      <h5>COD payment confirmed</h5>
-                      <p className="font-md color-brand-3">Order<span className="font-md-bold"> 220914QR92BXNH</span> has been confirmed. Please check the estimated delivery time in the order details section!</p>
-                    </div>
-                    <div className="button-notification"><a className="btn btn-buy w-auto">View Details</a></div>
-                  </div>
+                  
+                  
                 </div>
-                <nav>
+                {/* <nav>
                   <ul className="pagination">
                     <li className="page-item"><a className="page-link page-prev" href="#"></a></li>
                     <li className="page-item"><a className="page-link" href="#">1</a></li>
@@ -85,7 +71,7 @@ const Account = (props) => {
                     <li className="page-item"><a className="page-link" href="#">6</a></li>
                     <li className="page-item"><a className="page-link page-next" href="#"></a></li>
                   </ul>
-                </nav>
+                </nav> */}
               </div>
              <Whishlist styleClass={"tab-pane fade"}/>
               <Orders styleClass={"tab-pane fade"}/>
@@ -104,6 +90,13 @@ const Account = (props) => {
 
 export default Account
 export async function getServerSideProps(context) {
+  const { req, res } = context;
+  const token = req.cookies.token || Cookies.get("token");
+  if (!token) {
+    res.setHeader("location", "/Login");
+    res.statusCode = 302;
+    res.end();
+  }
   var axios = require('axios');
   let categories = []
   var config2 = {
@@ -119,7 +112,27 @@ export async function getServerSideProps(context) {
   } catch (error) {
     console.log(error);
   }
+  let info = {}
+  let urlo=""
+  var config1 = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/getStoreCustomerProfile",
+  
+  headers: { 
+    'Authorization': `Bearer ${token}`
+  }
+  };
+
+  try {
+    const response = await axios(config1); // wait for the axios request to complete
+    info = response.data.payload;
+    
+  } catch (error) {
+    console.log(error);
+     
+  }
   return {
-    props: { categories }, // pass the populated products array as props
+    props: { categories,info }, // pass the populated products array as props
   };
 }

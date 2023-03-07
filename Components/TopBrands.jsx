@@ -16,6 +16,7 @@ import acerS from "../public/imgs/page/homepage2/acer.svg"
 import toshibaP from "../public/imgs/page/homepage2/img-toshiba.png"
 import toshibaS from "../public/imgs/page/homepage2/toshiba.svg"
 // import '../css/pagination.min.css';
+
 const TopBrands = () => {
   return (
     <section className="section-box  pt-50 pb-50 mt-50">

@@ -9,8 +9,11 @@ import googleImg from "../public/imgs/page/account/google.svg";
 import amazonImg from "../public/imgs/page/account/amazon.svg";
 import  qs from 'qs'
 import { toast } from "react-toastify";
+import { useRouter } from "next/router";
+import Cookies from "js-cookie"; 
 
 const Login = (props) => {
+  const router = useRouter();
   let [loginData, setLoginData] = useState({
     username: '',
     password: '',
@@ -22,7 +25,7 @@ const Login = (props) => {
     var config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: 'http://countydev92-001-site1.ftempurl.com/login',
+      url: 'http://countydev92-001-site1.ftempurl.com/store-customer-login',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
@@ -32,13 +35,16 @@ const Login = (props) => {
     axios(config)
       .then(function (response) {
         toast.success(
-          JSON.stringify(response.data.message)
+          "Successfully Login"
         );
+        localStorage.setItem("token", response.data.access_token);
+        Cookies.set("token", response.data.access_token);
+    router.push('/Account');
+        
       })
       .catch(function (error) {
-
         toast.error(
-          JSON.stringify(error?.response?.data?.Message)
+          JSON.stringify(error?.response?.data?.error_description)
         );
       });
 
@@ -168,6 +174,13 @@ const Login = (props) => {
 
 export default Login;
 export async function getServerSideProps(context) {
+  const { req, res } = context;
+  const token = req.cookies.token || Cookies.get("token");
+  if (token) {
+    res.setHeader("location", "/Account");
+    res.statusCode = 302;
+    res.end();
+  }
   var axios = require('axios');
   let categories = []
   var config2 = {

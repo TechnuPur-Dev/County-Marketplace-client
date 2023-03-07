@@ -10,9 +10,10 @@ import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { toast } from 'react-toastify';
-import { Router } from 'next/router';
+import { useRouter  } from 'next/router';
 
 const Register = (props) => {
+  const router = useRouter()
   var axios = require('axios');
   const [show, setShow] = useState(false);
   let [validation, setValidtation] = useState(false);
@@ -109,7 +110,7 @@ const Register = (props) => {
           JSON.stringify(response.data.message)
         );
         handleClose();
-        Router.push(`/Login`);
+        router.push(`/Login`);
       })
       .catch(function (error) {
         toast.error(

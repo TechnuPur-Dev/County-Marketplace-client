@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import English from "../public/imgs/template/flag-en.svg";
 import France from "../public/imgs/template/flag-fr.svg";
 import Portugal from "../public/imgs/template/flag-pt.svg";
 import Espa from "../public/imgs/template/flag-es.svg";
 import china from "../public/imgs/template/flag-cn.svg";
 import Link from "next/link";
+
 const Topbar = () => {
+  const [token, settoken] = useState("")
+  useEffect(() => {
+    settoken(localStorage.getItem("token"))
+  }, [])
+  
+  
+  
   return (
     <div className="topbar top-brand-2">
       <div className="container-topbar">
@@ -18,7 +26,7 @@ const Topbar = () => {
               </Link>
             </li>
           
-            <li>
+            {!token&&<><li>
               <Link className="font-xs" href={`/Register`}>
                 Register 
               </Link>
@@ -27,7 +35,7 @@ const Topbar = () => {
             <Link className="font-xs" href={`/Login`}>
                 Login
               </Link>
-            </li>
+            </li></>}
           </ul>
         </div>
         <div className="info-topbar text-center d-none d-xl-block">

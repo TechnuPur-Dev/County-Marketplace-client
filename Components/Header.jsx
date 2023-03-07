@@ -10,6 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from 'next/router'
 const Header = (props) => {
+  const [Name, setName] = useState("")
   const router = useRouter();
   // console.log(props, 'headerpppp')
   var axios = require("axios");
@@ -98,12 +99,17 @@ const Header = (props) => {
   ];
   // Sticky Menu Area and handle click outside event
   useEffect(() => {
+    setName(localStorage.getItem("username"))
     window.addEventListener("scroll", isSticky);
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       window.removeEventListener("scroll", isSticky);
       document.removeEventListener("mousedown", handleClickOutside);
     };
+   
+   
+     
+    
   });
   let Search = (e) => {
     e.preventDefault()
@@ -261,7 +267,7 @@ const Header = (props) => {
                     className="font-lg icon-list icon-account"
                     onClick={AccountDropdown}
                   >
-                    <span>Account</span>
+                    <span>{Name && `${Name} 's Account`}</span>
                   </span>
 
                   <div
