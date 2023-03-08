@@ -76,7 +76,7 @@ const Account = (props) => {
              <Whishlist styleClass={"tab-pane fade"}/>
               <Orders styleClass={"tab-pane fade"}/>
              <OrderTracking styleClass={"tab-pane fade"}/>
-             <Settings styleClass={"tab-pane fade"} info={props.info}/>
+             <Settings styleClass={"tab-pane fade"} info={props.info} allAddress={props.allAddress}/>
              
             </div>
           </div>
@@ -113,7 +113,6 @@ export async function getServerSideProps(context) {
     console.log(error);
   }
   let info = {}
-  let urlo=""
   var config1 = {
     method: "get",
     maxBodyLength: Infinity,
@@ -132,7 +131,26 @@ export async function getServerSideProps(context) {
     console.log(error);
      
   }
+  let allAddress = {}
+  var config1 = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/GetCustomerAddressBook",
+  
+  headers: { 
+    'Authorization': `Bearer ${token}`
+  }
+  };
+
+  try {
+    const response = await axios(config1); // wait for the axios request to complete
+    allAddress = response.data.payload;
+    
+  } catch (error) {
+    console.log(error);
+     
+  }
   return {
-    props: { categories,info }, // pass the populated products array as props
+    props: { categories,info,allAddress }, // pass the populated products array as props
   };
 }
