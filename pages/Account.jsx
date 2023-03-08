@@ -76,7 +76,7 @@ const Account = (props) => {
              <Whishlist styleClass={"tab-pane fade"}/>
               <Orders styleClass={"tab-pane fade"}/>
              <OrderTracking styleClass={"tab-pane fade"}/>
-             <Settings styleClass={"tab-pane fade"}/>
+             <Settings styleClass={"tab-pane fade"} info={props.info}/>
              
             </div>
           </div>
