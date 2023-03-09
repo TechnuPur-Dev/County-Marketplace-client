@@ -7,49 +7,89 @@ import Footer from "../Components/Footer";
 import Link from "next/link";
 import googleImg from "../public/imgs/page/account/google.svg";
 import amazonImg from "../public/imgs/page/account/amazon.svg";
-import  qs from 'qs'
+import qs from 'qs';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
-import Cookies from "js-cookie"; 
+import Cookies from "js-cookie";
 
 const Login = (props) => {
+  var axios = require('axios');
   const router = useRouter();
+  const [show, setShow] = useState(false);
+  let [validation, setValidtation] = useState(false);
+  let [forgetmailVal, setForgetmailVal] = useState(false);
+  
   let [loginData, setLoginData] = useState({
     username: '',
     password: '',
     grant_type: 'password'
   })
+  let [resetData, setResetData] = useState({
+    email: loginData.userName,
+    password: '',
+    otp: 'F12345'
+  })
+  const handleClose = () => setShow(false);
+  const handleShow = () =>  setShow(true)
   const SignIn = () => {
-    var axios = require('axios');
-    var data = qs.stringify(loginData);
+    let validate = false;
+    if (loginData.password == '' || loginData.username == '')
+      validate = true;
+    setValidtation(validate)
+    if (!validate) {
+      var data = qs.stringify(loginData);
+      var config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'http://countydev92-001-site1.ftempurl.com/store-customer-login',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        data: data
+      };
+
+      axios(config)
+        .then(function (response) {
+          toast.success(
+            "Successfully Login"
+          );
+          localStorage.setItem("token", response.data.access_token);
+          Cookies.set("token", response.data.access_token);
+          router.push('/Account');
+
+        })
+        .catch(function (error) {
+          toast.error(
+            JSON.stringify(error?.response?.data?.error_description)
+          );
+        });
+
+    }
+  }
+  const ForgetPass = () => {
+    let validate = false;
+    if (loginData.username == '')
+      validate = true;
+      setForgetmailVal(validate)
+    if (!validate) {
     var config = {
-      method: 'post',
+      method: 'get',
       maxBodyLength: Infinity,
-      url: 'http://countydev92-001-site1.ftempurl.com/store-customer-login',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      data: data
+      url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/forgotPassword?email=${loginData.username}`,
+
     };
 
     axios(config)
       .then(function (response) {
-        toast.success(
-          "Successfully Login"
-        );
-        localStorage.setItem("token", response.data.access_token);
-        Cookies.set("token", response.data.access_token);
-    router.push('/Account');
-        
+        toast.success(response.data.message)
+        handleShow()
       })
       .catch(function (error) {
-        toast.error(
-          JSON.stringify(error?.response?.data?.error_description)
-        );
+        toast.error(error.response.data.Message)
       });
-
-  }
-
+  }}
   return (
     <>
       {" "}
@@ -85,6 +125,8 @@ const Login = (props) => {
                       value={loginData.username}
                       onChange={(e) => { setLoginData({ ...loginData, username: e.target.value }) }}
                     />
+                    {(validation || forgetmailVal) && loginData.username == '' && <span className="error">This field is required !</span>}
+
                   </div>
                   <div className="form-group">
                     <label className="mb-5 font-sm color-gray-700">
@@ -97,6 +139,8 @@ const Login = (props) => {
                       value={loginData.password}
                       onChange={(e) => { setLoginData({ ...loginData, password: e.target.value }) }}
                     />
+                    {validation && loginData.password == '' && <span className="error">This field is required !</span>}
+
                   </div>
                   <div className="row">
                     <div className="col-lg-6">
@@ -109,7 +153,7 @@ const Login = (props) => {
                     </div>
                     <div className="col-lg-6 text-end">
                       <div className="form-group">
-                        <a className="font-xs color-gray-500" href="#">
+                        <a className="font-xs color-gray-500" href="#" onClick={ForgetPass}>
                           Forgot your password?
                         </a>
                       </div>
@@ -168,6 +212,35 @@ const Login = (props) => {
         </section>
       </main>
       <Footer />
+      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+                    <Modal.Header  >
+                      <Modal.Title >Reset Password</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <div className="form-register  ">
+                        <div className="form-group">
+                          <label className=" font-sm color-gray-700">Email *</label>
+                          <input className="form-control" type="email" value={resetData?.email} placeholder="stevenjob@gmail.com" />
+                        </div>
+                        <div className="form-group">
+                          <label className=" font-sm color-gray-700">OTP *</label>
+                          <input className="form-control" type="text" value={resetData?.otp} placeholder="12G4" />
+                        </div>
+                        <div className="form-group">
+                          <label className=" font-sm color-gray-700">New Password *</label>
+                          <input className="form-control" type="text" value={resetData?.password} placeholder="*******" />
+                        </div>
+                      </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose}>
+                        Close
+                      </Button>
+                      <Button variant="primary" >
+                        Verify
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
     </>
   );
 };
