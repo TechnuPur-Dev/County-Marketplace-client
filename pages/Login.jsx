@@ -20,19 +20,47 @@ const Login = (props) => {
   const [show, setShow] = useState(false);
   let [validation, setValidtation] = useState(false);
   let [forgetmailVal, setForgetmailVal] = useState(false);
-  
+   let[passVal, setPassVal] = useState(false);
   let [loginData, setLoginData] = useState({
     username: '',
     password: '',
     grant_type: 'password'
   })
   let [resetData, setResetData] = useState({
-    email: loginData.username,
+    email: '',
     password: '',
     otp: 'F12345'
   })
   const handleClose = () => setShow(false);
-  const handleShow = () =>  setShow(true)
+  const handleShow = () => setShow(true)
+  const ResetPass = () => {
+    let validate = false;
+    if (resetData.password == '')
+      validate = true;
+      setPassVal(validate);
+    if (!validate) {
+      var axios = require('axios');
+
+      var config = {
+        method: 'put',
+        maxBodyLength: Infinity,
+        url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/ResetPassword?email=${resetData.email}&otp=${resetData.otp}&password=${resetData.password}`,
+        headers: {}
+      };
+
+      axios(config)
+        .then(function (response) {
+          toast.success(response.data.message)
+          setLoginData({ ...loginData, password: resetData.password })
+          handleClose();
+
+        })
+        .catch(function (error) {
+          toast.success(error.response.data.message)
+        });
+
+    }
+  }
   const SignIn = () => {
     let validate = false;
     if (loginData.password == '' || loginData.username == '')
@@ -72,24 +100,27 @@ const Login = (props) => {
     let validate = false;
     if (loginData.username == '')
       validate = true;
-      setForgetmailVal(validate)
+    setForgetmailVal(validate)
     if (!validate) {
-    var config = {
-      method: 'get',
-      maxBodyLength: Infinity,
-      url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/forgotPassword?email=${loginData.username}`,
+      var config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/forgotPassword?email=${loginData.username}`,
 
-    };
+      };
 
-    axios(config)
-      .then(function (response) {
-        toast.success(response.data.message)
-        handleShow()
-      })
-      .catch(function (error) {
-        toast.error(error.response.data.Message)
-      });
-  }}
+      axios(config)
+        .then(function (response) {
+          toast.success(response.data.message)
+          setResetData({ ...resetData, email: loginData.username })
+          handleShow();
+         
+        })
+        .catch(function (error) {
+          toast.error(error.response.data.Message)
+        });
+    }
+  }
   return (
     <>
       {" "}
@@ -213,34 +244,40 @@ const Login = (props) => {
       </main>
       <Footer />
       <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
-                    <Modal.Header  >
-                      <Modal.Title >Reset Password</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                      <div className="form-register  ">
-                        <div className="form-group">
-                          <label className=" font-sm color-gray-700">Email *</label>
-                          <input className="form-control" type="email" value={resetData?.email} placeholder="stevenjob@gmail.com" />
-                        </div>
-                        <div className="form-group">
-                          <label className=" font-sm color-gray-700">OTP *</label>
-                          <input className="form-control" type="text" value={resetData?.otp} placeholder="12G4" />
-                        </div>
-                        <div className="form-group">
-                          <label className=" font-sm color-gray-700">New Password *</label>
-                          <input className="form-control" type="text" value={resetData?.password} placeholder="*******" />
-                        </div>
-                      </div>
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleClose}>
-                        Close
-                      </Button>
-                      <Button variant="primary" >
-                        Verify
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
+        <Modal.Header  >
+          <Modal.Title >Reset Password</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="form-register  ">
+            <div className="form-group">
+              <label className=" font-sm color-gray-700">Email *</label>
+              <input className="form-control" type="email" value={resetData?.email} placeholder="stevenjob@gmail.com" />
+            </div>
+            <div className="form-group">
+              <label className=" font-sm color-gray-700">OTP *</label>
+              <input className="form-control" type="text" value={resetData?.otp} placeholder="12G4" />
+            </div>
+            <div className="form-group">
+              <label className=" font-sm color-gray-700">New Password *</label>
+
+              <input className="form-control" type="password" value={resetData?.password} 
+              onChange={(e)=>{ 
+                setResetData({ ...resetData, password: e.target.value})}} 
+                placeholder="*******" />
+              {passVal && resetData?.password == '' && <span className="error">This field is required !</span>}
+
+            </div>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={ResetPass} >
+            Reset
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };

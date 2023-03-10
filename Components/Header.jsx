@@ -99,7 +99,7 @@ const Header = (props) => {
   ];
   // Sticky Menu Area and handle click outside event
   useEffect(() => {
-    setName(localStorage.getItem("username"))
+    setName(localStorage.getItem("token"))
     window.addEventListener("scroll", isSticky);
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -263,12 +263,12 @@ const Header = (props) => {
               </div>
               <div className="header-shop">
                 <div className="d-inline-block box-dropdown-cart">
-                  <span
+                {Name && <span
                     className="font-lg icon-list icon-account"
                     onClick={AccountDropdown}
                   >
-                    <span>{Name && `${Name} 's Account`}</span>
-                  </span>
+                    <span>My Account</span>
+                  </span>}
 
                   <div
                     className={`${(expandAccount && "dropdown-account dropdown-open") ||
