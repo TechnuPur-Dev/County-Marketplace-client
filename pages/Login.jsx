@@ -27,7 +27,7 @@ const Login = (props) => {
     grant_type: 'password'
   })
   let [resetData, setResetData] = useState({
-    email: loginData.userName,
+    email: loginData.username,
     password: '',
     otp: 'F12345'
   })
