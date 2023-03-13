@@ -18,7 +18,7 @@ const DealsSection = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-3">
-            <div className="banner-left">
+            <div className="banner-left" style={{ backgroundImage: "url(../imgs/page/homepage6/banner1.png)" }}>
               <div className="box-adsolute-banner">
                 <h5 className="color-gray-900">Grocery</h5>
                 <a className="btn btn-link-brand-2 text-capitalize">Shop Now</a>

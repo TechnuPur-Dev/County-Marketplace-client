@@ -11,6 +11,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { toast } from 'react-toastify';
 import { useRouter  } from 'next/router';
+import Cookies from "js-cookie";
 
 const Register = (props) => {
   const router = useRouter()
@@ -242,6 +243,13 @@ const Register = (props) => {
 
 export default Register
 export async function getServerSideProps(context) {
+  const { req, res } = context;
+  const token = req.cookies.token || Cookies.get("token");
+  if (token) {
+    res.setHeader("location", "/Account");
+    res.statusCode = 302;
+    res.end();
+  }
   var axios = require('axios');
   let categories = []
   var config2 = {

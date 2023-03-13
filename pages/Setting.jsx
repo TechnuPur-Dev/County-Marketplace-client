@@ -35,7 +35,7 @@ const SettingPage = (props) => {
       </div>
       <div className="container pt-10">
       <div className="col-10"> 
-      <Settings styleClass={"tab-pane fade active show"}/>
+      <Settings styleClass={"tab-pane fade active show"} info={props.info} allAddress={props.allAddress}/>
       </div>
      
       </div>
@@ -48,6 +48,13 @@ const SettingPage = (props) => {
 
 export default SettingPage
 export async function getServerSideProps(context) {
+  const { req, res } = context;
+  const token = req.cookies.token || Cookies.get("token");
+  if (!token) {
+    res.setHeader("location", "/Login");
+    res.statusCode = 302;
+    res.end();
+  }
   var axios = require('axios');
   let categories = []
   var config2 = {
@@ -63,7 +70,45 @@ export async function getServerSideProps(context) {
   } catch (error) {
     console.log(error);
   }
+  let info = {}
+  var config1 = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/getStoreCustomerProfile",
+  
+  headers: { 
+    'Authorization': `Bearer ${token}`
+  }
+  };
+
+  try {
+    const response = await axios(config1); // wait for the axios request to complete
+    info = response.data.payload;
+    
+  } catch (error) {
+    console.log(error);
+     
+  }
+  let allAddress = {}
+  var config1 = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/GetCustomerAddressBook",
+  
+  headers: { 
+    'Authorization': `Bearer ${token}`
+  }
+  };
+
+  try {
+    const response = await axios(config1); // wait for the axios request to complete
+    allAddress = response.data.payload;
+    
+  } catch (error) {
+    console.log(error);
+     
+  }
   return {
-    props: { categories }, // pass the populated products array as props
+    props: { categories,info,allAddress }, // pass the populated products array as props
   };
 }

@@ -6447,6 +6447,7 @@ a.text-brand-3:hover {
   flex-wrap: wrap;
   margin-left: -10px;
   margin-right: -10px;
+  justify-content: center;
 }
 .list-9-col li {
   flex: 0 0 auto;
@@ -6993,7 +6994,8 @@ a.text-brand-3:hover {
   position: relative;
   width: 100%;
   height: 535px;
-  background: url(../public/imgs/page/homepage6/banner1.png) no-repeat top center;
+  background-position: top center;
+  background-repeat: no-repeat;
   background-size: cover;
   margin-bottom: 30px;
 }

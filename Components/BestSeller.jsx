@@ -29,10 +29,8 @@ const BestSeller = () => {
             <div className="list-products-5">
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -60,10 +58,8 @@ const BestSeller = () => {
               </div>
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -91,10 +87,8 @@ const BestSeller = () => {
               </div>
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -122,10 +116,8 @@ const BestSeller = () => {
               </div>
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -153,10 +145,8 @@ const BestSeller = () => {
               </div>
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -188,10 +178,8 @@ const BestSeller = () => {
             <div className="list-products-5">
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -219,10 +207,8 @@ const BestSeller = () => {
               </div>
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link 
@@ -250,10 +236,8 @@ const BestSeller = () => {
               </div>
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -281,10 +265,8 @@ const BestSeller = () => {
               </div>
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -312,10 +294,8 @@ const BestSeller = () => {
               </div>
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -347,10 +327,8 @@ const BestSeller = () => {
             <div className="list-products-5">
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -378,10 +356,8 @@ const BestSeller = () => {
               </div>
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -409,10 +385,8 @@ const BestSeller = () => {
               </div>
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -440,10 +414,8 @@ const BestSeller = () => {
               </div>
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -471,10 +443,8 @@ const BestSeller = () => {
               </div>
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -506,10 +476,8 @@ const BestSeller = () => {
             <div className="list-products-5">
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -537,10 +505,8 @@ const BestSeller = () => {
               </div>
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -568,10 +534,8 @@ const BestSeller = () => {
               </div>
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -599,10 +563,8 @@ const BestSeller = () => {
               </div>
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link
@@ -630,10 +592,8 @@ const BestSeller = () => {
               </div>
               <div className="card-grid-style-3">
                 <div className="card-grid-inner">
-                  <div className="tools"><a className="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
-                      data-bs-placement="left"></a><Link className="btn btn-wishlist btn-tooltip mb-10"
+                  <div className="tools"><Link className="btn btn-wishlist btn-tooltip mb-10"
                       href={`/WishList`} aria-label="Add To Wishlist"></Link><a
-                      className="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a
                       className="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview"
                       data-bs-toggle="modal"></a></div>
                   <div className="image-box"><span className="label bg-brand-2">-17%</span><Link

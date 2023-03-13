@@ -20,7 +20,7 @@ const Login = (props) => {
   const [show, setShow] = useState(false);
   let [validation, setValidtation] = useState(false);
   let [forgetmailVal, setForgetmailVal] = useState(false);
-   let[passVal, setPassVal] = useState(false);
+  let [passVal, setPassVal] = useState(false);
   let [loginData, setLoginData] = useState({
     username: '',
     password: '',
@@ -37,7 +37,7 @@ const Login = (props) => {
     let validate = false;
     if (resetData.password == '')
       validate = true;
-      setPassVal(validate);
+    setPassVal(validate);
     if (!validate) {
       var axios = require('axios');
 
@@ -84,7 +84,8 @@ const Login = (props) => {
             "Successfully Login"
           );
           localStorage.setItem("token", response.data.access_token);
-          Cookies.set("token", response.data.access_token);
+          const FiveMonthFromNow = new Date(Date.now() + 12 * 30 * 24 * 60 * 60 * 1000);
+          Cookies.set("token", response.data.access_token, { expires: FiveMonthFromNow });
           router.push('/Account');
 
         })
@@ -114,7 +115,7 @@ const Login = (props) => {
           toast.success(response.data.message)
           setResetData({ ...resetData, email: loginData.username })
           handleShow();
-         
+
         })
         .catch(function (error) {
           toast.error(error.response.data.Message)
@@ -260,9 +261,10 @@ const Login = (props) => {
             <div className="form-group">
               <label className=" font-sm color-gray-700">New Password *</label>
 
-              <input className="form-control" type="password" value={resetData?.password} 
-              onChange={(e)=>{ 
-                setResetData({ ...resetData, password: e.target.value})}} 
+              <input className="form-control" type="password" value={resetData?.password}
+                onChange={(e) => {
+                  setResetData({ ...resetData, password: e.target.value })
+                }}
                 placeholder="*******" />
               {passVal && resetData?.password == '' && <span className="error">This field is required !</span>}
 

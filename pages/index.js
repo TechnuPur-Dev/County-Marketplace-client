@@ -32,7 +32,7 @@ export default function Home(props) {
       <main className="main">
         <DealsSection />
         <InfoSection />
-        <CategoriesSection />
+        <CategoriesSection categories={props.categories} />
         <Banner banner={props.banners} />
         <BestSeller />
         <TopBrands />

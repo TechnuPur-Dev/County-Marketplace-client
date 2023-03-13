@@ -9,6 +9,7 @@ import Select from "react-select";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from 'next/router'
+import Cookies from "js-cookie";
 const Header = (props) => {
   const [Name, setName] = useState("")
   const router = useRouter();
@@ -97,31 +98,36 @@ const Header = (props) => {
     { value: "Infant/Baby Products", label: "Infant/Baby Products" },
     { value: "Restaurent", label: "Restaurent" },
   ];
+  const SignOut = () => {
+    Cookies.remove('token')
+    router.push('/Login')
+  }
   // Sticky Menu Area and handle click outside event
   useEffect(() => {
-    setName(localStorage.getItem("token"))
+    const token = Cookies.get("token");
+    setName(token)
     window.addEventListener("scroll", isSticky);
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       window.removeEventListener("scroll", isSticky);
       document.removeEventListener("mousedown", handleClickOutside);
     };
-   
-   
-     
-    
+
+
+
+
   });
   let Search = (e) => {
     e.preventDefault()
     if (props.getProducts) {
       props?.getProducts(`page_size=${props?.proFilters?.page_size}&page_number=${props?.proFilters?.page_number}&search_string=${(searchString == '') ? -1 : searchString}&sort_column=${props?.proFilters?.sort_column}&sort_order=${props?.proFilters?.sort_order}&categories_ids=${props?.proFilters?.categories_ids}&brands_ids=${props?.proFilters?.brands_ids}&price_from=${props?.proFilters?.price_from}&price_to=${props?.proFilters?.price_to}&waranty_duration_ids=-1${props?.proFilters?.waranty_duration_ids}&vendor_id=${props?.proFilters?.vendor_id}`)
-      props?.applyFilters('search_string', searchString)
+      props?.applyFilters('search_string', searchString == '' ? -1 : searchString)
     }
     else {
       if (searchString !== '') {
         router.push({
           pathname: '/ShopGrid',
-          query: `page_size=30&page_number=1&search_string=${(searchString == '')? -1 : searchString}&sort_column=product_name&sort_order=ASC&categories_ids=-1&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`
+          query: `page_size=30&page_number=1&search_string=${(searchString == '') ? -1 : searchString}&sort_column=product_name&sort_order=ASC&categories_ids=-1&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`
 
         })
       }
@@ -130,7 +136,7 @@ const Header = (props) => {
   }
 
   //Dynamic Categories Menu
-  
+
   // let getProduct = async (item,i) => {
   //  console.log(i,'parenttt')
   //   let proCatg = catg.filter((fil_item) => (fil_item.category_id == item.parent_id))
@@ -212,9 +218,9 @@ const Header = (props) => {
                       <input
                         className="form-control font-xs"
                         type="text"
-                        value={props?.applyFilters && ((props?.proFilters?.search_string==-1)?'':props?.proFilters?.search_string) || searchString }
+                        value={props?.applyFilters && ((props?.proFilters?.search_string == -1) ? '' : props?.proFilters?.search_string) || searchString}
                         placeholder="Search for item"
-                        onChange={(e) => {(props?.applyFilters)? (setSearchString(e.target.value), props?.applyFilters('search_string', e.target.value)):(setSearchString(e.target.value)) }}
+                        onChange={(e) => { (props?.applyFilters) ? (setSearchString(e.target.value), props?.applyFilters('search_string', e.target.value)) : (setSearchString(e.target.value)) }}
 
                       />
 
@@ -232,10 +238,10 @@ const Header = (props) => {
                       </Link>
                     </li>
                     <li>
-                      <Link href={`/About-us`}>About</Link>
+                      <Link href={`/About`}>About</Link>
                     </li>
                     <li>
-                      <Link href={`/Contact-us`}>Contact</Link>
+                      <Link href={`/Contact`}>Contact</Link>
                     </li>
                     <li className="has-children">
                       <Link href={`/VendorList`}>Vendors</Link>
@@ -263,7 +269,7 @@ const Header = (props) => {
               </div>
               <div className="header-shop">
                 <div className="d-inline-block box-dropdown-cart">
-                {Name && <span
+                  {Name && <span
                     className="font-lg icon-list icon-account"
                     onClick={AccountDropdown}
                   >
@@ -289,10 +295,10 @@ const Header = (props) => {
                         <Link href={`/WishList`}>My Wishlist</Link>
                       </li>
                       <li>
-                        <Link href={`/Settings`}>Setting</Link>
+                        <Link href={`/Setting`}>Setting</Link>
                       </li>
-                      <li>
-                        <Link href={`/Login`}>Sign out</Link>
+                      <li onClick={SignOut}>
+                        Sign out
                       </li>
                     </ul>
                   </div>
@@ -481,10 +487,10 @@ const Header = (props) => {
                       <Link href={`/ShopGrid`}>Shop</Link>
                     </li>
                     <li>
-                      <Link href={`/About-us`}>About</Link>
+                      <Link href={`/About`}>About</Link>
                     </li>
                     <li>
-                      <Link href={`/Contact-us`}>Contact</Link>
+                      <Link href={`/Contact`}>Contact</Link>
                     </li>
                     <li
                       className={`has-children ${expandList ? "active" : ""}`}
@@ -574,10 +580,10 @@ const Header = (props) => {
                     <Link href={`/WishList`}>My Wishlist</Link>
                   </li>
                   <li>
-                    <Link href={`/Settings`}>Setting</Link>
+                    <Link href={`/Setting`}>Setting</Link>
                   </li>
-                  <li>
-                    <Link href={`/Login`}>Sign out</Link>
+                  <li onClick={SignOut}>
+                    Sign out
                   </li>
                 </ul>
               </div>

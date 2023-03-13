@@ -1,41 +1,34 @@
 import React, { useEffect, useState } from "react";
-import English from "../public/imgs/template/flag-en.svg";
-import France from "../public/imgs/template/flag-fr.svg";
-import Portugal from "../public/imgs/template/flag-pt.svg";
-import Espa from "../public/imgs/template/flag-es.svg";
-import china from "../public/imgs/template/flag-cn.svg";
 import Link from "next/link";
-
+import Cookies from "js-cookie";
 const Topbar = () => {
   const [token, settoken] = useState("")
   useEffect(() => {
-    settoken(localStorage.getItem("token"))
+    const tokenAcc = Cookies.get("token");
+    settoken(tokenAcc)
   }, [])
-  
-  
-  
   return (
     <div className="topbar top-brand-2">
       <div className="container-topbar">
         <div className="menu-topbar-left d-none d-xl-block">
           <ul className="nav-small">
             <li>
-           
+
               <Link className="font-xs" href={`/About`}>
                 About Us
               </Link>
             </li>
-          
-            {!token&&<><li>
+
+            {!token && <><li>
               <Link className="font-xs" href={`/Register`}>
-                Register 
+                Register
               </Link>
             </li>
-            <li>
-            <Link className="font-xs" href={`/Login`}>
-                Login
-              </Link>
-            </li></>}
+              <li>
+                <Link className="font-xs" href={`/Login`}>
+                  Login
+                </Link>
+              </li></>}
           </ul>
         </div>
         <div className="info-topbar text-center d-none d-xl-block">
