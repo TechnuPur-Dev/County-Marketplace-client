@@ -40,23 +40,3 @@ const NotFound = (props) => {
 }
  
 export default NotFound
-export async function getServerSideProps(context) {
-  var axios = require('axios');
-  let categories = []
-  var config2 = {
-    method: "get",
-    maxBodyLength: Infinity,
-    url: "http://countydev92-001-site1.ftempurl.com/api/marketplace/GetCategories",
-    headers: {},
-  };
-
-  try {
-    const response = await axios(config2); // wait for the axios request to complete
-    categories = response.data.payload;
-  } catch (error) {
-    console.log(error);
-  }
-  return {
-    props: { categories }, // pass the populated products array as props
-  };
-}
