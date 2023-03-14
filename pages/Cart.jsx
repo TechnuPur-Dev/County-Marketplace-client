@@ -11,7 +11,7 @@ import QuickModal from '@/Components/QuickModal';
 const Cart = (props) => {
   return (
     <>
-      <Loader />
+      <Loader data={props.categories}/>
       <ScrollToTop
         smooth={true}
         color="white"

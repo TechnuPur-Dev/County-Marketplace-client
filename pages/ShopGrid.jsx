@@ -105,7 +105,7 @@ const ShopGrid = (props) => {
 
   return (
     <>
-      <Loader />
+      <Loader data={props.categories} />
       <ScrollToTop
         smooth={true}
         color="white"

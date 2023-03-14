@@ -17,7 +17,7 @@ export default function Home(props) {
   console.log(props?.categories,'categories');
   return (
     <>
-      <Loader />
+      <Loader data={props.categories} />
       <ScrollToTop
         smooth={true}
         color="white"

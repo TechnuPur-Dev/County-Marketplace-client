@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import favicon from "../public/imgs/template/favicon.svg";
-const Loader = () => {
+const Loader = (props) => {
   const [flag, setFlag] = useState(true);
   useEffect(() => {
-    setTimeout(() => {
+    if (props.data.length != 0)
       setFlag(false);
-    }, 2000);
+
   }, []);
 
   return (

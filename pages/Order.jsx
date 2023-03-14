@@ -9,7 +9,7 @@ import Link from 'next/link';
 const OrderPage = (props) => {
   return (
     <>
-      <Loader/>
+      <Loader data={props.categories}/>
       <ScrollToTop
       className='animate__animated animate__fadeInUp'
         smooth={true}

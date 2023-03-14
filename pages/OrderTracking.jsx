@@ -10,7 +10,7 @@ import Link from 'next/link';
 const OrederTrackingPage = (props) => {
   return (
     <>
-      <Loader/>
+      <Loader data={props.categories}/>
       <ScrollToTop
         smooth={true}
         color="white"

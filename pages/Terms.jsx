@@ -9,7 +9,7 @@ import team from "../public/imgs/page/about/team.jpg"
 const Terms = (props) => {
   return (
     <>
-      <Loader/>
+      <Loader data={props.categories}/>
       <ScrollToTop
         smooth={true}
         color="white"

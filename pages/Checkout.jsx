@@ -14,7 +14,7 @@ import Link from 'next/link';
 const Checkout = (props) => {
   return (
     <>
-     <Loader/>
+     <Loader data={props.categories}/>
       <ScrollToTop
         smooth={true}
         color="white"

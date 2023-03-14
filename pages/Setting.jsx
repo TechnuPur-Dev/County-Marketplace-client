@@ -9,7 +9,7 @@ import Link from 'next/link';
 const SettingPage = (props) => {
   return (
     <>
-      <Loader/>
+      <Loader data={props.categories}/>
       <ScrollToTop
         smooth={true}
         color="white"
