@@ -21,6 +21,7 @@ const Login = (props) => {
   let [validation, setValidtation] = useState(false);
   let [forgetmailVal, setForgetmailVal] = useState(false);
   let [passVal, setPassVal] = useState(false);
+  const [expiryDate, setExpiryDate] = useState(false);
   let [loginData, setLoginData] = useState({
     username: '',
     password: '',
@@ -61,6 +62,11 @@ const Login = (props) => {
 
     }
   }
+  const Remember = (e) => {
+    if (e.target.checked) {
+      setExpiryDate(true)
+    }
+  }
   const SignIn = () => {
     let validate = false;
     if (loginData.password == '' || loginData.username == '')
@@ -84,9 +90,17 @@ const Login = (props) => {
             "Successfully Login"
           );
           localStorage.setItem("token", response.data.access_token);
-          const FiveMonthFromNow = new Date(Date.now() + 12 * 30 * 24 * 60 * 60 * 1000);
-          Cookies.set("token", response.data.access_token, { expires: FiveMonthFromNow });
-          router.push('/Account');
+          if (expiryDate) {
+            const FiveMonthFromNow = new Date(Date.now() + 12 * 30 * 24 * 60 * 60 * 1000);
+            Cookies.set("token", response.data.access_token, { expires: FiveMonthFromNow });
+            router.push('/Account');
+          }
+          else {
+
+            Cookies.set("token", response.data.access_token);
+            router.push('/Account');
+          }
+
 
         })
         .catch(function (error) {
@@ -178,7 +192,7 @@ const Login = (props) => {
                     <div className="col-lg-6">
                       <div className="form-group">
                         <label className="color-gray-500 font-xs">
-                          <input className="checkagree" type="checkbox" />
+                          <input className="checkagree" type="checkbox" onChange={Remember} />
                           Remember me
                         </label>
                       </div>
