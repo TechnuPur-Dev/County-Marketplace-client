@@ -297,7 +297,7 @@ const Header = (props) => {
                       <li>
                         <Link href={`/Setting`}>Setting</Link>
                       </li>
-                      <li onClick={SignOut}>
+                      <li style={{cursor:'pointer'}} onClick={SignOut}>
                         Sign out
                       </li>
                     </ul>
@@ -354,7 +354,7 @@ const Header = (props) => {
                             <span className="img-link">
                               <Image src={`http://countydev92-001-site1.ftempurl.com/${levl1.category_icon_url}`} height={20} width={20} alt="Ecom" />
                             </span>
-                            <span className="text-link">{levl1.name}</span>
+                            <span className="text-link">{levl1.category_name}</span>
                           </a>
                           <ul
                             className={((catg.some((fil) => ((levl1.category_id == fil.parent_id))))) ? 'sub-menu' : ''}
@@ -582,7 +582,7 @@ const Header = (props) => {
                   <li>
                     <Link href={`/Setting`}>Setting</Link>
                   </li>
-                  <li onClick={SignOut}>
+                  <li style={{cursor:'pointer'}}  onClick={SignOut}>
                     Sign out
                   </li>
                 </ul>

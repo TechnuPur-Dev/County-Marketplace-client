@@ -21,7 +21,7 @@ const CategoriesSection = (props) => {
                   `page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=${levl1.category_id}&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`
 
               }}><Image height={110} width={70} src={`http://countydev92-001-site1.ftempurl.com/${levl1.category_icon_url}`} alt="Ecom" /></Link></div>
-                  <div className="text-info"><a className="font-sm color-gray-900 font-bold" >{levl1.name}</a>
+                  <div className="text-info"><a className="font-sm color-gray-900 font-bold" >{levl1.category_name}</a>
                     <p className="font-xs color-gray-500">1025 items</p>
                   </div>
                 </div>

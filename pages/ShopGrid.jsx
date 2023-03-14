@@ -96,7 +96,7 @@ const ShopGrid = (props) => {
   // }, [])
   useEffect(() => {
     console.log(proFilters);
-    let slider = bannerData.filter((image) => (image.banner_place_type == "Other"))
+    let slider = bannerData?.filter((image) => (image?.banner_place_type == "Other"))
     console.log(slider, 'bannnerss');
     setBannerData(slider[0])
 
@@ -116,7 +116,7 @@ const ShopGrid = (props) => {
         style={{ backgroundColor: "#405786", borderRadius: "50%" }}
       />
       <Topbar />
-      <Header applyFilters={applyFilters} getProducts={getProducts} proFilters={proFilters} categories={props.categories}  />
+      <Header applyFilters={applyFilters} getProducts={getProducts} proFilters={proFilters} categories={props.categories} />
       <main className="main">
         <div className="section-box shop-template mt-30">
           <div className="container">
@@ -155,24 +155,24 @@ const ShopGrid = (props) => {
                             style={{ margin: "0px" }}
                           >
                             <li>
-                              <a className="dropdown-item active" href="#"
+                              <a className={(proFilters.sort_order == 'ASC') ? 'dropdown-item active' : 'dropdown-item'} href="#"
                                 onClick={() => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=ASC&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('sort_order', 'ASC') }}
                               >
                                 ASC
                               </a>
                             </li>
                             <li>
-                              <a className="dropdown-item" href="#"
+                              <a className={(proFilters.sort_order == 'DSC') ? 'dropdown-item active' : 'dropdown-item'} href="#"
                                 onClick={() => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=DSC&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('sort_order', 'DSC') }}
                               >
                                 DSC
                               </a>
                             </li>
-                            <li>
-                              <a className="dropdown-item" href="#">
+                            {/* <li>
+                              <a  className={(proFilters.sort_order==30)?'dropdown-item active':'dropdown-item'} href="#">
                                 Comments products
                               </a>
-                            </li>
+                            </li> */}
                           </ul>
                         </div>
                       </div>
@@ -196,17 +196,17 @@ const ShopGrid = (props) => {
                             aria-labelledby="dropdownSort2"
                           >
                             <li>
-                              <a className="dropdown-item active" href="#" onClick={() => { getProducts(`page_size=30&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_size', 30) }}>
+                              <a className={(proFilters.page_size == 30) ? 'dropdown-item active' : 'dropdown-item'} href="#" onClick={() => { getProducts(`page_size=30&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_size', 30) }}>
                                 30 items
                               </a>
                             </li>
                             <li>
-                              <a className="dropdown-item" href="#" onClick={() => { getProducts(`page_size=50&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_size', 50) }}>
+                              <a className={(proFilters.page_size == 50) ? 'dropdown-item active' : 'dropdown-item'} href="#" onClick={() => { getProducts(`page_size=50&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_size', 50) }}>
                                 50 items
                               </a>
                             </li>
                             <li>
-                              <a className="dropdown-item" href="#" onClick={() => { getProducts(`page_size=100&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_size', 100) }}>
+                              <a className={(proFilters.page_size == 100) ? 'dropdown-item active' : 'dropdown-item'} href="#" onClick={() => { getProducts(`page_size=100&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_size', 100) }}>
                                 100 items
                               </a>
                             </li>
@@ -325,7 +325,7 @@ const ShopGrid = (props) => {
                           <a href="#" style={{ color: (levl1.category_id == proFilters.categories_ids) ? 'orange' : '' }}
                             onClick={() => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${levl1.category_id}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters("categories_ids", levl1.category_id) }}
                           >
-                            {levl1.name}
+                            {levl1.category_name}
                             {/* <span className="number">09</span> */}
                           </a>
                         </li></>)))}
@@ -853,17 +853,17 @@ const ShopGrid = (props) => {
                 <div className="banner-right h-500 text-center mb-30">
                   {/* <span className="text-no font-11">No.9</span> */}
                   <h5 className="font-23 mt-20">
-                  {bannerData?.banner_heading}
+                    {bannerData?.banner_heading}
                   </h5>
                   <p className="text-desc font-16 mt-15">
                     {bannerData?.banner_text}
                   </p>
                   <a href={{
-                pathname: '/ShopGrid',
-                query:
-                  `page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=-1&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`
+                    pathname: '/ShopGrid',
+                    query:
+                      `page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=-1&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`
 
-              }}>View Details</a>
+                  }}>View Details</a>
                 </div>
                 <style jsx>
                   {`
@@ -949,7 +949,7 @@ export async function getServerSideProps(context) {
   } catch (error) {
     console.log(error);
   }
-  
+
 
 
   return {
