@@ -4,7 +4,7 @@ const OrderTracking = (props) => {
   const {styleClass}=props
   return (
     <div className={styleClass}  id="tab-order-tracking" role="tabpanel" aria-labelledby="tab-order-tracking">
-                <p className="font-md color-gray-600">To track your order please enter your OrderID in the box below and press "Track" button. This was given to you on<br className="d-none d-lg-block" />your receipt and in the confirmation email you should have received.</p>
+                <p className="font-md color-gray-600">To track your order please enter your OrderID in the box below and press Track button. This was given to you on<br className="d-none d-lg-block" />your receipt and in the confirmation email you should have received.</p>
                 <div className="row mt-30">
                   <div className="col-lg-6">
                     <div className="form-tracking">

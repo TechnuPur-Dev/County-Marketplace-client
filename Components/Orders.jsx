@@ -16,7 +16,7 @@ const Orders = (props) => {
           <div className="item-orders">
             <div className="image-orders"><img src="assets/imgs/page/account/img-1.png" alt="Ecom"/></div>
             <div className="info-orders">
-              <h5>Samsung 36" French door 28 cu. ft. Smart Energy Star Refrigerator</h5>
+              <h5>Samsung 36 French door 28 cu. ft. Smart Energy Star Refrigerator</h5>
             </div>
             <div className="quantity-orders">
               <h5>Quantity: 01</h5>
@@ -28,7 +28,7 @@ const Orders = (props) => {
           <div className="item-orders">
             <div className="image-orders"><img src="assets/imgs/page/account/img-1.png" alt="Ecom"/></div>
             <div className="info-orders">
-              <h5>Samsung 36" French door 28 cu. ft. Smart Energy Star Refrigerator</h5>
+              <h5>Samsung 36 French door 28 cu. ft. Smart Energy Star Refrigerator</h5>
             </div>
             <div className="quantity-orders">
               <h5>Quantity: 01</h5>
@@ -52,7 +52,7 @@ const Orders = (props) => {
           <div className="item-orders">
             <div className="image-orders"><img src="assets/imgs/page/account/img-1.png" alt="Ecom"/></div>
             <div className="info-orders">
-              <h5>Samsung 36" French door 28 cu. ft. Smart Energy Star Refrigerator</h5>
+              <h5>Samsung 36 French door 28 cu. ft. Smart Energy Star Refrigerator</h5>
             </div>
             <div className="quantity-orders">
               <h5>Quantity: 01</h5>
@@ -64,7 +64,7 @@ const Orders = (props) => {
           <div className="item-orders">
             <div className="image-orders"><img src="assets/imgs/page/account/img-1.png" alt="Ecom"/></div>
             <div className="info-orders">
-              <h5>Samsung 36" French door 28 cu. ft. Smart Energy Star Refrigerator</h5>
+              <h5>Samsung 36 French door 28 cu. ft. Smart Energy Star Refrigerator</h5>
             </div>
             <div className="quantity-orders">
               <h5>Quantity: 01</h5>
@@ -88,7 +88,7 @@ const Orders = (props) => {
           <div className="item-orders">
             <div className="image-orders"><img src="assets/imgs/page/product/ss.jpg" alt="Ecom"/></div>
             <div className="info-orders">
-              <h5>Samsung 36" French door 28 cu. ft. Smart Energy Star Refrigerator</h5>
+              <h5>Samsung 36 French door 28 cu. ft. Smart Energy Star Refrigerator</h5>
             </div>
             <div className="quantity-orders">
               <h5>Quantity: 01</h5>
@@ -100,7 +100,7 @@ const Orders = (props) => {
           <div className="item-orders">
             <div className="image-orders"><img src="assets/imgs/page/product/ss2.jpg" alt="Ecom"/></div>
             <div className="info-orders">
-              <h5>Samsung 36" French door 28 cu. ft. Smart Energy Star Refrigerator</h5>
+              <h5>Samsung 36 French door 28 cu. ft. Smart Energy Star Refrigerator</h5>
             </div>
             <div className="quantity-orders">
               <h5>Quantity: 01</h5>
