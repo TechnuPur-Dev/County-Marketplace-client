@@ -10,6 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from 'next/router'
 import Cookies from "js-cookie";
+import { signOut } from "next-auth/react"
 const Header = (props) => {
   const [Name, setName] = useState("")
   const router = useRouter();
@@ -101,6 +102,7 @@ const Header = (props) => {
   const SignOut = () => {
     Cookies.remove('token')
     router.push('/Login')
+    signOut()
   }
   // Sticky Menu Area and handle click outside event
   useEffect(() => {
@@ -297,7 +299,7 @@ const Header = (props) => {
                       <li>
                         <Link href={`/Setting`}>Setting</Link>
                       </li>
-                      <li style={{cursor:'pointer'}} onClick={SignOut}>
+                      <li style={{ cursor: 'pointer' }} onClick={SignOut}>
                         Sign out
                       </li>
                     </ul>
@@ -345,7 +347,7 @@ const Header = (props) => {
               >
                 <div className="container">
                   <div className="sidebar-left">
-                    <ul className="menu-texts menu-close"    // style={{minWidth:'250px'}}
+                    <ul className="menu-texts menu-close"// style={{minWidth:'250px'}}
                     >
                       {catg?.filter((levl1) => levl1.level === 1).map((levl1) => (
 
@@ -582,7 +584,7 @@ const Header = (props) => {
                   <li>
                     <Link href={`/Setting`}>Setting</Link>
                   </li>
-                  <li style={{cursor:'pointer'}}  onClick={SignOut}>
+                  <li style={{ cursor: 'pointer' }} onClick={SignOut}>
                     Sign out
                   </li>
                 </ul>

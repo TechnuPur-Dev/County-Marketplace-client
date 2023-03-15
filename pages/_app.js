@@ -6,8 +6,8 @@ import '../styles/plugins/pagination.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Head from "next/head";
-
-export default function App({ Component, pageProps }) {
+import { SessionProvider } from "next-auth/react"
+export default function App({ Component, pageProps: { session, ...pageProps } }) {
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
   }, []);
@@ -19,7 +19,9 @@ export default function App({ Component, pageProps }) {
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <ToastContainer />
+    <SessionProvider session={session}>
     <Component {...pageProps} />
+    </SessionProvider>
   </>
 }
 

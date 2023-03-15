@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export":"next export",
+    "export": "next export",
     "lint": "next lint"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
     "eslint-config-next": "13.1.6",
     "js-cookie": "^3.0.1",
     "next": "13.1.6",
+    "next-auth": "^4.20.1",
     "qs": "^6.11.0",
     "react": "18.2.0",
     "react-bootstrap": "^2.7.2",

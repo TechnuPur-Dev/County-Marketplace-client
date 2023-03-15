@@ -11,7 +11,7 @@ import greyStar from "../public//imgs/template/icons/star-gray.svg"
 import bannerImg from "../public/imgs/page/shop/banner.png";
 import img1 from "../public/imgs/page/product/img-gallery-1.jpg";
 import img2 from "../public/imgs/page/product/img-gallery-2.jpg";
-import MultiRangeSlider from "@/Components/MultiRangeSlider";
+// import MultiRangeSlider from "@/Components/MultiRangeSlider";
 import QuickModal from "@/Components/QuickModal";
 import Link from "next/link";
 import Banner from "@/Components/Banner";

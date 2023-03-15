@@ -11,6 +11,10 @@ const nextConfig = {
       },
     ],
   },
+  env:{
+    GOOGLE_CLIENT_ID:"699217999898-pafb8tihrvllortqmg7ekrp83p4qvfiu.apps.googleusercontent.com",
+    GOOGLE_CLIENT_SECRET:"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"
+  }
 }
 
 module.exports = nextConfig
