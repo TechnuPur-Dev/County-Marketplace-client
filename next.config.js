@@ -13,7 +13,10 @@ const nextConfig = {
   },
   env:{
     GOOGLE_CLIENT_ID:"699217999898-pafb8tihrvllortqmg7ekrp83p4qvfiu.apps.googleusercontent.com",
-    GOOGLE_CLIENT_SECRET:"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"
+    GOOGLE_CLIENT_SECRET:"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",
+    FACEBOOK_CLIENT_ID:"136655336008778",
+    FACEBOOK_CLIENT_SECRET:"75abee814f588496078256fba8aa37a3"
+
   }
 }
 

@@ -22,7 +22,6 @@ const Register = (props) => {
   const [show, setShow] = useState(false);
   let [validation, setValidtation] = useState(false);
   let [otpVerify, setOtpVerify] = useState({ email: '', otp: '' })
-  const [sessionFlag,setSessionFlag]=useState(false)
   const [register, setRegister] = useState({
     username: "",
     full_name: "",
@@ -55,18 +54,15 @@ const Register = (props) => {
       });
 
   };
-  const GoogleRegister = async(e) => {
-   
-    setSessionFlag(true)
-    signIn("google")
-    
+  const SocialRegister = (app) => {
+    signIn(app);
   }
   useEffect(() => {
     console.log(session);
-   if(session){
-    
-    console.log(session, 'sesss');
-    
+
+    if (session) {
+      console.log(session, 'sesss');
+
       console.log(props.cookiePassword['next-auth.session-token'])
       setRegister({
         username: session.user.name,
@@ -76,47 +72,10 @@ const Register = (props) => {
         is_email_verification: true,
         password: props.cookiePassword['next-auth.session-token']
       })
-      console.log(register);
-      var data = JSON.stringify({
-        username: session.user.name,
-        full_name: session.user.name,
-        email: session.user.email,
-        phone_number: "",
-        is_email_verification: true,
-        password: session.user.name
-      });
-      localStorage.setItem("e-mail", session.user.email);
-      console.log(data);
-      var config = {
-        method: 'post',
-        maxBodyLength: Infinity,
-        url: 'http://countydev92-001-site1.ftempurl.com/api/marketplace/registered_customer',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data: data
-      };
-      axios(config)
-        .then(function (response) {
-          console.log(response.data);
-          localStorage.setItem("customers_id", response.data.payload.store_customers_id);
-          localStorage.setItem("username", response.data.payload.username);
-          console.log(data, data);
-          toast.success(
-            JSON.stringify(response.data.message)
-          );
-          setSessionFlag(false)
-          handleShow();
-        })
-        .catch(function (error) {
 
-          toast.error(
-            JSON.stringify(error?.response?.data?.Message)
-          );
-        });
-   }
+    }
   }, [session])
-  
+
   const registerUser = () => {
     let validate = false;
     let dataRegister = {}
@@ -286,9 +245,9 @@ const Register = (props) => {
                 <div className="box-login-social pt-65 pl-50">
                   <h5 className="text-center">Use Social Network Account</h5>
                   <div className="box-button-login mt-25">
-                    <a className="btn btn-login font-md-bold color-brand-3 mb-15" onClick={() => GoogleRegister()}>
+                    <a className="btn btn-login font-md-bold color-brand-3 mb-15" onClick={() => SocialRegister("google")}>
                       Sign up with<img src={googleImg.src} alt="Ecom" /></a>
-                    <a className="btn btn-login font-md-bold color-brand-3 mb-15">Sign up with
+                    <a className="btn btn-login font-md-bold color-brand-3 mb-15" onClick={() => { SocialRegister("facebook") }}>Sign up with
                       <span className="color-blue font-md-bold"> Facebook</span></a>
                   </div>
                   <div className="mt-10 text-center"><span className="font-xs color-gray-900">
