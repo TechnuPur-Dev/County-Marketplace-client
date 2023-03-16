@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Loader from "../Components/Loaderr";
 import Topbar from "../Components/Topbar";
 import Header from "../Components/Header";
@@ -13,8 +13,10 @@ import Modal from 'react-bootstrap/Modal';
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
-
+import { useSession, signIn, signOut } from "next-auth/react"
+import cookie from 'cookie';
 const Login = (props) => {
+  const { data: session } = useSession()
   var axios = require('axios');
   const router = useRouter();
   const [show, setShow] = useState(false);
@@ -22,6 +24,24 @@ const Login = (props) => {
   let [forgetmailVal, setForgetmailVal] = useState(false);
   let [passVal, setPassVal] = useState(false);
   const [expiryDate, setExpiryDate] = useState(false);
+  const SocialRegister = (app) => {
+    signIn(app);
+  }
+  useEffect(() => {
+    console.log(session);
+
+    if (session) {
+      console.log(session, 'sesss');
+
+      console.log(props.cookiePassword['next-auth.session-token'])
+      setLoginData({
+        username: session.user.email,
+        password: props.cookiePassword['next-auth.session-token'],
+        grant_type: 'password'
+      })
+
+    }
+  }, [session])
   let [loginData, setLoginData] = useState({
     username: '',
     password: '',
@@ -230,14 +250,10 @@ const Login = (props) => {
                 <div className="box-login-social pt-65 pl-50">
                   <h5 className="text-center">Use Social Network Account</h5>
                   <div className="box-button-login mt-25">
-                    <a className="btn btn-login font-md-bold color-brand-3 mb-15">
-                      Sign up with
-                      <img src={googleImg.src} alt="Ecom" />
-                    </a>
-                    <a className="btn btn-login font-md-bold color-brand-3 mb-15">
-                      Sign up with
-                      <span className="color-blue font-md-bold"> Facebook</span>
-                    </a>
+                  <a className="btn btn-login font-md-bold color-brand-3 mb-15" onClick={() => SocialRegister("google")}>
+                      Sign up with<img src={googleImg.src} alt="Ecom" /></a>
+                    <a className="btn btn-login font-md-bold color-brand-3 mb-15" onClick={() => { SocialRegister("facebook") }}>Sign up with
+                      <span className="color-blue font-md-bold"> Facebook</span></a>
                   </div>
                   <div className="mt-10 text-center">
                     <span className="font-xs color-gray-900">
@@ -303,6 +319,7 @@ export async function getServerSideProps(context) {
     res.statusCode = 302;
     res.end();
   }
+  const cookiePassword = cookie.parse(req.headers.cookie || '');
   var axios = require('axios');
   let categories = []
   var config2 = {
@@ -319,6 +336,6 @@ export async function getServerSideProps(context) {
     console.log(error);
   }
   return {
-    props: { categories }, // pass the populated products array as props
+    props: { categories, cookiePassword }, // pass the populated products array as props
   };
 }
