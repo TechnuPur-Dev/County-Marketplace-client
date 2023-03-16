@@ -250,9 +250,7 @@ const Register = (props) => {
                     <a className="btn btn-login font-md-bold color-brand-3 mb-15" onClick={() => { SocialRegister("facebook") }}>Sign up with
                       <span className="color-blue font-md-bold"> Facebook</span></a>
                   </div>
-                  <div className="mt-10 text-center"><span className="font-xs color-gray-900">
-                    Buying for work?</span><a className="color-brand-1 font-xs" href="#">
-                      Create a free business account</a></div>
+          
                 </div>
               </div>
             </div>

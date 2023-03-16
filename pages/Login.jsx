@@ -36,7 +36,6 @@ const Login = (props) => {
         password: props.cookiePassword['next-auth.session-token'],
         grant_type: 'password'
       })
-
     }
   }, [session])
   let [loginData, setLoginData] = useState({
@@ -85,7 +84,7 @@ const Login = (props) => {
     }
   }
   const SignIn = () => {
-    
+
     let validate = false;
     if (loginData.password == '' || loginData.username == '')
       validate = true;
@@ -255,14 +254,7 @@ const Login = (props) => {
                     <a className="btn btn-login font-md-bold color-brand-3 mb-15" onClick={() => { SocialLogin("facebook") }}>Sign up with
                       <span className="color-blue font-md-bold"> Facebook</span></a>
                   </div>
-                  <div className="mt-10 text-center">
-                    <span className="font-xs color-gray-900">
-                      Buying for work?
-                    </span>
-                    <a className="color-brand-1 font-xs" href="#">
-                      Create a free business account
-                    </a>
-                  </div>
+
                 </div>
               </div>
             </div>
