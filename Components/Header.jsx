@@ -12,7 +12,7 @@ import { useRouter } from 'next/router'
 import Cookies from "js-cookie";
 import { signOut } from "next-auth/react"
 const Header = (props) => {
-  const [Name, setName] = useState("")
+  const [accToken, setAccToken] = useState("")
   const router = useRouter();
   // console.log(props, 'headerpppp')
   var axios = require("axios");
@@ -107,7 +107,7 @@ const Header = (props) => {
   // Sticky Menu Area and handle click outside event
   useEffect(() => {
     const token = Cookies.get("token");
-    setName(token)
+    setAccToken(token)
     window.addEventListener("scroll", isSticky);
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -271,7 +271,7 @@ const Header = (props) => {
               </div>
               <div className="header-shop">
                 <div className="d-inline-block box-dropdown-cart">
-                  {Name && <span
+                  {accToken && <span
                     className="font-lg icon-list icon-account"
                     onClick={AccountDropdown}
                   >
@@ -486,7 +486,13 @@ const Header = (props) => {
                       {/* <ul className="sub-menu"></ul> */}
                     </li>
                     <li className="has-children">
-                      <Link href={`/ShopGrid`}>Shop</Link>
+                      <Link href={{
+                        pathname: '/ShopGrid',
+                        query:
+                          `page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=-1&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`
+
+                      }}>Shop</Link>
+
                     </li>
                     <li>
                       <Link href={`/About`}>About</Link>
@@ -551,7 +557,7 @@ const Header = (props) => {
                   </ul>
                 </nav>
               </div>
-              <div className="mobile-account">
+              { accToken && <div className="mobile-account">
                 <div className="mobile-header-top">
                   {/* Account Options */}
                   <div className="user-account">
@@ -588,7 +594,8 @@ const Header = (props) => {
                     Sign out
                   </li>
                 </ul>
-              </div>
+              </div>}
+             
               <div className="mobile-banner">
                 <div className="bg-5 block-iphone">
                   <span className="color-brand-3 font-sm-lh32">
