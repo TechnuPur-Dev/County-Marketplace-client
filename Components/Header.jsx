@@ -17,6 +17,7 @@ const Header = (props) => {
   // console.log(props, 'headerpppp')
   var axios = require("axios");
   const [toggleClass, setToggleClass] = useState(false);
+  const [Name,setName]=useState("")
   const [expandList, setExpandList] = useState(false);
   const [expandAccount, setExpandAccount] = useState(false);
   const [searchString, setSearchString] = useState('')
@@ -106,6 +107,7 @@ const Header = (props) => {
   }
   // Sticky Menu Area and handle click outside event
   useEffect(() => {
+    setName(localStorage.getItem("username"))
     const token = Cookies.get("token");
     setAccToken(token)
     window.addEventListener("scroll", isSticky);
@@ -566,7 +568,7 @@ const Header = (props) => {
                     </a>
                     <div className="content">
                       <h6 className="user-name">
-                        Hello<span className="text-brand"> Steven !</span>
+                        Hello<span className="text-brand"> {Name.toLocaleUpperCase()} !</span>
                       </h6>
                       <p className="font-xs text-muted">
                         You have 3 new messages

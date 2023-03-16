@@ -35,7 +35,7 @@ const Account = (props) => {
       <main className="main">
       <section className="section-box shop-template mt-30">
       <div className="container box-account-template">
-      <h3>Hello {info?.full_name}</h3>
+      <h3>Hello {info?.full_name.toUpperCase()}</h3>
           <p className="font-md color-gray-500">From your account dashboard. you can easily check & view your recent orders,<br className="d-none d-lg-block"/>manage your shipping and billing addresses and edit your password and account details.</p>
           <div className="box-tabs mb-100">
           <ul className="nav nav-tabs nav-tabs-account" role="tablist">

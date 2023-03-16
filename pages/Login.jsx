@@ -28,11 +28,8 @@ const Login = (props) => {
     signIn(app);
   }
   useEffect(() => {
-    console.log(session);
-
     if (session) {
       console.log(session, 'sesss');
-
       console.log(props.cookiePassword['next-auth.session-token'])
       setLoginData({
         username: session.user.email,
@@ -72,6 +69,7 @@ const Login = (props) => {
         .then(function (response) {
           toast.success(response.data.message)
           setLoginData({ ...loginData, password: resetData.password })
+          localStorage.setItem("username", loginData.username);
           handleClose();
 
         })
@@ -87,6 +85,7 @@ const Login = (props) => {
     }
   }
   const SignIn = () => {
+    
     let validate = false;
     if (loginData.password == '' || loginData.username == '')
       validate = true;
@@ -109,6 +108,7 @@ const Login = (props) => {
             "Successfully Login"
           );
           localStorage.setItem("token", response.data.access_token);
+          localStorage.setItem("username", loginData.username);
           if (expiryDate) {
             const FiveMonthFromNow = new Date(Date.now() + 12 * 30 * 24 * 60 * 60 * 1000);
             Cookies.set("token", response.data.access_token, { expires: FiveMonthFromNow });
@@ -146,6 +146,7 @@ const Login = (props) => {
       axios(config)
         .then(function (response) {
           toast.success(response.data.message)
+          localStorage.setItem("username", loginData.username);
           setResetData({ ...resetData, email: loginData.username })
           handleShow();
 
