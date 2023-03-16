@@ -238,10 +238,6 @@ const Login = (props) => {
                       Sign up with
                       <span className="color-blue font-md-bold"> Facebook</span>
                     </a>
-                    <a className="btn btn-login font-md-bold color-brand-3 mb-15">
-                      Sign up with
-                      <img src={amazonImg.src} alt="Ecom" />
-                    </a>
                   </div>
                   <div className="mt-10 text-center">
                     <span className="font-xs color-gray-900">
