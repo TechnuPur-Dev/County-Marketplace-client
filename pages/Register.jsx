@@ -57,50 +57,56 @@ const Register = (props) => {
   useEffect(() => {
     console.log(session,'sesss');
     if(session){
-      // setRegister({username: session.user.name,
-      //     full_name: session.user.name,
-      //     email: session.user.email,
-      //     phone_number: "",
-      //     is_email_verification: true,
-      //     password: session.user.name})
-          console.log(register);
-    //  var data = JSON.stringify({
-    //   username: session.user.name,
-    //   full_name: session.user.name,
-    //   email: session.user.email,
-    //   phone_number: "",
-    //   is_email_verification: true,
-    //   password: session.user.name
-    // });
-    //  localStorage.setItem("e-mail", session.user.email);
-    //  var config = {
-    //    method: 'post',
-    //    maxBodyLength: Infinity,
-    //    url: 'http://countydev92-001-site1.ftempurl.com/api/marketplace/registered_customer',
-    //    headers: {
-    //      'Content-Type': 'application/json'
-    //    },
-    //    data: data
-    //  };
-    //  axios(config)
-    //    .then(function (response) {
-    //     console.log(response.data);
-    //      localStorage.setItem("customers_id", response.data.payload.store_customers_id);
-    //      localStorage.setItem("username", response.data.payload.username);
-    //      console.log(data,data);
-    //      toast.success(
-    //        JSON.stringify(response.data.message)
-    //      );
-    //      handleShow();
-    //    })
-    //    .catch(function (error) {
+      const cookies = Cookies.get(["next-auth.session-token"]);
+    
+    console.log(cookies);
+    
+    }
+    // if(session){
+    //   // setRegister({username: session.user.name,
+    //   //     full_name: session.user.name,
+    //   //     email: session.user.email,
+    //   //     phone_number: "",
+    //   //     is_email_verification: true,
+    //   //     password: session.user.name})
+    //       console.log(register);
+    // //  var data = JSON.stringify({
+    // //   username: session.user.name,
+    // //   full_name: session.user.name,
+    // //   email: session.user.email,
+    // //   phone_number: "",
+    // //   is_email_verification: true,
+    // //   password: session.user.name
+    // // });
+    // //  localStorage.setItem("e-mail", session.user.email);
+    // //  var config = {
+    // //    method: 'post',
+    // //    maxBodyLength: Infinity,
+    // //    url: 'http://countydev92-001-site1.ftempurl.com/api/marketplace/registered_customer',
+    // //    headers: {
+    // //      'Content-Type': 'application/json'
+    // //    },
+    // //    data: data
+    // //  };
+    // //  axios(config)
+    // //    .then(function (response) {
+    // //     console.log(response.data);
+    // //      localStorage.setItem("customers_id", response.data.payload.store_customers_id);
+    // //      localStorage.setItem("username", response.data.payload.username);
+    // //      console.log(data,data);
+    // //      toast.success(
+    // //        JSON.stringify(response.data.message)
+    // //      );
+    // //      handleShow();
+    // //    })
+    // //    .catch(function (error) {
         
-    //      toast.error(
-    //        JSON.stringify(error?.response?.data?.Message)
-    //      );
-    //    });
-    // }
-      }
+    // //      toast.error(
+    // //        JSON.stringify(error?.response?.data?.Message)
+    // //      );
+    // //    });
+    // // }
+    //   }
    }, [session])
    
   const registerUser = () => {
@@ -276,8 +282,7 @@ const Register = (props) => {
                       Sign up with<img src={googleImg.src} alt="Ecom" /></a>
                     <a className="btn btn-login font-md-bold color-brand-3 mb-15">Sign up with
                       <span className="color-blue font-md-bold"> Facebook</span></a>
-                    <a className="btn btn-login font-md-bold color-brand-3 mb-15">
-                      Sign up with<img src={amazonImg.src} alt="Ecom" /></a></div>
+                   </div>
                   <div className="mt-10 text-center"><span className="font-xs color-gray-900">
                     Buying for work?</span><a className="color-brand-1 font-xs" href="#">
                       Create a free business account</a></div>
