@@ -118,7 +118,8 @@ header.sticky-bar.stick #wdw_NavBar .wdw_FixedManu {
     padding: 15px;
     position: relative;
     transition-duration: 0.2s;
-    height: 550px;
+    height: 480px;
+    width: 208px
   }
 }
 /* 3rd layer options in sidebar  */
