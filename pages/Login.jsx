@@ -27,17 +27,17 @@ const Login = (props) => {
   const SocialLogin = (app) => {
     signIn(app);
   }
-  useEffect(() => {
-    if (session) {
-      console.log(session, 'sesss');
-      console.log(props.cookiePassword['next-auth.session-token'])
-      setLoginData({
-        username: session.user.email,
-        password: props.cookiePassword['next-auth.session-token'],
-        grant_type: 'password'
-      })
-    }
-  }, [session])
+  // useEffect(() => {
+  //   if (session) {
+  //     console.log(session, 'sesss');
+  //     console.log(props.cookiePassword['next-auth.session-token'])
+  //     setLoginData({
+  //       username: session.user.email,
+  //       password: props.cookiePassword['next-auth.session-token'],
+  //       grant_type: 'password'
+  //     })
+  //   }
+  // }, [session])
   let [loginData, setLoginData] = useState({
     username: '',
     password: '',

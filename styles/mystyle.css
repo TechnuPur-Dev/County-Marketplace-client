@@ -18,6 +18,19 @@
   border: 1px solid #425a8b;
   transform: translateY(-2px);
 }
+.open-button {
+  /* background-color: #9a9c9c; */
+  color: white;
+  padding: 3px 3px;
+  border: none;
+  cursor: pointer;
+  opacity: 1;
+  position: fixed;
+  bottom: 2px;
+  right: 0px;
+  width: 100px;
+  z-index: 100;
+}
 
 .error{
   color : red

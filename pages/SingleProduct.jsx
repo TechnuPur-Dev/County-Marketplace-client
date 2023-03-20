@@ -8,6 +8,7 @@ import InfoSection from "../Components/InfoSection";
 import star from "../public/imgs/template/icons/star.svg";
 import img1 from "../public/imgs/page/product/img-gallery-1.jpg";
 import img2 from "../public/imgs/page/product/img-gallery-2.jpg";
+import chat from "../public/imgs/page/contact/chat.svg"
 import { Swiper, SwiperSlide } from "swiper/react";
 import bannerAd from '../public/imgs/page/product/banner-ads.png';
 // Import Swiper styles
@@ -17,7 +18,8 @@ import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
 import { Mousewheel, Pagination } from "swiper";
 import dynamic from "next/dynamic";
-import QuickModal from "@/Components/QuickModal";
+import QuickModal from "../Components/QuickModal";
+import Image from "next/image";
 const SingleProduct = (props) => {
  
   return (
@@ -34,6 +36,7 @@ const SingleProduct = (props) => {
       />
       <Topbar />
        <Header categories={props.categories} />
+       <button class="open-button"> <Image src={chat} height={25} width={30}/></button>
       <main className="main">
         <div className="section-box">
           <div className="breadcrumbs-div">
@@ -327,6 +330,17 @@ const SingleProduct = (props) => {
                     aria-selected="true"
                   >
                     Vendor
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#tab-QAns"
+                    data-bs-toggle="tab"
+                    role="tab"
+                    aria-controls="tab-QAns"
+                    aria-selected="true"
+                  >
+                    Ask Question
                   </a>
                 </li>
               </ul>
@@ -782,6 +796,15 @@ const SingleProduct = (props) => {
                     fringilla justo erat ullamcorper ligula. Fusce congue
                     ullamcorper ligula, at commodo turpis molestie vel.
                   </p>
+                </div>
+                <div
+                  className="tab-pane fade"
+                  id="tab-QAns"
+                  role="tabpanel"
+                  aria-labelledby="tab-QAns"
+                >
+                 <h5>Ask Question</h5>
+                  
                 </div>
                 <div className="border-bottom pt-30 mb-50"></div>
                 <h4 className="color-brand-3">Related Products</h4>

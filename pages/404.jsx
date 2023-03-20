@@ -7,10 +7,10 @@ import Footer from '../Components/Footer';
 import account from "../public/imgs/page/account/404.png";
 import Link from 'next/link';
 
-const NotFound = (props) => {
+const NotFound = () => {
   return (
     <>
-      <Loader/>
+      <Loader data={{a:'loader'}}/>
       <ScrollToTop
         smooth={true}
         color="white"
@@ -21,7 +21,7 @@ const NotFound = (props) => {
         style={{ backgroundColor: "#405786", borderRadius: "50%" }}
       />
       <Topbar/>
-       <Header categories={props.categories} />
+      
       <main className="main">
       <section className="section-box shop-template mt-60">
         <div className="container">

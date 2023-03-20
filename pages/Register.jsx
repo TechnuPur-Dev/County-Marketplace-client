@@ -12,7 +12,7 @@ import Modal from 'react-bootstrap/Modal';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import Cookies from "js-cookie";
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn } from "next-auth/react"
 import cookie from 'cookie';
 const Register = (props) => {
   const { data: session } = useSession()
@@ -57,24 +57,22 @@ const Register = (props) => {
   const SocialRegister = (app) => {
     signIn(app);
   }
-  useEffect(() => {
-    console.log(session);
+  // useEffect(() => {
+  //   console.log(session);
+  //   if (session) {
+  //     console.log(session, 'sesss');
+  //     console.log(props.cookiePassword['next-auth.session-token'])
+  //     setRegister({
+  //       username: session.user.name,
+  //       full_name: session.user.name,
+  //       email: session.user.email,
+  //       phone_number: "",
+  //       is_email_verification: true,
+  //       password: props.cookiePassword['next-auth.session-token']
+  //     })
 
-    if (session) {
-      console.log(session, 'sesss');
-
-      console.log(props.cookiePassword['next-auth.session-token'])
-      setRegister({
-        username: session.user.name,
-        full_name: session.user.name,
-        email: session.user.email,
-        phone_number: "",
-        is_email_verification: true,
-        password: props.cookiePassword['next-auth.session-token']
-      })
-
-    }
-  }, [session])
+  //   }
+  // }, [session])
 
   const registerUser = () => {
     let validate = false;
@@ -250,7 +248,7 @@ const Register = (props) => {
                     <a className="btn btn-login font-md-bold color-brand-3 mb-15" onClick={() => { SocialRegister("facebook") }}>Sign up with
                       <span className="color-blue font-md-bold"> Facebook</span></a>
                   </div>
-          
+
                 </div>
               </div>
             </div>
