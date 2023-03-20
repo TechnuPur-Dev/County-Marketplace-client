@@ -54,6 +54,7 @@ const Contact = (props) => {
                       <div className="form-group">
                         <input className="form-control" type="text" placeholder="Last name"/>
                       </div>
+                      
                     </div>
                     <div className="col-lg-12">
                       <div className="form-group">

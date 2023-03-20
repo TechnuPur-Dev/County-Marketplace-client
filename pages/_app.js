@@ -3,9 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/style.css';
 import '../styles/mystyle.css';
 import '../styles/plugins/pagination.min.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Head from "next/head";
+import { store } from '../store/store'
+import { Provider } from 'react-redux'
 import { SessionProvider } from "next-auth/react"
 export default function App({ Component, pageProps: { session, ...pageProps } }) {
   useEffect(() => {
@@ -19,9 +21,11 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <ToastContainer />
-    <SessionProvider session={session}>
+    <Provider store={store}>
+    {/* <SessionProvider session={session}> */}
     <Component {...pageProps} />
-    </SessionProvider>
+    {/* </SessionProvider> */}
+    </Provider>
   </>
 }
 
