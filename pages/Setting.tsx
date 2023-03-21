@@ -5,6 +5,7 @@ import Header from "../Components/Header";
 import ScrollToTop from "react-scroll-to-top";
 import Footer from '../Components/Footer';
 import Settings from '../Components/Settings';
+import Cookies from "js-cookie";
 import Link from 'next/link';
 const SettingPage = (props) => {
   return (
