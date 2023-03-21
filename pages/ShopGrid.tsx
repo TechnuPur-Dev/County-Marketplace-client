@@ -7,14 +7,16 @@ import ScrollToTop from "react-scroll-to-top";
 import Footer from "../Components/Footer";
 import InfoSection from "../Components/InfoSection";
 import star from "../public/imgs/template/icons/star.svg";
-import greyStar from "../public//imgs/template/icons/star-gray.svg"
-import bannerImg from "../public/imgs/page/shop/banner.png";
 import img1 from "../public/imgs/page/product/img-gallery-1.jpg";
 import img2 from "../public/imgs/page/product/img-gallery-2.jpg";
-// import MultiRangeSlider from "@/Components/MultiRangeSlider";
+// import MultiRangeSlider from "../Components/MultiRangeSlider";
 import QuickModal from "../Components/QuickModal";
 import Link from "next/link";
 import Banner from "../Components/Banner";
+import TagFilter from "../Components/TagFilter";
+import BestSellerFil from "../Components/BestSellerFil";
+import BrandFilter from "../Components/BrandFilter";
+import RatingFilter from "../Components/RatingFilter";
 const ShopGrid = (props) => {
   console.log(props, 'props');
   var axios = require('axios');
@@ -37,15 +39,12 @@ const ShopGrid = (props) => {
   const [proCatg, setProCatg] = useState(props?.categories)
   let pagination = [1, 2, 3, 4, 5, 6]
   console.log(router, 'urll')
-  const getProducts = (a) => {
-    router.push(router.asPath, `/ShopGrid?${a}`);
+  const getProducts = (queryVal) => {
+    router.push(router.asPath, `/ShopGrid?${queryVal}`);
     let filter = router.query;
     var config = {
       method: 'get',
-      url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?${a}`,
-      // headers: {
-      //   'Authorization': 'Bearer N59Ag_m1BMrcMDIcd0pnS_DewxEyc4Qs_XIBl1zCLv3ZnKpkEd4usksRUWGxmHL0n7lQF5QltkvRLnGvGNOuZNiB-5kdd-HzarGbmdTmWFHbemWQbrXti59NJbBGhjS3sxX0RwQWUzyHDmgD17r6AIUfsLAUNotNzKCy3bgJhF5hy8U2ay9Lg7eSo4LEhfd0xTTLyekNusqziIJ7vOWp1sQraoyMD9cSE_CQjQCWkm4GG18hTZP_lAXFAtR5LVqbGC2zpgVk2b-iSlODO2TlgzwfiLF7UDEeNV-QAlng36N0733nOcI2Xj0bOXmxNJ8HmNBotrgRYBCs73ehQwSzDweZJKG_ez42YAW-bT5aNvf8S-tJv3ID4vItgMvoX5p5VEKVbVt9PDqzz0OTnDALNQ'
-      // }
+      url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?${queryVal}`,
     };
 
     axios(config)
@@ -65,44 +64,12 @@ const ShopGrid = (props) => {
     })
 
   }
-  // console.log(getPro,props,'propss');
-  //  console.log(getPro,'helloo');
-  //  const router = useRouter();
-  // const data = router.query;
-  // console.log(data)
-  // useEffect(() => {
-
-  //   var axios = require('axios');
-  //     let  products=[];
-  //     var config = {
-  //       method: 'get',
-  //     maxBodyLength: Infinity,
-  //       url: 'http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=-1&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1\n',
-  //       headers: { 
-  //         'Authorization': 'Bearer N59Ag_m1BMrcMDIcd0pnS_DewxEyc4Qs_XIBl1zCLv3ZnKpkEd4usksRUWGxmHL0n7lQF5QltkvRLnGvGNOuZNiB-5kdd-HzarGbmdTmWFHbemWQbrXti59NJbBGhjS3sxX0RwQWUzyHDmgD17r6AIUfsLAUNotNzKCy3bgJhF5hy8U2ay9Lg7eSo4LEhfd0xTTLyekNusqziIJ7vOWp1sQraoyMD9cSE_CQjQCWkm4GG18hTZP_lAXFAtR5LVqbGC2zpgVk2b-iSlODO2TlgzwfiLF7UDEeNV-QAlng36N0733nOcI2Xj0bOXmxNJ8HmNBotrgRYBCs73ehQwSzDweZJKG_ez42YAW-bT5aNvf8S-tJv3ID4vItgMvoX5p5VEKVbVt9PDqzz0OTnDALNQ'
-  //       }
-  //     };
-
-  //     axios(config)
-  //     .then(function (response) {
-  //       console.log(JSON.stringify(response.data));
-  //       console.log(response.data.payload)
-  //        products= response.data.payload; 
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-
-  // }, [])
   useEffect(() => {
     console.log(proFilters);
     let slider = bannerData?.filter((image) => (image?.banner_place_type == "Other"))
     console.log(slider, 'bannnerss');
     setBannerData(slider[0])
-
-
   }, [])
-
   return (
     <>
       <Loader data={props.categories} />
@@ -123,12 +90,7 @@ const ShopGrid = (props) => {
             <div className="row">
               <div className="col-lg-9 order-first order-lg-last">
                 <Banner banner={props.banners} />
-                {/* <div className="banner-ads-top mb-30">
-                  <a href="shop-single-product-3.html">
-                    <img src={bannerImg.src} alt="Ecom" />
-                  </a>
-                </div> */}
-                <div className="box-filters mt-0 pb-5 border-bottom">
+                 <div className="box-filters mt-0 pb-5 border-bottom">
                   <div className="row">
 
                     <div className="col-xl-10 col-lg-9 mb-10 text-lg-end text-center">
@@ -476,195 +438,11 @@ const ShopGrid = (props) => {
                           </label>
                         </div>
                       </div>
-
-                    </div>
-                    {/* <ul className="list-checkbox">
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" checked="checked" />
-                          <span className="text-small">Free - $100</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <span className="number-item">145</span>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">$100 - $200</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <span className="number-item">56</span>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">$200 - $400</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <span className="number-item">23</span>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">$400 - $600</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <span className="number-item">43</span>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">$600 - $800</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <span className="number-item">65</span>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Over $1000</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <span className="number-item">56</span>
-                      </li>
-                    </ul> */}
-
-                    <h6 className="color-gray-900 mt-20 mb-10">Brands</h6>
-                    <ul className="list-checkbox">
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" checked={true} />
-                          <span className="text-small">Apple</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <span className="number-item">12</span>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Sony</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <span className="number-item">34</span>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Toshiba</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <span className="number-item">56</span>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Assus</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <span className="number-item">78</span>
-                      </li>
-                      <li>
-                        <label className="cb-container">
-                          <input type="checkbox" />
-                          <span className="text-small">Samsung</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <span className="number-item">23</span>
-                      </li>
-                    </ul>
+                         </div>
+                       <h6 className="color-gray-900 mt-20 mb-10">Brands</h6>
+                   <BrandFilter/>
                     <h6 className="color-gray-900 mt-20 mb-10">Rating</h6>
-                    <ul className="list-checkbox">
-                      <li className="mb-5">
-                        <a href="#">
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
-                            (5 stars)
-                          </span>
-                        </a>
-                      </li>
-                      <li className="mb-5">
-                        <a href="#">
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img
-                            src={`${greyStar.src}`}
-                            alt="Ecom"
-                          />
-                          <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
-                            (4 stars)
-                          </span>
-                        </a>
-                      </li>
-                      <li className="mb-5">
-                        <a href="#">
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img
-                            src={`${greyStar.src}`}
-                            alt="Ecom"
-                          />
-                          <img
-                            src={`${greyStar.src}`}
-                            alt="Ecom"
-                          />
-                          <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
-                            (3 stars)
-                          </span>
-                        </a>
-                      </li>
-                      <li className="mb-5">
-                        <a href="#">
-                          <img src={star.src} alt="Ecom" />
-                          <img src={star.src} alt="Ecom" />
-                          <img
-                            src={`${greyStar.src}`}
-                            alt="Ecom"
-                          />
-                          <img
-                            src={`${greyStar.src}`}
-                            alt="Ecom"
-                          />
-                          <img
-                            src={`${greyStar.src}`}
-                            alt="Ecom"
-                          />
-                          <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
-                            (2 stars)
-                          </span>
-                        </a>
-                      </li>
-                      <li className="mb-5">
-                        <a href="#">
-                          <img src={star.src} alt="Ecom" />
-                          <img
-                            src={`${greyStar.src}`}
-                            alt="Ecom"
-                          />
-                          <img
-                            src={`${greyStar.src}`}
-                            alt="Ecom"
-                          />
-                          <img
-                            src={`${greyStar.src}`}
-                            alt="Ecom"
-                          />
-                          <img
-                            src={`${greyStar.src}`}
-                            alt="Ecom"
-                          />
-                          <span className="ml-10 font-xs color-gray-500 d-inline-block align-top">
-                            (1 star)
-                          </span>
-                        </a>
-                      </li>
-                    </ul>
+                   <RatingFilter/>
 
                   </div>
                 </div>
@@ -672,183 +450,13 @@ const ShopGrid = (props) => {
                   <div className="head pb-15 border-brand-2">
                     <h5 className="color-gray-900">Best seller</h5>
                   </div>
-                  <div className="content-slider">
-                    <div className="box-swiper slide-shop">
-                      <div className="swiper-container swiper-best-seller">
-                        <div className="swiper-wrapper pt-5">
-                          <div className="swiper-slide">
-                            <div className="card-grid-style-2 card-grid-none-border border-bottom mb-10">
-                              <div className="image-box">
-                                <span className="label bg-brand-2">-17%</span>
-                                <a href="shop-single-product-3.html">
-                                  <img
-                                    src="assets/imgs/page/homepage2/camera.png"
-                                    alt="Ecom"
-                                  />
-                                </a>
-                              </div>
-                              <div className="info-right">
-                                <a
-                                  className="color-brand-3 font-xs-bold"
-                                  href="shop-single-product-3.html"
-                                >
-                                  HP Slim Desktop, Intel Celeron J4025, 4GB RAM
-                                </a>
-                                <div className="rating">
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <span className="font-xs color-gray-500">
-                                    {" "}
-                                    (65)
-                                  </span>
-                                </div>
-                                <div className="price-info">
-                                  <strong className="font-md-bold color-brand-3 price-main">
-                                    $150
-                                  </strong>
-                                  <span className="color-gray-500 font-sm price-line">
-                                    $187
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="card-grid-style-2 card-grid-none-border border-bottom mb-10">
-                              <div className="image-box">
-                                <a href="shop-single-product-3.html">
-                                  <img
-                                    src="assets/imgs/page/homepage2/clock.png"
-                                    alt="Ecom"
-                                  />
-                                </a>
-                              </div>
-                              <div className="info-right">
-                                <a
-                                  className="color-brand-3 font-xs-bold"
-                                  href="shop-single-product-3.html"
-                                >
-                                  Class 4K UHD (2160P) LED Roku Smart TV HDR
-                                </a>
-                                <div className="rating">
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <span className="font-xs color-gray-500">
-                                    {" "}
-                                    (65)
-                                  </span>
-                                </div>
-                                <div className="price-info">
-                                  <strong className="font-md-bold color-brand-3 price-main">
-                                    $2900
-                                  </strong>
-                                  <span className="color-gray-500 font-sm price-line">
-                                    $3200
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="card-grid-style-2 card-grid-none-border border-bottom mb-10">
-                              <div className="image-box">
-                                <a href="shop-single-product-3.html">
-                                  <img
-                                    src="assets/imgs/page/homepage2/airpod.png"
-                                    alt="Ecom"
-                                  />
-                                </a>
-                              </div>
-                              <div className="info-right">
-                                <a
-                                  className="color-brand-3 font-xs-bold"
-                                  href="shop-single-product-3.html"
-                                >
-                                  HP 11.6&quot; Chromebook, AMD A4, 4GB RAM,
-                                  32GB Storage
-                                </a>
-                                <div className="rating">
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <img src={star.src} alt="Ecom" />
-                                  <span className="font-xs color-gray-500">
-                                    {" "}
-                                    (65)
-                                  </span>
-                                </div>
-                                <div className="price-info">
-                                  <strong className="font-md-bold color-brand-3 price-main">
-                                    $160
-                                  </strong>
-                                  <span className="color-gray-500 font-sm price-line">
-                                    $168
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      {/* <div className="swiper-button-next swiper-button-next-style-2 swiper-button-next-bestseller"></div>
-                      <div className="swiper-button-prev swiper-button-prev-style-2 swiper-button-prev-bestseller"></div> */}
-                    </div>
-                  </div>
+                  <BestSellerFil />
                 </div>
                 <div className="box-slider-item">
                   <div className="head pb-15 border-brand-2">
                     <h5 className="color-gray-900">Product Tags</h5>
                   </div>
-                  <div className="content-slider mb-50">
-                    <a className="btn btn-border mr-5" href="shop-grid.html">
-                      Games
-                    </a>
-                    <a className="btn btn-border mr-5" href="shop-grid.html">
-                      Electronics
-                    </a>
-                    <a className="btn btn-border mr-5" href="shop-grid.html">
-                      Video
-                    </a>
-                    <a className="btn btn-border mr-5" href="shop-grid.html">
-                      Cellphone
-                    </a>
-                    <a className="btn btn-border mr-5" href="shop-grid.html">
-                      Indoor
-                    </a>
-                    <a className="btn btn-border mr-5" href="shop-grid.html">
-                      VGA Card
-                    </a>
-                    <a className="btn btn-border mr-5" href="shop-grid.html">
-                      USB
-                    </a>
-                    <a className="btn btn-border mr-5" href="shop-grid.html">
-                      Lightning
-                    </a>
-                    <a className="btn btn-border mr-5" href="shop-grid.html">
-                      Camera
-                    </a>
-                    <a className="btn btn-border" href="shop-grid.html">
-                      Window
-                    </a>
-                    <a className="btn btn-border mr-5" href="shop-grid.html">
-                      Air Vent
-                    </a>
-                    <a className="btn btn-border mr-5" href="shop-grid.html">
-                      Bedroom
-                    </a>
-                    <a className="btn btn-border mr-5" href="shop-grid.html">
-                      Laptop
-                    </a>
-                    <a className="btn btn-border mr-5" href="shop-grid.html">
-                      Dashboard
-                    </a>
-                    <a className="btn btn-border mr-5" href="shop-grid.html">
-                      Keyboard
-                    </a>
-                  </div>
+                  <TagFilter />
                 </div>
                 <div className="banner-right h-500 text-center mb-30">
                   {/* <span className="text-no font-11">No.9</span> */}
@@ -867,7 +475,6 @@ const ShopGrid = (props) => {
                 </div>
                 <style jsx>
                   {`
-                    
                 .banner-right {
                   border-radius: 4px;
                   display: inline-block;
@@ -900,7 +507,6 @@ const ShopGrid = (props) => {
     </>
   );
 };
-
 export default ShopGrid;
 export async function getServerSideProps(context) {
   let filter = context.query
