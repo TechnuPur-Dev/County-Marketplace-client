@@ -11,8 +11,8 @@ import sharp from "../public/imgs/slider/logo/sharp.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/swiper.min.css";
-import SwiperCore, { Pagination } from "swiper/core";
-SwiperCore.use([Pagination]);
+// import SwiperCore, { Pagination } from "swiper/core";
+// SwiperCore.use([Pagination]);
 const BrandList = () => {
   return (
     <div className="section-box">

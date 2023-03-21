@@ -17,9 +17,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { add } from "../store/slices/ProductSlice";
 export default function Home(props) {
   const dispatch=useDispatch()
-  const allTagsState = useSelector((state) => state?.product);
+  // const allTagsState = useSelector((state) => state?.product);
   console.log(props?.categories,'categories');
-  console.log(allTagsState,'kk');
+  // console.log(allTagsState,'kk');
   return (
     <>
       <Loader data={props.categories} />
@@ -35,19 +35,19 @@ export default function Home(props) {
       <Topbar />
      
       <Header categories={props.categories} />
+      {/* <h2 onClick={()=>{dispatch(add("hello"))}}>trial</h2> */}
       <main className="main">
         <DealsSection />
         <InfoSection />
         <CategoriesSection categories={props.categories} />
         <Banner banner={props.banners} />
-        <h2 onClick={()=>{dispatch(add())}}>trial</h2>
         <BestSeller />
         <TopBrands />
         {/* <!----quickview modal ---->*/}
         <div
           className="modal fade"
           id="ModalQuickview"
-          tabindex="-1"
+          tabIndex={-1}
           aria-hidden="true"
           style={{ display: "none" }}
         >
@@ -59,6 +59,7 @@ export default function Home(props) {
     </>
   );
 }
+// SSR function
 export async function getServerSideProps(context) {
   var axios = require('axios');
   let banners = []

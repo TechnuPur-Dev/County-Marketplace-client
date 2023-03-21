@@ -16,13 +16,24 @@ import { useSession, signIn } from "next-auth/react"
 import cookie from 'cookie';
 const Register = (props) => {
   const { data: session } = useSession()
-
+interface RegisterType{
+  username: string;
+  full_name: string;
+  email: string;
+  password: string;
+  phone_number: string;
+  is_email_verification: boolean
+}
+interface otpVerifyType{
+  email: string;
+   otp: string
+}
   const router = useRouter()
   var axios = require('axios');
-  const [show, setShow] = useState(false);
-  let [validation, setValidtation] = useState(false);
-  let [otpVerify, setOtpVerify] = useState({ email: '', otp: '' })
-  const [register, setRegister] = useState({
+  const [show, setShow] = useState<boolean>(false);
+  let [validation, setValidtation] = useState<boolean>(false);
+  let [otpVerify, setOtpVerify] = useState<otpVerifyType>({ email: '', otp: '' })
+  const [register, setRegister] = useState<RegisterType>({
     username: "",
     full_name: "",
     email: "",
@@ -54,7 +65,7 @@ const Register = (props) => {
       });
 
   };
-  const SocialRegister = (app) => {
+  const SocialRegister = (app:string) => {
     signIn(app);
   }
   // useEffect(() => {
@@ -73,10 +84,9 @@ const Register = (props) => {
 
   //   }
   // }, [session])
-
-  const registerUser = () => {
+ const registerUser = () => {
     let validate = false;
-    let dataRegister = {}
+    let dataRegister ;
     if (register.password == '' || register.username == '' || register.full_name == '')
       validate = true;
     if (register.phone_number == '') {
@@ -143,9 +153,7 @@ const Register = (props) => {
 
   }
   return (
-    <>
-
-      <Loader data={props.categories} />
+    <>   <Loader data={props.categories} />
       <ScrollToTop
         smooth={true}
         color="white"
@@ -259,7 +267,6 @@ const Register = (props) => {
     </>
   )
 }
-
 export default Register
 export async function getServerSideProps(context) {
   const { req, res } = context;

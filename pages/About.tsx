@@ -172,6 +172,7 @@ import Link from 'next/link';
   )
 }
  export default About
+//  SSR Function
  export async function getServerSideProps(context) {
   var axios = require('axios');
   let categories = []

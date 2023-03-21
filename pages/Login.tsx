@@ -6,7 +6,6 @@ import ScrollToTop from "react-scroll-to-top";
 import Footer from "../Components/Footer";
 import Link from "next/link";
 import googleImg from "../public/imgs/page/account/google.svg";
-import amazonImg from "../public/imgs/page/account/amazon.svg";
 import qs from 'qs';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -38,12 +37,23 @@ const Login = (props) => {
   //     })
   //   }
   // }, [session])
-  let [loginData, setLoginData] = useState({
+  interface LoginType {
+    username: string,
+    password: string,
+    grant_type: 'password'
+  }
+  interface ResetType {
+    email: string,
+    password: string,
+    otp: string
+
+  }
+  let [loginData, setLoginData] = useState<LoginType>({
     username: '',
     password: '',
     grant_type: 'password'
   })
-  let [resetData, setResetData] = useState({
+  let [resetData, setResetData] = useState<ResetType>({
     email: '',
     password: '',
     otp: 'F12345'

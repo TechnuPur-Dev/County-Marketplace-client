@@ -12,9 +12,9 @@ import bannerImg from "../public/imgs/page/shop/banner.png";
 import img1 from "../public/imgs/page/product/img-gallery-1.jpg";
 import img2 from "../public/imgs/page/product/img-gallery-2.jpg";
 // import MultiRangeSlider from "@/Components/MultiRangeSlider";
-import QuickModal from "@/Components/QuickModal";
+import QuickModal from "../Components/QuickModal";
 import Link from "next/link";
-import Banner from "@/Components/Banner";
+import Banner from "../Components/Banner";
 const ShopGrid = (props) => {
   console.log(props, 'props');
   var axios = require('axios');
@@ -28,8 +28,8 @@ const ShopGrid = (props) => {
     sort_order: router.query.sort_order || 'ASC',
     categories_ids: router.query.categories_ids || -1,
     brands_ids: router.query.brands_ids || -1,
-    price_from: Math.trunc(router.query.price_from) || 0.00,
-    price_to: Math.trunc(router.query.price_to) || 100.00,
+    price_from: Math.trunc(Number(router.query.price_from)) || 0.00,
+    price_to: Math.trunc(Number(router.query.price_to)) || 100.00,
     waranty_duration_ids: router.query.waranty_duration_ids || -1,
     vendor_id: router.query.vendor_id || -1
   })
@@ -533,7 +533,7 @@ const ShopGrid = (props) => {
                     <ul className="list-checkbox">
                       <li>
                         <label className="cb-container">
-                          <input type="checkbox" checked="checked" />
+                          <input type="checkbox" checked={true} />
                           <span className="text-small">Apple</span>
                           <span className="checkmark"></span>
                         </label>
@@ -858,12 +858,12 @@ const ShopGrid = (props) => {
                   <p className="text-desc font-16 mt-15">
                     {bannerData?.banner_text}
                   </p>
-                  <a href={{
-                    pathname: '/ShopGrid',
+                  {/* <a href={{
+                    pathname: `/ShopGrid`,
                     query:
                       `page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=-1&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`
 
-                  }}>View Details</a>
+                  }}>View Details</a> */}
                 </div>
                 <style jsx>
                   {`
@@ -889,7 +889,7 @@ const ShopGrid = (props) => {
         <div
           className="modal fade"
           id="ModalQuickview"
-          tabindex="-1"
+          tabIndex={-1}
           aria-hidden="true"
           style={{ display: "none" }}
         >

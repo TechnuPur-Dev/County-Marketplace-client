@@ -7,7 +7,7 @@ import Footer from '../Components/Footer';
 import star from '../public/imgs/template/icons/star.svg'
 import img1 from "../public/imgs/page/product/img-gallery-1.jpg";
 import Link from 'next/link';
-import QuickModal from '@/Components/QuickModal';
+import QuickModal from '../Components/QuickModal';
 const Cart = (props) => {
   return (
     <>
@@ -344,7 +344,7 @@ const Cart = (props) => {
         <div
           className="modal fade"
           id="ModalQuickview"
-          tabindex="-1"
+          tabIndex={-1}
           aria-hidden="true"
           style={{ display: "none" }}
         >

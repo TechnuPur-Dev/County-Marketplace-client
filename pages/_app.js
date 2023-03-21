@@ -22,9 +22,9 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
     </Head>
     <ToastContainer />
     <Provider store={store}>
-    {/* <SessionProvider session={session}> */}
+    <SessionProvider session={session}>
     <Component {...pageProps} />
-    {/* </SessionProvider> */}
+    </SessionProvider>
     </Provider>
   </>
 }

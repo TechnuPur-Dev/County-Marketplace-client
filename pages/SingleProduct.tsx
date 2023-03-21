@@ -36,7 +36,7 @@ const SingleProduct = (props) => {
       />
       <Topbar />
        <Header categories={props.categories} />
-       <button class="open-button"> <Image src={chat} height={25} width={30}/></button>
+       <button className="open-button"> <Image src={chat} height={25} width={30} alt="chatImg"/></button>
       <main className="main">
         <div className="section-box">
           <div className="breadcrumbs-div">
@@ -87,7 +87,7 @@ const SingleProduct = (props) => {
                         clickable: true,
                       }}
                       spaceBetween={50}
-                      calculateHeight={true}
+                     
                       modules={[Pagination]}
                       className="mySwiper"
                     >
@@ -246,7 +246,7 @@ const SingleProduct = (props) => {
               </div>
             </div>
             <label className="cb-container-2">
-              <input type="checkbox" checked="checked" />
+              <input type="checkbox" checked={true} />
               <span className="font-md color-brand-3">
                 <strong>This item:</strong>iPhone 12 Pro Max 128GB Pacific Blue
                 - $1,099.00
@@ -254,7 +254,7 @@ const SingleProduct = (props) => {
               <span className="checkmark"></span>
             </label>
             <label className="cb-container-2">
-              <input type="checkbox" checked="checked" />
+              <input type="checkbox" checked={true} />
               <span className="font-md color-brand-3">
                 Apple AirPods Pro, Active Noise Cancellation, Custom Fit -
                 $197.00
@@ -262,7 +262,7 @@ const SingleProduct = (props) => {
               <span className="checkmark"></span>
             </label>
             <label className="cb-container-2">
-              <input type="checkbox" checked="checked" />
+              <input type="checkbox" checked={true} />
               <span className="font-md color-brand-3">
                 Apple iMac 24 All-In-One Computer, Apple M1, 8GB RAM, 512GB
                 SSD, macOS Big Sur, Green, MGPJ3LL/A - $1,599.00
@@ -648,9 +648,9 @@ const SingleProduct = (props) => {
                             className="progress-bar"
                             role="progressbar"
                             style={{ width: "50%" }}
-                            aria-valuenow="50"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
+                            aria-valuenow={50}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
                           >
                             50%
                           </div>
@@ -661,9 +661,9 @@ const SingleProduct = (props) => {
                             className="progress-bar"
                             role="progressbar"
                             style={{ width: "25%" }}
-                            aria-valuenow="25"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
+                            aria-valuenow={25}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
                           >
                             25%
                           </div>
@@ -674,9 +674,9 @@ const SingleProduct = (props) => {
                             className="progress-bar"
                             role="progressbar"
                             style={{ width: "45%" }}
-                            aria-valuenow="45"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
+                            aria-valuenow={45}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
                           >
                             45%
                           </div>
@@ -687,9 +687,9 @@ const SingleProduct = (props) => {
                             className="progress-bar"
                             role="progressbar"
                             style={{ width: "65%" }}
-                            aria-valuenow="65"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
+                            aria-valuenow={65}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
                           >
                             65%
                           </div>
@@ -700,9 +700,9 @@ const SingleProduct = (props) => {
                             className="progress-bar"
                             role="progressbar"
                             style={{ width: "85%" }}
-                            aria-valuenow="85"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
+                            aria-valuenow={85}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
                           >
                             85%
                           </div>
@@ -2124,7 +2124,7 @@ const SingleProduct = (props) => {
         <div
           className="modal fade"
           id="ModalFiltersForm"
-          tabIndex="-1"
+          tabIndex={-1}
           aria-hidden="true"
           style={{ display: "none" }}
         >
@@ -2148,7 +2148,7 @@ const SingleProduct = (props) => {
                     <ul className="list-checkbox">
                       <li>
                         <label className="cb-container">
-                          <input type="checkbox" checked="checked" />
+                          <input type="checkbox" checked={true} />
                           <span className="text-small">Apple</span>
                           <span className="checkmark"></span>
                         </label>
@@ -2237,7 +2237,7 @@ const SingleProduct = (props) => {
                       </li>
                       <li>
                         <label className="cb-container">
-                          <input type="checkbox" checked="checked" />
+                          <input type="checkbox" checked={true}/>
                           <span className="text-small">FREE shipping</span>
                           <span className="checkmark"></span>
                         </label>
@@ -2268,7 +2268,7 @@ const SingleProduct = (props) => {
                       </li>
                       <li>
                         <label className="cb-container">
-                          <input type="checkbox" checked="checked" />
+                          <input type="checkbox" checked={true} />
                           <span className="text-small">
                             1&ndash;3 business days
                           </span>
@@ -2310,7 +2310,7 @@ const SingleProduct = (props) => {
                       </li>
                       <li>
                         <label className="cb-container">
-                          <input type="checkbox" checked="checked" />
+                          <input type="checkbox" checked={true} />
                           <span className="text-small">Can be gift-wrapped</span>
                           <span className="checkmark"></span>
                         </label>
@@ -2436,7 +2436,7 @@ const SingleProduct = (props) => {
                       </li>
                       <li>
                         <label className="cb-container">
-                          <input type="checkbox" checked="checked" />
+                          <input type="checkbox" checked={true} />
                           <span className="text-small">
                             Liquid Silicone Rubber (5)
                           </span>
@@ -2499,7 +2499,7 @@ const SingleProduct = (props) => {
         <div
           className="modal fade"
           id="ModalQuickview"
-          tabIndex="-1"
+          tabIndex={-1}
           aria-hidden="true"
           style={{ display: "none" }}
         >

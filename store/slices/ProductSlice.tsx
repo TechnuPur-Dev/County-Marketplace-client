@@ -19,7 +19,7 @@ const ProductSlice = createSlice({
     add(action, state) {
             alert('add product redux');
             console.log(action, state);
-             state
+             
 
         }
     }

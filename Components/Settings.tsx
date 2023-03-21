@@ -5,15 +5,32 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 const Settings = (props) => {
   var axios = require('axios');
-
+  interface infoType {
+    full_name: string;
+    gender: string;
+    birthday: string;
+    is_email_verification: boolean;
+    email: string;
+    phone_number: string;
+    contact_no: string;
+  }
+  interface changeAddressType {
+    full_name: string;
+    address_line1: string;
+    address_line2: string;
+    city_id: number;
+    state_province_id: number;
+    landmark: string;
+    is_default_address: boolean;
+  }
   const { styleClass } = props
-  const [info, setInfo] = useState(props.info)
-  const [provinceData, setProvinceData] = useState([])
-  const [cityData, setCityData] = useState([])
-  const [allAddress, setAllAddress] = useState(props.allAddress)
-  const [addressId, setAddressId] = useState(-1)
-  let [validation, setValidtation] = useState(false);
-  const [changeAddress, setChangeAddress] = useState({
+  const [info, setInfo] = useState<infoType>(props.info)
+  const [provinceData, setProvinceData] = useState<any[]>([])
+  const [cityData, setCityData] = useState<any[]>([])
+  const [allAddress, setAllAddress] = useState<any[]>(props.allAddress)
+  const [addressId, setAddressId] = useState<number>(-1)
+  let [validation, setValidtation] = useState<boolean>(false);
+  const [changeAddress, setChangeAddress] = useState<changeAddressType>({
     full_name: "",
     address_line1: "",
     address_line2: "",
@@ -25,7 +42,7 @@ const Settings = (props) => {
   })
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = (address) => {
+  const handleShow = (address?) => {
     if (address) {
       console.log(address.address_id);
       setShow(true)
@@ -230,8 +247,8 @@ const Settings = (props) => {
   const UpdateContactInfo = () => {
     let token = localStorage.getItem("token");
     let validate = false;
-    if (info.full_name == '' 
-    // || info.gender == '' || info.gender == null
+    if (info.full_name == ''
+      // || info.gender == '' || info.gender == null
       || info?.birthday == '' || info?.birthday == null
       || info?.contact_no == '' || info?.contact_no == null)
       validate = true;
@@ -320,7 +337,7 @@ const Settings = (props) => {
                   <div className="row ">
                     <div className="col-lg-6 col-md-6 col-sm-6 col-5">
 
-                      <input className=" font-sm" type="text" value="Full Name *" style={{ border: 'none', color: '#425A8B ' }} readonly="readonly" />
+                      <input className=" font-sm" type="text" value="Full Name *" style={{ border: 'none', color: '#425A8B ' }} readOnly={true} />
                     </div>
                     <div className="col-lg-6 col-md-6 col-sm-6 col-5">
 
@@ -339,7 +356,7 @@ const Settings = (props) => {
                   <div className="row ">
                     <div className="col-lg-6 col-md-6 col-sm-6 col-5">
 
-                      <input className=" font-sm" type="text" value="Gender *" style={{ border: 'none', color: '#425A8B ' }} readonly="readonly" />
+                      <input className=" font-sm" type="text" value="Gender *" style={{ border: 'none', color: '#425A8B ' }} readOnly={true} />
                     </div>
                     <div className="col-lg-6 col-md-6 col-sm-6 col-5">
 
@@ -356,7 +373,7 @@ const Settings = (props) => {
                   <div className="row ">
                     <div className="col-lg-6 col-md-6 col-sm-6 col-5">
 
-                      <input className=" font-sm" type="text" value="Date of Birth *" style={{ border: 'none', color: '#425A8B ' }} readonly="readonly" />
+                      <input className=" font-sm" type="text" value="Date of Birth *" style={{ border: 'none', color: '#425A8B ' }} readOnly={true} />
                     </div>
                     <div className="col-lg-6 col-md-6 col-sm-6 col-5">
                       <input className=" font-sm" type="date" onChange={handleInfoChange} name="birthday" value={info?.birthday} data-date-format="yyyy mm dd" style={{ padding: '3px 16px', color: '#B2C2E1', border: 'none', borderBottom: '1px solid #ced4da', textAlign: 'center' }} />
@@ -364,18 +381,18 @@ const Settings = (props) => {
                     </div>
                   </div>
                 </div>
-                {validation &&( info.birthday == 'Invalid Date-Invalid Date-Invalid Date' || info.birthday == null) && <span className="error">This field is required !</span>}
+                {validation && (info.birthday == 'Invalid Date-Invalid Date-Invalid Date' || info.birthday == null) && <span className="error">This field is required !</span>}
               </div>
               <div className="col-lg-12 mb-3">
                 <div className=" form-control">
                   <div className="row ">
                     <div className="col-lg-6 col-md-6 col-sm-6 col-5">
 
-                      <input className=" font-sm" type="text" value="Contact No *" style={{ border: 'none', color: '#425A8B ' }} readonly="readonly" />
+                      <input className=" font-sm" type="text" value="Contact No *" style={{ border: 'none', color: '#425A8B ' }} readOnly={true} />
                     </div>
                     <div className="col-lg-6 col-md-6 col-sm-6 col-5">
 
-                      <input className=" font-sm" type="text" name="contact_no" onChange={handleInfoChange}  value={info?.contact_no} style={{ color: '#B2C2E1', border: 'none', borderBottom: '1px solid #ced4da', textAlign: 'center' }} />
+                      <input className=" font-sm" type="text" name="contact_no" onChange={handleInfoChange} value={info?.contact_no} style={{ color: '#B2C2E1', border: 'none', borderBottom: '1px solid #ced4da', textAlign: 'center' }} />
 
                     </div>
                   </div>
@@ -413,10 +430,10 @@ const Settings = (props) => {
 
                   <div className="col-lg-3 col-md-3 col-sm-3 col-3">
 
-                    <input className=" font-sm" type="text" value="Name *" style={{ border: 'none', color: '#425A8B ' }} readonly="readonly" />
+                    <input className=" font-sm" type="text" value="Name *" style={{ border: 'none', color: '#425A8B ' }} readOnly={true} />
                   </div>
                   <div className="col-lg-9 col-md-9 col-sm-9 col-9">
-                    <input className=" font-sm" type="text" value={address.full_name} style={{ color: '#B2C2E1', border: 'none', borderBottom: '1px solid #ced4da', textAlign: 'center' }} readonly="readonly" />
+                    <input className=" font-sm" type="text" value={address.full_name} style={{ color: '#B2C2E1', border: 'none', borderBottom: '1px solid #ced4da', textAlign: 'center' }} readOnly={true} />
                   </div>
                 </div>
               </div>
@@ -427,10 +444,10 @@ const Settings = (props) => {
 
                   <div className="col-lg-6 col-md-6 col-sm-6 col-5">
 
-                    <input className=" font-sm" type="text" value="Default Address *" style={{ border: 'none', color: '#425A8B ' }} readonly="readonly" />
+                    <input className=" font-sm" type="text" value="Default Address *" style={{ border: 'none', color: '#425A8B ' }} readOnly={true} />
                   </div>
                   <div className="col-lg-6 col-md-6 col-sm-6 col-5">
-                    <input type="checkbox" style={{ marginLeft: '20px' }} checked={address.is_default_address == 'true' ? true : false} readonly="readonly" />
+                    <input type="checkbox" style={{ marginLeft: '20px' }} checked={address.is_default_address == 'true' ? true : false} readOnly={true} />
 
 
                   </div>
@@ -443,11 +460,11 @@ const Settings = (props) => {
               <div className="row ">
                 <div className="col-lg-4 col-md-4 col-sm-4 col-4">
 
-                  <input className=" font-sm" type="text" value="Address 1 *" style={{ border: 'none', color: '#425A8B ' }} readonly="readonly" />
+                  <input className=" font-sm" type="text" value="Address 1 *" style={{ border: 'none', color: '#425A8B ' }} readOnly={true} />
                 </div>
                 <div className="col-lg-8 col-md-8 col-sm-8 col-8">
 
-                  <input className=" font-sm" type="text" value={address.address_line1} readonly="readonly" placeholder="Fullname *" style={{ color: '#B2C2E1', border: 'none', borderBottom: '1px solid #ced4da', textAlign: 'center' }} />
+                  <input className=" font-sm" type="text" value={address.address_line1} readOnly={true} placeholder="Fullname *" style={{ color: '#B2C2E1', border: 'none', borderBottom: '1px solid #ced4da', textAlign: 'center' }} />
 
                 </div>
               </div>
@@ -457,11 +474,11 @@ const Settings = (props) => {
               <div className="row ">
                 <div className="col-lg-4 col-md-4 col-sm-4 col-4">
 
-                  <input className=" font-sm" type="text" value="Address 2 *" style={{ border: 'none', color: '#425A8B ' }} readonly="readonly" />
+                  <input className=" font-sm" type="text" value="Address 2 *" style={{ border: 'none', color: '#425A8B ' }} readOnly={true} />
                 </div>
                 <div className="col-lg-8 col-md-8 col-sm-8 col-8">
 
-                  <input className=" font-sm" type="text" value={address.address_line2} readonly="readonly" placeholder="Fullname *" style={{ color: '#B2C2E1', border: 'none', borderBottom: '1px solid #ced4da', textAlign: 'center' }} />
+                  <input className=" font-sm" type="text" value={address.address_line2} readOnly={true} placeholder="Fullname *" style={{ color: '#B2C2E1', border: 'none', borderBottom: '1px solid #ced4da', textAlign: 'center' }} />
 
                 </div>
               </div>
@@ -474,10 +491,10 @@ const Settings = (props) => {
 
                   <div className="col-lg-3 col-md-3 col-sm-3 col-3">
 
-                    <input className=" font-sm" type="text" value="City *" style={{ border: 'none', color: '#425A8B ' }} readonly="readonly" />
+                    <input className=" font-sm" type="text" value="City *" style={{ border: 'none', color: '#425A8B ' }} readOnly={true} />
                   </div>
                   <div className="col-lg-9 col-md-9 col-sm-9 col-9">
-                    <input className=" font-sm" type="text" value={address.city_name} style={{ color: '#B2C2E1', border: 'none', borderBottom: '1px solid #ced4da', textAlign: 'center' }} readonly="readonly" />
+                    <input className=" font-sm" type="text" value={address.city_name} style={{ color: '#B2C2E1', border: 'none', borderBottom: '1px solid #ced4da', textAlign: 'center' }} readOnly={true} />
 
 
                   </div>
@@ -489,11 +506,11 @@ const Settings = (props) => {
                 <div className="row">
                   <div className="col-lg-3 col-md-3 col-sm-3 col-3">
 
-                    <input className=" font-sm" type="text" value="State *" style={{ border: 'none', color: '#425A8B ' }} readonly="readonly" />
+                    <input className=" font-sm" type="text" value="State *" style={{ border: 'none', color: '#425A8B ' }} readOnly={true} />
                   </div>
 
                   <div className="col-lg-9 col-md-9 col-sm-9 col-9">
-                    <input className=" font-sm" type="text" value={address.province_name} style={{ color: '#B2C2E1', border: 'none', borderBottom: '1px solid #ced4da', textAlign: 'center' }} readonly="readonly" />
+                    <input className=" font-sm" type="text" value={address.province_name} style={{ color: '#B2C2E1', border: 'none', borderBottom: '1px solid #ced4da', textAlign: 'center' }} readOnly={true} />
 
 
                   </div>
@@ -548,8 +565,8 @@ const Settings = (props) => {
                   <div className="form-group">
 
                     <Select placeholder="Select City"
-                      value={cityData.find(e => e.value == changeAddress.city_id) || ''}
-                      onChange={(e) => {
+                      value={cityData.find(e=> e.value == changeAddress.city_id) || ''}
+                      onChange={(e) =>  {
                         setChangeAddress({
                           ...changeAddress,
                           city_id: e.value
@@ -584,7 +601,7 @@ const Settings = (props) => {
                 <div className="col-lg-6">
                   <div className="form-group">
                     <input className="form-control font-sm" value={changeAddress.landmark} onChange={handleChange} name="landmark" type="text" placeholder="Landmark*" />
-                    {validation && changeAddress.landmark == 0 && <span className="error">This field is required !</span>}
+                    {validation && changeAddress.landmark == "" && <span className="error">This field is required !</span>}
 
                   </div>
                 </div>

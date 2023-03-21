@@ -8,7 +8,7 @@ import star from '../public/imgs/template/icons/star.svg'
 import InfoSection from '../Components/InfoSection';
 import img1 from "../public/imgs/page/product/img-gallery-1.jpg";
 import Link from 'next/link';
-import QuickModal from '@/Components/QuickModal';
+import QuickModal from '../Components/QuickModal';
 const VendorListing =(props) => {
   
   return (
@@ -421,7 +421,7 @@ const VendorListing =(props) => {
         </div>
       </section>
       <InfoSection/>
-      <div className="modal fade" id="ModalFiltersForm" tabindex="-1" aria-hidden="true" style={{display: "none"}}>
+      <div className="modal fade" id="ModalFiltersForm" tabIndex={-1} aria-hidden="true" style={{display: "none"}}>
         <div className="modal-dialog modal-xl">
           <div className="modal-content apply-job-form">
             <div className="modal-header">
@@ -435,7 +435,7 @@ const VendorListing =(props) => {
                   <ul className="list-checkbox">
                     <li>
                       <label className="cb-container">
-                        <input type="checkbox" checked="checked"/><span className="text-small">Apple</span><span className="checkmark"></span>
+                        <input type="checkbox" checked={true}/><span className="text-small">Apple</span><span className="checkmark"></span>
                       </label>
                     </li>
                     <li>
@@ -500,7 +500,7 @@ const VendorListing =(props) => {
                     </li>
                     <li>
                       <label className="cb-container">
-                        <input type="checkbox" checked="checked"/><span className="text-small">FREE shipping</span><span className="checkmark"></span>
+                        <input type="checkbox" checked={true}/><span className="text-small">FREE shipping</span><span className="checkmark"></span>
                       </label>
                     </li>
                     <li>
@@ -523,7 +523,7 @@ const VendorListing =(props) => {
                     </li>
                     <li>
                       <label className="cb-container">
-                        <input type="checkbox" checked="checked"/><span className="text-small">1&ndash;3 business days</span><span className="checkmark"></span>
+                        <input type="checkbox" checked={true}/><span className="text-small">1&ndash;3 business days</span><span className="checkmark"></span>
                       </label>
                     </li>
                     <li>
@@ -553,7 +553,7 @@ const VendorListing =(props) => {
                     </li>
                     <li>
                       <label className="cb-container">
-                        <input type="checkbox" checked="checked"/><span className="text-small">Can be gift-wrapped</span><span className="checkmark"></span>
+                        <input type="checkbox" checked={true}/><span className="text-small">Can be gift-wrapped</span><span className="checkmark"></span>
                       </label>
                     </li>
                     <li>
@@ -586,7 +586,7 @@ const VendorListing =(props) => {
                     </li>
                     <li>
                       <label className="cb-container">
-                        <input type="checkbox" checked="checked"/><span className="text-small">Liquid Silicone Rubber (5)</span><span className="checkmark"></span>
+                        <input type="checkbox" checked={true}/><span className="text-small">Liquid Silicone Rubber (5)</span><span className="checkmark"></span>
                       </label>
                     </li>
                     <li>
@@ -608,7 +608,7 @@ const VendorListing =(props) => {
     <div
           className="modal fade"
           id="ModalQuickview"
-          tabindex="-1"
+          tabIndex={-1}
           aria-hidden="true"
           style={{ display: "none" }}
         >

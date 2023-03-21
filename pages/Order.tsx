@@ -13,8 +13,7 @@ const OrderPage = (props) => {
       <ScrollToTop
       className='animate__animated animate__fadeInUp'
         smooth={true}
-        showUnder={900}
-        color="white"
+         color="white"
         viewBox="0 0 16 16"
         width="22"
         height="22"

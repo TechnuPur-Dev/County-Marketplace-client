@@ -59,7 +59,7 @@ const Checkout = (props) => {
                   </div>
                   <div className="col-lg-12">
                     <div className="form-group">
-                      <label className="font-sm color-brand-3" for="checkboxOffers">
+                      <label className="font-sm color-brand-3" htmlFor="checkboxOffers">
                         <input className="checkboxOffer" id="checkboxOffers" type="checkbox"/>Keep me up to date on news and exclusive offers
                       </label>
                     </div>
@@ -117,7 +117,7 @@ const Checkout = (props) => {
                   </div>
                   <div className="col-lg-12">
                     <div className="form-group mb-0">
-                      <textarea className="form-control font-sm" placeholder="Additional Information" rows="5"></textarea>
+                      <textarea className="form-control font-sm" placeholder="Additional Information" rows={5}></textarea>
                     </div>
                   </div>
                 </div>

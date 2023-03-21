@@ -68,7 +68,7 @@ const Contact = (props) => {
                     </div>
                     <div className="col-lg-12">
                       <div className="form-group">
-                        <textarea className="form-control" placeholder="Message" rows="5"></textarea>
+                        <textarea className="form-control" placeholder="Message" rows={5}></textarea>
                       </div>
                     </div>
                     <div className="col-lg-12">
@@ -81,7 +81,7 @@ const Contact = (props) => {
               </div>
               <div className="col-lg-6">
                 <div className="map">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d325467.51371614134!2d-73.98947743776016!3d40.72209526768085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m3!3e0!4m0!4m0!5e0!3m2!1svi!2s!4v1664373110059!5m2!1svi!2s" height="550" style={{"border":0}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d325467.51371614134!2d-73.98947743776016!3d40.72209526768085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m3!3e0!4m0!4m0!5e0!3m2!1svi!2s!4v1664373110059!5m2!1svi!2s" height="550" style={{"border":0}} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                 </div>
               </div>
             </div>

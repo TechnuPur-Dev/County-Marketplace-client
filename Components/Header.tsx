@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import favicon from "../public/imgs/template/logo.svg";
-import ecomImg from "../public/imgs/page/homepage1/imgsp5.png";
 import logo from "../public/imgs/template/logo.svg";
-import cart from "../public/imgs/page/homepage1/imgsp4.png";
-import monitor from "../public/imgs/template/monitor.svg";
 import account from "../public/imgs/template/ava_1.png";
 import Select from "react-select";
 import Link from "next/link";
@@ -14,18 +11,17 @@ import { signOut } from "next-auth/react"
 const Header = (props) => {
   const [accToken, setAccToken] = useState("")
   const router = useRouter();
-  // console.log(props, 'headerpppp')
   var axios = require("axios");
-  const [toggleClass, setToggleClass] = useState(false);
-  const [Name,setName]=useState("")
-  const [expandList, setExpandList] = useState(false);
-  const [expandAccount, setExpandAccount] = useState(false);
-  const [searchString, setSearchString] = useState('')
+  const [toggleClass, setToggleClass] =useState<boolean>(false);
+  const [Name,setName]=useState<string>("")
+  const [expandList, setExpandList] =useState<boolean>(false);
+  const [expandAccount, setExpandAccount]  =useState<boolean>(false);
+  const [searchString, setSearchString]= useState<string>("")
   const [catg, setCatg] = useState(props.categories);
   // for account logo expand
-  const myRef = useRef();
+  const myRef = useRef<HTMLUListElement>(null);
   // for mobile view menu
-  const myRef2 = useRef();
+  const myRef2 = useRef<HTMLInputElement>(null);
   //Search custom Styles
   const customStyles = {
     indicatorSeparator: () => { },
@@ -116,11 +112,7 @@ const Header = (props) => {
       window.removeEventListener("scroll", isSticky);
       document.removeEventListener("mousedown", handleClickOutside);
     };
-
-
-
-
-  });
+   });
   let Search = (e) => {
     e.preventDefault()
     if (props.getProducts) {
@@ -138,31 +130,6 @@ const Header = (props) => {
     }
 
   }
-
-  //Dynamic Categories Menu
-
-  // let getProduct = async (item,i) => {
-  //  console.log(i,'parenttt')
-  //   let proCatg = catg.filter((fil_item) => (fil_item.category_id == item.parent_id))
-
-  //   var config = {
-  //     method: 'get',
-  //     url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=${proCatg[0].parent_id}&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`,
-  //     headers: {
-  //       'Authorization': 'Bearer N59Ag_m1BMrcMDIcd0pnS_DewxEyc4Qs_XIBl1zCLv3ZnKpkEd4usksRUWGxmHL0n7lQF5QltkvRLnGvGNOuZNiB-5kdd-HzarGbmdTmWFHbemWQbrXti59NJbBGhjS3sxX0RwQWUzyHDmgD17r6AIUfsLAUNotNzKCy3bgJhF5hy8U2ay9Lg7eSo4LEhfd0xTTLyekNusqziIJ7vOWp1sQraoyMD9cSE_CQjQCWkm4GG18hTZP_lAXFAtR5LVqbGC2zpgVk2b-iSlODO2TlgzwfiLF7UDEeNV-QAlng36N0733nOcI2Xj0bOXmxNJ8HmNBotrgRYBCs73ehQwSzDweZJKG_ez42YAW-bT5aNvf8S-tJv3ID4vItgMvoX5p5VEKVbVt9PDqzz0OTnDALNQ'
-  //     }
-  //   };
-
-  //   try {
-  //     const response = await axios(config); // wait for the axios request to complete
-  //     console.log(JSON.stringify(response.data));
-  //     console.log(response.data.payload)
-
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-
-  // }
   const handleClickOutside = (e) => {
     if (!myRef.current.contains(e.target)) {
       setExpandAccount(false);
@@ -564,7 +531,7 @@ const Header = (props) => {
                   {/* Account Options */}
                   <div className="user-account">
                     <a href="page-account.html">
-                      <img src={account} alt="Ecom" />
+                      <Image src={account} alt="Ecom" height={20} width={20} />
                     </a>
                     <div className="content">
                       <h6 className="user-name">

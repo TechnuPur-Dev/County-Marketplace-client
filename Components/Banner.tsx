@@ -3,7 +3,12 @@ import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react'
 
 const Banner = (props) => {
-  const [bannerData, setBannerData] = useState(props?.banner)
+  interface Banner {
+    banner_heading: string;
+    banner_text : string;
+    banner_place_type: string;
+  }
+  const [bannerData, setBannerData] = useState<Banner[] | any >(props?.banner)
   let router = useRouter()
   console.log(router, 'bannnerss');
   useEffect(() => {
