@@ -1,12 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-export const fetchData = createAsyncThunk<Response, string>(
+export const fetchData = createAsyncThunk<Response, any>(
     'fetchData',
-    async (payload) => {
-
-
-        try {
+    async (payload) => { 
+         try {
             
-            console.log(payload, 'loadd');
+           
             const response = await fetch(`http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?${payload}`);
             const data = await response.json();
             console.log(data, 'loadd');
@@ -21,18 +19,19 @@ export const fetchData = createAsyncThunk<Response, string>(
 
 const ProQuerySlice = createSlice({
     name: "proFilter",
-    initialState:{},
+    initialState:[],
     reducers: {},
     extraReducers: builder => {
         builder
             .addCase(fetchData.pending, state => {
-                console.log(state);
+                console.log(state,'routerr');
                 return state
 
             })
-            .addCase(fetchData.fulfilled, (state, action) => {
+            .addCase(fetchData.fulfilled, (state:any, action:any) => {
                 console.log(state, action, 'loadd');
-                state=action.payload
+                console.log(action,'routerr');
+                state=[...action.payload]
                 return state
             })
             .addCase(fetchData.rejected, (state, action) => {
