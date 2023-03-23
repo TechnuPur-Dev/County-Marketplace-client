@@ -116,7 +116,7 @@ const Header = (props) => {
   let Search = (e) => {
     e.preventDefault()
     if (props.getProducts) {
-      props?.getProducts(`page_size=${props?.proFilters?.page_size}&page_number=${props?.proFilters?.page_number}&search_string=${(searchString == '') ? -1 : searchString}&sort_column=${props?.proFilters?.sort_column}&sort_order=${props?.proFilters?.sort_order}&categories_ids=${props?.proFilters?.categories_ids}&brands_ids=${props?.proFilters?.brands_ids}&price_from=${props?.proFilters?.price_from}&price_to=${props?.proFilters?.price_to}&waranty_duration_ids=-1${props?.proFilters?.waranty_duration_ids}&vendor_id=${props?.proFilters?.vendor_id}`)
+      props?.getProducts(`page_size=${props?.proFilters?.page_size}&page_number=${props?.proFilters?.page_number}&search_string=${(searchString == '') ? -1 : searchString}&sort_column=${props?.proFilters?.sort_column}&sort_order=${props?.proFilters?.sort_order}&categories_ids=${props?.proFilters?.categories_ids}&brands_ids=${props?.proFilters?.brands_ids}&price_from=${props?.proFilters?.price_from}&price_to=${props?.proFilters?.price_to}&waranty_duration_ids=${props?.proFilters?.waranty_duration_ids}&vendor_id=${props?.proFilters?.vendor_id}`)
       props?.applyFilters('search_string', searchString == '' ? -1 : searchString)
     }
     else {
