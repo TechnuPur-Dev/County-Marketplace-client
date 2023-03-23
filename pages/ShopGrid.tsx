@@ -27,7 +27,7 @@ const ShopGrid = (props) => {
   const dispatch = useDispatch()
   const dispatch2=useAppDispatch()
   const proFilters = useSelector((state: any) => state?.proFilter);
-  const getPro = useSelector((state: any) => state?.updateQuery);
+  const [getPro, setgetPro] = useState(props?.products)
   useEffect(() => {
     console.log(proFilters);
   }, [proFilters])
@@ -44,20 +44,20 @@ const ShopGrid = (props) => {
     router.push(`/ShopGrid?${queryVal}`);
     console.log(queryVal);
     dispatch2(fetchData(queryVal))
-    // let filter = router.query;
-    // var config = {
-    //   method: 'get',
-    //   url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?${queryVal}`,
-    // };
+    let filter = router.query;
+    var config = {
+      method: 'get',
+      url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?${queryVal}`,
+    };
 
-    // axios(config)
-    //   .then(function (response) {
-    //     console.log(filter, response.data.payload)
-    //     setgetPro(response.data.payload)
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+    axios(config)
+      .then(function (response) {
+        console.log(filter, response.data.payload)
+        setgetPro(response.data.payload)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
   }
   const applyFilters = (name, value) => {
@@ -423,9 +423,7 @@ export async function getServerSideProps(context) {
   let filter = context.query
   const store = createStore(ProductFilterSlice);
   await store.dispatch(updateProFilter(context.query));
-  
- 
-  console.log(filter, 'categoryyy', context.query)
+   console.log(filter, 'categoryyy', context.query)
   var axios = require('axios');
   let products = [];
   let categories = []
