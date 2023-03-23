@@ -25,9 +25,9 @@ import { createStore } from 'redux';
 // import { setInitialData } from './redux/actions';
 const ShopGrid = (props) => {
   const dispatch = useDispatch()
-  const dispatch2=useAppDispatch()
+  // const dispatch2=useAppDispatch()
   const proFilters = useSelector((state: any) => state?.proFilter);
-  const [getPro, setgetPro] = useState(props?.products)
+
   useEffect(() => {
     console.log(proFilters);
   }, [proFilters])
@@ -36,15 +36,15 @@ const ShopGrid = (props) => {
   var axios = require('axios');
   const router = useRouter();
   const [bannerData, setBannerData] = useState(props?.banners)
-  // const [getPro, setgetPro] = useState(props?.products)
+  const [getPro, setgetPro] = useState(props?.products)
   const [proCatg, setProCatg] = useState(props?.categories)
   let pagination = [1, 2, 3, 4, 5, 6]
 
   const getProducts = (queryVal) => {
     router.push(`/ShopGrid?${queryVal}`);
     console.log(queryVal);
-    dispatch2(fetchData(queryVal))
-    let filter = router.query;
+    // dispatch2(fetchData(queryVal))
+;
     var config = {
       method: 'get',
       url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?${queryVal}`,
@@ -52,7 +52,7 @@ const ShopGrid = (props) => {
 
     axios(config)
       .then(function (response) {
-        console.log(filter, response.data.payload)
+        console.log( response.data.payload)
         setgetPro(response.data.payload)
       })
       .catch(function (error) {
@@ -68,14 +68,14 @@ const ShopGrid = (props) => {
   useEffect(() => {
     console.log(props,'routerr');
      dispatch(updateProFilter(router.query));
-    console.log(proFilters,getPro,'routerr');
+    
     // let slider = bannerData?.filter((image) => (image?.banner_place_type == "Other"))
     // console.log(slider, 'bannnerss');
     // setBannerData(slider[0])
   }, [router])
   useEffect(() => {
     dispatch(updateProFilter(props.initialData));
-  }, [dispatch, props.initialData]);
+  }, []);
   return (
     <>
       <Loader data={props.categories} />

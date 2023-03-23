@@ -7,10 +7,9 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Head from "next/head";
 import { store } from '../store/store'
-import {wrapper} from "../store/store";
 import { Provider } from 'react-redux'
 import { SessionProvider } from "next-auth/react"
-const  App=({ Component, pageProps: { session, ...pageProps } })=> {
+export default function App({ Component, pageProps: { session, ...pageProps } }) {
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
   }, []);
@@ -30,4 +29,3 @@ const  App=({ Component, pageProps: { session, ...pageProps } })=> {
   </>
 }
 
-export default wrapper.withRedux(App);
