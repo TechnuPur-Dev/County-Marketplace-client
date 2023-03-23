@@ -23,11 +23,7 @@ import { fetchData } from "../store/slices/ProQerySlice";
 import { useAppDispatch } from "../store/store";
 
 const ShopGrid = (props) => {
-  const dispatch = useDispatch()
-  const dispatch2=useAppDispatch()
- 
-  
-  var axios = require('axios');
+ var axios = require('axios');
   const router = useRouter();
   let [proFilters, setProFilters] = useState({
     page_size: router.query.page_size || 30,
@@ -48,6 +44,7 @@ const ShopGrid = (props) => {
   let pagination = [1, 2, 3, 4, 5, 6]
 
   const getProducts = (queryVal) => {
+    router.push(router.asPath, `/ShopGrid?${queryVal}`);
      let filter = router.query;
     var config = {
       method: 'get',
@@ -72,7 +69,6 @@ const ShopGrid = (props) => {
 
   }
   useEffect(() => {
-    router.push(`/ShopGrid?page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=-1&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`);
     console.log(proFilters);
     let slider = bannerData?.filter((image) => (image?.banner_place_type == "Other"))
     console.log(slider, 'bannnerss');
