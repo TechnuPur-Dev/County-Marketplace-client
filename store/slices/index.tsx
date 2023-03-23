@@ -1,4 +1,9 @@
-import ProductSlice from "./ProductSlice";
+
+import ProductFilterSlice from "./ProductFilterSlice";
+import ProQerySlice from "./ProQerySlice";
+
 export const Slices = {
-    ProductSlice
+   
+    ProductFilterSlice,
+    ProQerySlice
 };

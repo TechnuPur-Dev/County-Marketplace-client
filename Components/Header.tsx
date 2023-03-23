@@ -12,11 +12,11 @@ const Header = (props) => {
   const [accToken, setAccToken] = useState("")
   const router = useRouter();
   var axios = require("axios");
-  const [toggleClass, setToggleClass] =useState<boolean>(false);
-  const [Name,setName]=useState<string>("")
-  const [expandList, setExpandList] =useState<boolean>(false);
-  const [expandAccount, setExpandAccount]  =useState<boolean>(false);
-  const [searchString, setSearchString]= useState<string>("")
+  const [toggleClass, setToggleClass] = useState<boolean>(false);
+  const [Name, setName] = useState<string>("")
+  const [expandList, setExpandList] = useState<boolean>(false);
+  const [expandAccount, setExpandAccount] = useState<boolean>(false);
+  const [searchString, setSearchString] = useState<string>("")
   const [catg, setCatg] = useState(props.categories);
   // for account logo expand
   const myRef = useRef<HTMLUListElement>(null);
@@ -112,7 +112,7 @@ const Header = (props) => {
       window.removeEventListener("scroll", isSticky);
       document.removeEventListener("mousedown", handleClickOutside);
     };
-   });
+  });
   let Search = (e) => {
     e.preventDefault()
     if (props.getProducts) {
@@ -163,7 +163,6 @@ const Header = (props) => {
             <div className="header-left">
               <div className="header-logo">
                 <Link href={`/`}>
-
                   <Image
                     height="10"
                     width="110"
@@ -526,7 +525,7 @@ const Header = (props) => {
                   </ul>
                 </nav>
               </div>
-              { accToken && <div className="mobile-account">
+              {accToken && <div className="mobile-account">
                 <div className="mobile-header-top">
                   {/* Account Options */}
                   <div className="user-account">
@@ -564,7 +563,7 @@ const Header = (props) => {
                   </li>
                 </ul>
               </div>}
-             
+
               <div className="mobile-banner">
                 <div className="bg-5 block-iphone">
                   <span className="color-brand-3 font-sm-lh32">

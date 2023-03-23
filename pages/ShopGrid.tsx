@@ -17,54 +17,52 @@ import TagFilter from "../Components/TagFilter";
 import BestSellerFil from "../Components/BestSellerFil";
 import BrandFilter from "../Components/BrandFilter";
 import RatingFilter from "../Components/RatingFilter";
+import { updateProFilter } from "../store/slices/ProductFilterSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData } from "../store/slices/ProQerySlice";
+import { useAppDispatch } from "../store/store";
+
 const ShopGrid = (props) => {
+  const dispatch = useDispatch()
+  const dispatch2=useAppDispatch()
+  const proFilters = useSelector((state: any) => state?.proFilter);
+  useEffect(() => {
+    console.log(proFilters);
+  }, [proFilters])
+
   console.log(props, 'props');
   var axios = require('axios');
   const router = useRouter();
   const [bannerData, setBannerData] = useState(props?.banners)
-  let [proFilters, setProFilters] = useState({
-    page_size: router.query.page_size || 30,
-    page_number: router.query.page_number || 1,
-    search_string: router.query.search_string || -1,
-    sort_column: router.query.sort_column || 'product_name',
-    sort_order: router.query.sort_order || 'ASC',
-    categories_ids: router.query.categories_ids || -1,
-    brands_ids: router.query.brands_ids || -1,
-    price_from: Math.trunc(Number(router.query.price_from)) || 0.00,
-    price_to: Math.trunc(Number(router.query.price_to)) || 100.00,
-    waranty_duration_ids: router.query.waranty_duration_ids || -1,
-    vendor_id: router.query.vendor_id || -1
-  })
   const [getPro, setgetPro] = useState(props?.products)
   const [proCatg, setProCatg] = useState(props?.categories)
   let pagination = [1, 2, 3, 4, 5, 6]
-  console.log(router, 'urll')
-  const getProducts = (queryVal) => {
-    router.push(router.asPath, `/ShopGrid?${queryVal}`);
-    let filter = router.query;
-    var config = {
-      method: 'get',
-      url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?${queryVal}`,
-    };
 
-    axios(config)
-      .then(function (response) {
-        console.log(filter, response.data.payload)
-        setgetPro(response.data.payload)
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  const getProducts = (queryVal) => {
+    router.push(`/ShopGrid?${queryVal}`);
+    console.log(queryVal);
+    dispatch2(fetchData(queryVal))
+    // let filter = router.query;
+    // var config = {
+    //   method: 'get',
+    //   url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?${queryVal}`,
+    // };
+
+    // axios(config)
+    //   .then(function (response) {
+    //     console.log(filter, response.data.payload)
+    //     setgetPro(response.data.payload)
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
 
   }
   const applyFilters = (name, value) => {
-    setProFilters({
-      ...proFilters,
-      [name]: value
-    })
-
+    dispatch(updateProFilter({ name: name, value: value }))
   }
   useEffect(() => {
+    router.push(`/ShopGrid?page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=-1&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`);
     console.log(proFilters);
     let slider = bannerData?.filter((image) => (image?.banner_place_type == "Other"))
     console.log(slider, 'bannnerss');
@@ -90,7 +88,7 @@ const ShopGrid = (props) => {
             <div className="row">
               <div className="col-lg-9 order-first order-lg-last">
                 <Banner banner={props.banners} />
-                 <div className="box-filters mt-0 pb-5 border-bottom">
+                <div className="box-filters mt-0 pb-5 border-bottom">
                   <div className="row">
 
                     <div className="col-xl-10 col-lg-9 mb-10 text-lg-end text-center">
@@ -438,11 +436,11 @@ const ShopGrid = (props) => {
                           </label>
                         </div>
                       </div>
-                         </div>
-                       <h6 className="color-gray-900 mt-20 mb-10">Brands</h6>
-                   <BrandFilter/>
+                    </div>
+                    <h6 className="color-gray-900 mt-20 mb-10">Brands</h6>
+                    <BrandFilter />
                     <h6 className="color-gray-900 mt-20 mb-10">Rating</h6>
-                   <RatingFilter/>
+                    <RatingFilter />
 
                   </div>
                 </div>
