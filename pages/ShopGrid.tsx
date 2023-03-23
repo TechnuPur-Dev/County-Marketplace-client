@@ -25,20 +25,30 @@ import { useAppDispatch } from "../store/store";
 const ShopGrid = (props) => {
   const dispatch = useDispatch()
   const dispatch2=useAppDispatch()
-  const proFilters = useSelector((state: any) => state?.proFilter);console.log(props, 'props');
+ 
   
   var axios = require('axios');
   const router = useRouter();
+  let [proFilters, setProFilters] = useState({
+    page_size: router.query.page_size || 30,
+    page_number: router.query.page_number || 1,
+    search_string: router.query.search_string || -1,
+    sort_column: router.query.sort_column || 'product_name',
+    sort_order: router.query.sort_order || 'ASC',
+    categories_ids: router.query.categories_ids || -1,
+    brands_ids: router.query.brands_ids || -1,
+    price_from: Math.trunc(Number(router.query.price_from)) || 0.00,
+    price_to: Math.trunc(Number(router.query.price_to)) || 100.00,
+    waranty_duration_ids: router.query.waranty_duration_ids || -1,
+    vendor_id: router.query.vendor_id || -1
+  })
   const [bannerData, setBannerData] = useState(props?.banners)
   const [getPro, setgetPro] = useState(props?.products)
   const [proCatg, setProCatg] = useState(props?.categories)
   let pagination = [1, 2, 3, 4, 5, 6]
 
   const getProducts = (queryVal) => {
-    // router.push(`/ShopGrid?${queryVal}`);
-    // console.log(queryVal);
-    // dispatch2(fetchData(queryVal))
-    let filter = router.query;
+     let filter = router.query;
     var config = {
       method: 'get',
       url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?${queryVal}`,
@@ -55,7 +65,11 @@ const ShopGrid = (props) => {
 
   }
   const applyFilters = (name, value) => {
-    dispatch(updateProFilter({ name: name, value: value }))
+    setProFilters({
+      ...proFilters,
+      [name]: value
+    })
+
   }
   useEffect(() => {
     router.push(`/ShopGrid?page_size=30&page_number=1&search_string=-1&sort_column=product_name&sort_order=ASC&categories_ids=-1&brands_ids=-1&price_from=0.00&price_to=1000.00&waranty_duration_ids=-1&vendor_id=-1`);
@@ -112,14 +126,14 @@ const ShopGrid = (props) => {
                           >
                             <li>
                               <a className={(proFilters.sort_order == 'ASC') ? 'dropdown-item active' : 'dropdown-item'} href="#"
-                                onClick={() => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=ASC&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('sort_order', 'ASC') }}
+                                onClick={() => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=ASC&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('sort_order', 'ASC') }}
                               >
                                 ASC
                               </a>
                             </li>
                             <li>
                               <a className={(proFilters.sort_order == 'DSC') ? 'dropdown-item active' : 'dropdown-item'} href="#"
-                                onClick={() => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=DSC&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('sort_order', 'DSC') }}
+                                onClick={() => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=DSC&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('sort_order', 'DSC') }}
                               >
                                 DSC
                               </a>
@@ -152,17 +166,17 @@ const ShopGrid = (props) => {
                             aria-labelledby="dropdownSort2"
                           >
                             <li>
-                              <a className={(proFilters.page_size == 30) ? 'dropdown-item active' : 'dropdown-item'} href="#" onClick={() => { getProducts(`page_size=30&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_size', 30) }}>
+                              <a className={(proFilters.page_size == 30) ? 'dropdown-item active' : 'dropdown-item'} href="#" onClick={() => { getProducts(`page_size=30&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_size', 30) }}>
                                 30 items
                               </a>
                             </li>
                             <li>
-                              <a className={(proFilters.page_size == 50) ? 'dropdown-item active' : 'dropdown-item'} href="#" onClick={() => { getProducts(`page_size=50&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_size', 50) }}>
+                              <a className={(proFilters.page_size == 50) ? 'dropdown-item active' : 'dropdown-item'} href="#" onClick={() => { getProducts(`page_size=50&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_size', 50) }}>
                                 50 items
                               </a>
                             </li>
                             <li>
-                              <a className={(proFilters.page_size == 100) ? 'dropdown-item active' : 'dropdown-item'} href="#" onClick={() => { getProducts(`page_size=100&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_size', 100) }}>
+                              <a className={(proFilters.page_size == 100) ? 'dropdown-item active' : 'dropdown-item'} href="#" onClick={() => { getProducts(`page_size=100&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_size', 100) }}>
                                 100 items
                               </a>
                             </li>
@@ -255,7 +269,7 @@ const ShopGrid = (props) => {
                     </li>
                     {pagination.map(page => (<> <li className={(page == proFilters.page_number) ? "page-item active" : "page-item"}>
                       <a className="page-link" href="#"
-                        onClick={() => { getProducts(`page_size=${proFilters.page_size}&page_number=${page}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_number', page) }}
+                        onClick={() => { getProducts(`page_size=${proFilters.page_size}&page_number=${page}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('page_number', page) }}
                       >
                         {page}
                       </a>
@@ -279,7 +293,7 @@ const ShopGrid = (props) => {
                         (levl1) => levl1.level === 1)
                         .map((levl1 => (<> <li>
                           <a href="#" style={{ color: (levl1.category_id == proFilters.categories_ids) ? 'orange' : '' }}
-                            onClick={() => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${levl1.category_id}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters("categories_ids", levl1.category_id) }}
+                            onClick={() => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${levl1.category_id}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${proFilters.price_to}&waranty_duration_ids=${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters("categories_ids", levl1.category_id) }}
                           >
                             {levl1.category_name}
                             {/* <span className="number">09</span> */}
@@ -421,13 +435,13 @@ const ShopGrid = (props) => {
                           <label >
                             <span className=" m-0 p-0">Min:</span>
                             <input type="number" className="mt-10 priceRange" value={proFilters.price_from} min={0} step={1.00}
-                              onChange={(e) => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${e.target.value}&price_to=${proFilters.price_to}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('price_from', e.target.value) }}
+                              onChange={(e) => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${e.target.value}&price_to=${proFilters.price_to}&waranty_duration_ids=${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('price_from', e.target.value) }}
                             />
                           </label>
                           <label>
                             <span className=" ml-5">Max:</span>
                             <input type="number" className="mt-10 priceRange" value={proFilters.price_to} min={0}
-                              onChange={(e) => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${e.target.value}&waranty_duration_ids=-1${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('price_to', e.target.value) }}
+                              onChange={(e) => { getProducts(`page_size=${proFilters.page_size}&page_number=${proFilters.page_number}&search_string=${proFilters.search_string}&sort_column=${proFilters.sort_column}&sort_order=${proFilters.sort_order}&categories_ids=${proFilters.categories_ids}&brands_ids=${proFilters.brands_ids}&price_from=${proFilters.price_from}&price_to=${e.target.value}&waranty_duration_ids=${proFilters.waranty_duration_ids}&vendor_id=${proFilters.vendor_id}`); applyFilters('price_to', e.target.value) }}
                             />
                           </label>
                         </div>
