@@ -25,12 +25,8 @@ import { useAppDispatch } from "../store/store";
 const ShopGrid = (props) => {
   const dispatch = useDispatch()
   const dispatch2=useAppDispatch()
-  const proFilters = useSelector((state: any) => state?.proFilter);
-  useEffect(() => {
-    console.log(proFilters);
-  }, [proFilters])
-
-  console.log(props, 'props');
+  const proFilters = useSelector((state: any) => state?.proFilter);console.log(props, 'props');
+  
   var axios = require('axios');
   const router = useRouter();
   const [bannerData, setBannerData] = useState(props?.banners)
@@ -39,23 +35,23 @@ const ShopGrid = (props) => {
   let pagination = [1, 2, 3, 4, 5, 6]
 
   const getProducts = (queryVal) => {
-    router.push(`/ShopGrid?${queryVal}`);
-    console.log(queryVal);
-    dispatch2(fetchData(queryVal))
-    // let filter = router.query;
-    // var config = {
-    //   method: 'get',
-    //   url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?${queryVal}`,
-    // };
+    // router.push(`/ShopGrid?${queryVal}`);
+    // console.log(queryVal);
+    // dispatch2(fetchData(queryVal))
+    let filter = router.query;
+    var config = {
+      method: 'get',
+      url: `http://countydev92-001-site1.ftempurl.com/api/marketplace/getProductsFiltered?${queryVal}`,
+    };
 
-    // axios(config)
-    //   .then(function (response) {
-    //     console.log(filter, response.data.payload)
-    //     setgetPro(response.data.payload)
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+    axios(config)
+      .then(function (response) {
+        console.log(filter, response.data.payload)
+        setgetPro(response.data.payload)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
   }
   const applyFilters = (name, value) => {
