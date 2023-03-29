@@ -84,6 +84,8 @@ interface otpVerifyType{
 
   //   }
   // }, [session])
+
+  //Call Register User API
  const registerUser = () => {
     let validate = false;
     let dataRegister ;
@@ -129,6 +131,7 @@ interface otpVerifyType{
         });
     }
   }
+   //Call API that Verify OTP send to user
   const Verifying = () => {
     var config = {
       method: 'put',

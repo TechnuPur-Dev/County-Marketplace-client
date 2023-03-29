@@ -60,6 +60,7 @@ const Login = (props) => {
   })
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true)
+  //Call Reset PAssword API
   const ResetPass = () => {
     let validate = false;
     if (resetData.password == '')
@@ -88,11 +89,14 @@ const Login = (props) => {
 
     }
   }
+  // Remember the password or not
   const Remember = (e) => {
     if (e.target.checked) {
       setExpiryDate(true)
     }
   }
+  //Call Sign In User API
+
   const SignIn = () => {
 
     let validate = false;
@@ -139,6 +143,8 @@ const Login = (props) => {
 
     }
   }
+  //Call Forget PAssword API in case you forgot password and wants to change it
+
   const ForgetPass = () => {
     let validate = false;
     if (loginData.username == '')

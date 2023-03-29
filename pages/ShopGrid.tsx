@@ -25,6 +25,7 @@ import { useAppDispatch } from "../store/store";
 const ShopGrid = (props) => {
  var axios = require('axios');
   const router = useRouter();
+  // filter state
   let [proFilters, setProFilters] = useState({
     page_size: router.query.page_size || 30,
     page_number: router.query.page_number || 1,
@@ -43,6 +44,7 @@ const ShopGrid = (props) => {
   const [proCatg, setProCatg] = useState(props?.categories)
   let pagination = [1, 2, 3, 4, 5, 6]
 
+  //call API that return product by applying selected filter by user 
   const getProducts = (queryVal) => {
     router.push(router.asPath, `/ShopGrid?${queryVal}`);
      let filter = router.query;
@@ -296,101 +298,6 @@ const ShopGrid = (props) => {
                           </a>
                         </li></>)))}
                     </ul>
-                    {/* <ul className="list-nav-arrow">
-                      <li>
-                        <a href="shop-grid.html">
-                          Computers &amp; Laptop
-                          <span className="number">09</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="shop-grid.html">
-                          Electric accessories<span className="number">12</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="shop-grid.html">
-                          Mainboard &amp; CPU<span className="number">24</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="shop-grid.html">
-                          Bluetooth devices<span className="number">34</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="shop-grid.html">
-                          Mouse &amp; Keyboard<span className="number">65</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="shop-grid.html">
-                          Wired Headphone<span className="number">15</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="shop-grid.html">
-                          Gaming Gatgets<span className="number">76</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="shop-grid.html">
-                          Smart watches<span className="number">89</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="shop-grid.html">
-                          Cell Phones<span className="number">23</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="shop-grid.html">
-                          Headphone<span className="number">98</span>
-                        </a>
-                      </li>
-                    </ul> */}
-                    {/* <div>
-                      <div className="collapse" id="moreMenu">
-                        <ul className="list-nav-arrow">
-                          <li>
-                            <a href="shop-grid.html">
-                              Home theater<span className="number">98</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="shop-grid.html">
-                              Cameras & drones
-                              <span className="number">124</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="shop-grid.html">
-                              PC gaming<span className="number">56</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="shop-grid.html">
-                              Smart home<span className="number">87</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="shop-grid.html">
-                              Networking<span className="number">36</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                      <a
-                        className="link-see-more mt-5"
-                        data-bs-toggle="collapse"
-                        href="#moreMenu"
-                        role="button"
-                        aria-expanded="false"
-                        aria-controls="moreMenu"
-                      >
-                        See More
-                      </a>
-                    </div> */}
                   </div>
                 </div>
                 <div className="sidebar-border mb-40">

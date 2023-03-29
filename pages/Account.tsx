@@ -13,6 +13,7 @@ import Cookies from "js-cookie";
 const Account = (props) => {
   console.log(props,'infooo');
   const [info, setInfo] = useState(props?.info)
+  // set the name and email in local storage
   useEffect(() => {
     localStorage.setItem("username",props?.info?.full_name)
     localStorage.setItem("e-mail",props?.info?.email)
