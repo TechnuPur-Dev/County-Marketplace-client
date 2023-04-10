@@ -35,7 +35,6 @@ const QuickModal = ({star,img1,img2}) => {
                               clickable: true,
                             }}
                             spaceBetween={50}
-                            calculateHeight={true}
                             modules={[Pagination]}
                             className="mySwiper"
                           >
