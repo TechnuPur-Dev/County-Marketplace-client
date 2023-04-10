@@ -534,7 +534,7 @@ const Header = (props) => {
                     </a>
                     <div className="content">
                       <h6 className="user-name">
-                        Hello<span className="text-brand"> {Name.toLocaleUpperCase()} !</span>
+                        Hello<span className="text-brand"> {Name?.toLocaleUpperCase()} !</span>
                       </h6>
                       <p className="font-xs text-muted">
                         You have 3 new messages
